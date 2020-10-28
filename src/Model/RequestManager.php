@@ -22,7 +22,7 @@ class RequestManager extends AbstractManager
     public function selectFirsts(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
-                                ' ON user_id = fk_requester_id LIMIT 6')->fetchAll();
+                                ' ON user.id = fk_requester_id LIMIT 6')->fetchAll();
     }
 
     /**

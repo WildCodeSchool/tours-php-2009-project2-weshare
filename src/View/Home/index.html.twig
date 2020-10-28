@@ -16,7 +16,7 @@
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
         {% for request in requests %}
-            <p>{{ request.request_title }} {{ request.user_firstname }} {{ request.user_lastname }}</p>
+            <p>{{ request.title }} {{ request.firstname }} {{ request.lastname }}</p>
         {% endfor %}
     </div>
 </section>
