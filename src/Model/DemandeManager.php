@@ -24,7 +24,6 @@ class DemandeManager extends AbstractManager
         return $this->pdo->query('SELECT * FROM ' . $this->table . ' LIMIT 6')->fetchAll();
     }
 
-
     /**
      * @param array $item
      * @return int
@@ -67,5 +66,4 @@ class DemandeManager extends AbstractManager
 
         return $statement->execute();
     }*/
-
 }

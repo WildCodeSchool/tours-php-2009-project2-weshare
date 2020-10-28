@@ -24,9 +24,9 @@ class HomeController extends AbstractController
     public function index()
     {
         $demandeManager = new DemandeManager();
-        $demande = $demandeManager->selectFirsts();     
+        $demande = $demandeManager->selectFirsts();
 
-        return $this->twig->render('Home/index.html.twig', ['demandes'=>$demande]);
+        return $this->twig->render('Home/index.html.twig', ['demandes' => $demande]);
     }
     
     public function seeDemands()
