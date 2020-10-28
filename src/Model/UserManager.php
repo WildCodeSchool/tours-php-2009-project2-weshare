@@ -21,7 +21,7 @@ class UserManager extends AbstractManager
 
     public function getTable() : string
     {
-        return $this->table;
+        return self::TABLE;
     }
 
     /**

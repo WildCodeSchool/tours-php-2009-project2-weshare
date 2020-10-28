@@ -24,9 +24,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $userManager = new UserManager();
         $requestManager = new RequestManager();
-        $request = $requestManager->selectFirsts($userManager->getTable());
+        $request = $requestManager->selectFirsts();
 
         return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
     }

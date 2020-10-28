@@ -19,10 +19,10 @@ class RequestManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectFirsts(string $table2): array
+    public function selectFirsts(): array
     {
-        return $this->pdo->query('SELECT ' . $this->table . '.*, ' . $table2 . '.* FROM ' . $this->table .
-                            ' JOIN ' . $table2 . ' ON user_id = fk_requester_id LIMIT 6')->fetchAll();
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
+                                ' ON user_id = fk_requester_id LIMIT 6')->fetchAll();
     }
 
     /**
