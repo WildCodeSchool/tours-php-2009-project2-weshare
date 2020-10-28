@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\DemandeManager;
+
 class HomeController extends AbstractController
 {
 
@@ -21,20 +23,14 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        /* en attente de la classe DemandeManager
-        *$itemManager = new ItemManager();
-        *$item = $itemManager->selectOneById($id);
-        *
-        *if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        *    $item['title'] = $_POST['title'];
-        *    $itemManager->update($item);
-        *}*/
+        $demandeManager = new DemandeManager();
+        $demande = $demandeManager->selectFirsts();     
 
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Home/index.html.twig', ['demandes'=>$demande]);
     }
     
     public function seeDemands()
     {
-        return $this->twig->render('Home/see_demands.html.twig');
+        return $this->twig->render('Home/seeDemands.html.twig');
     }
 }

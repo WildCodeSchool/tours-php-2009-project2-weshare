@@ -15,7 +15,9 @@
 <section>
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
-        <!-- à compléter avec retour d'une requête BDD -->
+        {% for demande in demandes %}
+            <p>{{demande.demande_titre}}</p>
+        {% endfor %}
     </div>
 </section>
 <section>
