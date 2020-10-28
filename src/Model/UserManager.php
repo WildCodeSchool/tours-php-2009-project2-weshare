@@ -7,9 +7,9 @@
 
 namespace App\Model;
 
-class UtilisateurManager extends AbstractManager
+class UserManager extends AbstractManager
 {
-    const TABLE = 'utilisateur';
+    const TABLE = 'user';
 
     /**
      *  Initializes this class.
