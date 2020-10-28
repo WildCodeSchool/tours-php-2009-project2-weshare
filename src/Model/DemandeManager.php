@@ -7,12 +7,8 @@
 
 namespace App\Model;
 
-class DemandeManager
+class DemandeManager extends AbstractManager
 {
-
-
-
-
 
 
 }
