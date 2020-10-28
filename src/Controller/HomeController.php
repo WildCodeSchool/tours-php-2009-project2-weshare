@@ -32,4 +32,9 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/index.html.twig');
     }
+    
+    public function see_demands()
+    {
+        return $this->twig->render('Home/see_demands.html.twig');
+    }
 }
