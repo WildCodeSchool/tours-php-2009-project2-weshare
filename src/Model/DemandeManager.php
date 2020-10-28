@@ -9,6 +9,14 @@ namespace App\Model;
 
 class DemandeManager extends AbstractManager
 {
+    const TABLE = 'demande';
 
+    /**
+     *  Initializes this class.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
 
 }
