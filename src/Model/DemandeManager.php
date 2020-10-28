@@ -22,7 +22,7 @@ class DemandeManager extends AbstractManager
     public function selectFirsts(string $tableUtilisateur): array
     {
         return $this->pdo->query('SELECT ' . $this->table . '.*, ' . $tableUtilisateur . '.* FROM ' . $this->table .
-                                ' JOIN utilisateur ON utilisateur_id = fk_demandeur_id LIMIT 6')->fetchAll();
+                            ' JOIN ' . $tableUtilisateur . ' ON utilisateur_id = fk_demandeur_id LIMIT 6')->fetchAll();
     }
 
     /**
