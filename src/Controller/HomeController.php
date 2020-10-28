@@ -21,6 +21,15 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        /* en attente de la classe DemandeManager
+        *$itemManager = new ItemManager();
+        *$item = $itemManager->selectOneById($id);
+        *
+        *if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        *    $item['title'] = $_POST['title'];
+        *    $itemManager->update($item);
+        *}*/
+
         return $this->twig->render('Home/index.html.twig');
     }
 }
