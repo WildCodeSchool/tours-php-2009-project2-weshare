@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/styleFormInscription.css">{% endblock %}
+
+{% block content %}
+<div class="bg-c">
+    <div class="boiteForm">
+      <h2 id="incription">Nouvel utilisateur</h2>
+
+      <form action="#" method="GET" onsubmit="return validate();">
+        <div class="input">
+        <label for="nom">Civilité :</label>
+        <input type="checkbox" id="genre1" name="genre1" value="genre1">
+        <label for="genre1"> M.</label>
+        <input type="checkbox" id="genre2" name="genre2" value="genre2">
+        <label for="genre2"> Mme.</label>
+        <input type="checkbox" id="genre3" name="genre3" value="genre3">
+        <label for="genre3"> Autre</label>
+        </div><br>
+        <div class="input">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" placeholder="nom">
+        </div><br>
+        <div class="input">
+            <label for="prénom">Prénom :</label>
+            <input type="text" id="prénom" placeholder="prénom">
+        </div><br>
+        <div class="input">
+            <label for="num_et_voie">N° et voie :</label>   
+            <input type="text" id="num_et_voie" placeholder="numéro et voie">
+        </div><br>
+        <div class="input">
+            <label for="ville">Ville :</label><br>
+          <select id="ville" name="ville" type="choix">
+                
+                {% for ville in villes %}
+                <option value="ville">{{ ville.ville_nom }} </option>
+                {% endfor %}
+          </select>    
+        </div><br>
+        <div class="input">
+            <label for="tel">Téléphone :</label>   
+            <input type="text" id="tel" placeholder="téléphone">
+        </div><br>
+        <div class="input">
+            <label for="mail">E-mail :</label>    
+            <input type="mail" id="mail" placeholder="e-mail">
+        </div><br>
+        <div class="button">
+        <input type="submit" value="Inscription" name="button" style="width: 150px; height: 40px;">
+        </div>
+      </form>
+    </div>
+  </div>  
+{% endblock %}

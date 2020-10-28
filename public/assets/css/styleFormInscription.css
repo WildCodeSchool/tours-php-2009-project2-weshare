@@ -1,0 +1,45 @@
+input[type=submit] {
+    border-radius: 10px;
+    color: white;
+    border: none;
+    box-shadow: 10px 10px 30px 0px rgba(71, 68, 68, 0.75);
+    font-size: 20px;
+    background-color:grey;
+    text-align: center;
+  }
+
+  .button{
+      text-align: center;
+      padding-top:6px;
+      
+  }
+
+  input[type=text], input[type=mail], input[type=phone] input[type=choix]{
+    width: 100%; /* Full width */
+    padding: 8px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; 
+    border-right: none ; border-top: none; border-left: none;
+    resize: vertical;
+    background-color:lightgray;
+    color: black;
+    vertical-align: top;
+  }
+
+  .boiteForm {
+
+    background-color:whitesmoke;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 50px 20px 50px;
+    margin-top: 100px;
+    border-radius: 10px;
+    color: black;
+    }
+
+    h2 {
+       text-align: center; 
+    }
+    

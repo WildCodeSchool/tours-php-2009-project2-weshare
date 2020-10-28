@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\VilleManager;
+
 class HomeController extends AbstractController
 {
 
@@ -22,5 +24,13 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->twig->render('Home/index.html.twig');
+    }
+
+    public function inscription()
+    {
+        $villesManager = new VilleManager();
+        $villes = $villesManager->selectAll();
+
+        return $this->twig->render('Home/formInscription.html.twig', ["villes" => $villes]);
     }
 }
