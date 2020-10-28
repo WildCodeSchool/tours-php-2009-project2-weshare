@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\DemandeManager;
+use App\Model\UtilisateurManager;
 
 class HomeController extends AbstractController
 {
@@ -23,8 +24,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $utilisateurManager = new UtilisateurManager();
         $demandeManager = new DemandeManager();
-        $demande = $demandeManager->selectFirsts();
+        $demande = $demandeManager->selectFirsts($utilisateurManager->getTable());
 
         return $this->twig->render('Home/index.html.twig', ['demandes' => $demande]);
     }
