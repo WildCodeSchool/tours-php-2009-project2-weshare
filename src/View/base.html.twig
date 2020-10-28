@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WeShare - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    {% block stylesheet %}{% endblock %}
+    <link rel="icon" href="/assets/images/favicon.png">
+</head>
+
+<body>
+    <header>
+        <h1>WeShare</h1>
+        <img src="/assets/images/logo.png" alt="WeShare Logo"></img>
+        <ul>
+            <li>Toutes les demandes</li>
+            <li>Liste express</li>
+            <li>Poster une nouvelle demande</li>
+            <li>Nouvel utilisateur</li>
+        </ul>
+        <form action="" method="POST">
+            <label for="email">Email :</label>
+            <input type="email" name="email" placeholder="email"></input>
+            <button>Connection</button>
+        </form>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <ul>
+            <li>Nous contacter</li>
+            <li>Mentions légales</li>
+            <li>Lien footer</li>
+            <li>Lien footer</li>
+        </ul>
+    </footer>
+
+    {% block javascript %}{% endblock %}
+</body>
+</html>
+
+
