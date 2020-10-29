@@ -25,12 +25,4 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
-
-    public function inscription()
-    {
-        $townsManager = new TownManager();
-        $towns = $townsManager->selectAll();
-
-        return $this->twig->render('Home/formInscription.html.twig', ["towns" => $towns]);
-    }
 }

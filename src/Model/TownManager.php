@@ -47,20 +47,20 @@ class TownManager extends AbstractManager
     /**
      * @param int $id
      */
-    public function delete(int $id): void
+    /*public function delete(int $id): void
     {
         // prepared request
         $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-    }
+    }*/
 
 
     /**
      * @param array $item
      * @return bool
      */
-    public function update(array $item):bool
+    /*public function update(array $item):bool
     {
 
         // prepared request
@@ -69,5 +69,5 @@ class TownManager extends AbstractManager
         $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
 
         return $statement->execute();
-    }
+    }*/
 }
