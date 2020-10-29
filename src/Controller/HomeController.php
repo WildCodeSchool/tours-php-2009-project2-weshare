@@ -8,8 +8,8 @@
 
 namespace App\Controller;
 
-use App\Model\DemandeManager;
-use App\Model\UtilisateurManager;
+use App\Model\RequestManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -24,7 +24,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $demandeManager = new DemandeManager();
+        $demandeManager = new RequestManager();
         $demande = $demandeManager->selectFirsts();
 
         return $this->twig->render('Home/index.html.twig', ['demandes' => $demande]);
@@ -32,8 +32,8 @@ class HomeController extends AbstractController
     
     public function demands()
     {
-        $utilisateurManager = new UtilisateurManager();
-        $demandeManager = new DemandeManager();
+        $utilisateurManager = new UserManager();
+        $demandeManager = new RequestManager();
         $demande = $demandeManager->selectAllDemands($utilisateurManager->getTable());
 
         return $this->twig->render('Home/seeDemands.html.twig', ['demandes' => $demande]);

@@ -7,9 +7,9 @@
 
 namespace App\Model;
 
-class UtilisateurManager extends AbstractManager
+class RequestManager extends AbstractManager
 {
-    const TABLE = 'utilisateur';
+    const TABLE = 'demande';
 
     /**
      *  Initializes this class.
@@ -19,10 +19,20 @@ class UtilisateurManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function getTable() : string
+    public function selectFirsts(): array
     {
-        return $this->table;
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
+        ' ON utilisateur_id = fk_demandeur_id LIMIT 6')->fetchAll();
     }
+
+
+    // Get all demands
+    public function selectAllDemands(string $tableUtilisateur): array
+    {
+        return $this->pdo->query('SELECT ' . $this->table . '.*, ' . $tableUtilisateur . '.* FROM ' . $this->table .
+        ' JOIN ' . $tableUtilisateur . ' ON utilisateur_id = fk_demandeur_id')->fetchAll();
+    }
+
 
     /**
      * @param array $item
