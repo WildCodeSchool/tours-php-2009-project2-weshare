@@ -12,11 +12,11 @@
       <form action="#" method="GET" onsubmit="return validate();">
         <div class="input">
         <label for="civility">Civilité :</label>
-        <input type="checkbox" id="civility1" name="civility1" value="civility1">
+        <input type="radio" id="civility1" name="civility" value="civility1">
         <label for="civility1"> M.</label>
-        <input type="checkbox" id="civility2" name="civility2" value="civility2">
+        <input type="radio" id="civility2" name="civility" value="civility2">
         <label for="civility2"> Mme.</label>
-        <input type="checkbox" id="civility3" name="civility3" value="civility3">
+        <input type="radio" id="civility3" name="civility" value="civility3">
         <label for="civility3"> Autre</label>
         </div><br>
         <div class="input">
@@ -33,8 +33,8 @@
         </div><br>
         <div class="input">
             <label for="town">Ville :</label><br>
-          <select id="town" name="town" type="choice">
-                
+          <select id="town" name="town" type="choice">                
+                <option>-- --</option>
                 {% for town in towns %}
                 <option value="town">{{ town.name }} </option>
                 {% endfor %}
