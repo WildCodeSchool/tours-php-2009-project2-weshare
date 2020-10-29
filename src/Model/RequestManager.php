@@ -30,7 +30,7 @@ class RequestManager extends AbstractManager
     public function selectAllDemands(): array
     {
         return $this->pdo->query('SELECT * FROM ' . self::TABLE .
-        ' JOIN ' . UserManager::TABLE. ' ON user.id = fk_requester_id')->fetchAll();
+        ' JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id')->fetchAll();
     }
 
 
