@@ -1,0 +1,26 @@
+.publier {
+    background-color: aqua;
+}
+
+.cards_container {
+    border: solid 2px yellow;
+    display: flex ;
+    flex-wrap: wrap;
+}
+
+.demand_title {
+    border: solid 2px black;
+    display: flex ;
+}
+
+
+.demand_user {
+    border: solid 2px black;
+    display: flex ;
+}
+
+
+.cards {
+    border: solid 2px red;
+    position: relative;
+}

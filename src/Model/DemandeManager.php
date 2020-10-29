@@ -19,11 +19,20 @@ class DemandeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectFirsts(string $tableUtilisateur): array
+    public function selectFirsts(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UtilisateurManager::TABLE . 
+        ' ON utilisateur_id = fk_demandeur_id LIMIT 6')->fetchAll();
+    }
+
+
+    // Get all demands
+    public function selectAllDemands(string $tableUtilisateur): array
     {
         return $this->pdo->query('SELECT ' . $this->table . '.*, ' . $tableUtilisateur . '.* FROM ' . $this->table .
-                            ' JOIN ' . $tableUtilisateur . ' ON utilisateur_id = fk_demandeur_id LIMIT 6')->fetchAll();
+        ' JOIN ' . $tableUtilisateur . ' ON utilisateur_id = fk_demandeur_id')->fetchAll();
     }
+
 
     /**
      * @param array $item

@@ -1,28 +1,37 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/seeDemandsStyleSheet.css">
+{% endblock %}
+
 
 {% block content %}
 
-    <div>
+    <div class="publier">
         Tu as une nouvelle demande que tu veux publier?
     </div>
     <div>
+        {# liens à prévoir #}
         <button>Nouvelle demande</button>
     </div>
-    <div>
+    <div class="enregistrer">
         Tu veux participer et tu n'es pas encore enregistré?
     </div>
     <div>
+        {# liens à prévoir #}
         <button>Je m'enregistre!</button>
     </div>
     <div>
         Liste des demandes
     </div>
-    <div>
-        <h1>Item {{ item.title }}</h1>
-        <p>{{ item.id }}. {{ item.title }}</p>
-        <a href="/item/edit/{{ item.id }}">Edit</a>
+    <div class="cards_container">
+        {% for demande in demandes %}
+            <div class="cards">
+                <div class="demand_title">{{ demande.demande_titre }}</div>
+                <div class="demand_user">{{ demande.utilisateur_prenom }}</div>
+            </div>
+        {% endfor %}
+
+
     </div>
-
-
 
 {% endblock %}
