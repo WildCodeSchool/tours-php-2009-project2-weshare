@@ -30,11 +30,11 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
     }
     
-    public function demands()
+    public function requests()
     {
         $requestManager = new RequestManager();
-        $request = $requestManager->selectAllDemands();
+        $request = $requestManager->selectAllRequests();
 
-        return $this->twig->render('Home/seeDemands.html.twig', ['demandes' => $request]);
+        return $this->twig->render('Home/seeRequest.html.twig', ['requests' => $request]);
     }
 }

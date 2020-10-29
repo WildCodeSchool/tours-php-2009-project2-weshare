@@ -1,4 +1,4 @@
-.publier {
+.publish {
     background-color: aqua;
 }
 
@@ -8,13 +8,13 @@
     flex-wrap: wrap;
 }
 
-.demand_title {
+.request_title {
     border: solid 2px black;
     display: flex ;
 }
 
 
-.demand_user {
+.request_user {
     border: solid 2px black;
     display: flex ;
 }
