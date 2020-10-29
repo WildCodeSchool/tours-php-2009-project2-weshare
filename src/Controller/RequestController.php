@@ -26,8 +26,10 @@ class RequestController extends AbstractController
     public function list()
     {
         $requestManager = new RequestManager();
-        $request = $requestManager->selectAllRequests();
-
-        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $request]);
+        $requests = $requestManager->selectAllRequests();
+        if ($requests === null) {
+            echo 'Problème sur la base de données';
+        }
+        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
     }
 }
