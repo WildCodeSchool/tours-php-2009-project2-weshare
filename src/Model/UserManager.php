@@ -9,7 +9,7 @@ namespace App\Model;
 
 class UserManager extends AbstractManager
 {
-    const TABLE = 'utilisateur';
+    const TABLE = 'user';
 
     /**
      *  Initializes this class.
@@ -21,7 +21,7 @@ class UserManager extends AbstractManager
 
     public function getTable() : string
     {
-        return $this->table;
+        return self::TABLE;
     }
 
     /**

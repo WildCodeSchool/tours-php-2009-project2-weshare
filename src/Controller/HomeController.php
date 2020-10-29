@@ -24,18 +24,17 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $demandeManager = new RequestManager();
-        $demande = $demandeManager->selectFirsts();
+        $requestManager = new RequestManager();
+        $request = $requestManager->selectFirsts();
 
-        return $this->twig->render('Home/index.html.twig', ['demandes' => $demande]);
+        return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
     }
     
     public function demands()
     {
-        $utilisateurManager = new UserManager();
-        $demandeManager = new RequestManager();
-        $demande = $demandeManager->selectAllDemands($utilisateurManager->getTable());
+        $requestManager = new RequestManager();
+        $request = $requestManager->selectAllDemands();
 
-        return $this->twig->render('Home/seeDemands.html.twig', ['demandes' => $demande]);
+        return $this->twig->render('Home/seeDemands.html.twig', ['demandes' => $request]);
     }
 }
