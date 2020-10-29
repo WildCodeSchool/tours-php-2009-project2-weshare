@@ -1,0 +1,47 @@
+.publish, .signIn {
+    background-color: aqua;
+}
+
+.cards_container {
+    border: solid 2px blue;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    padding: 2%;
+}
+
+.cards {
+    border: solid 2px red;
+    border-radius: 8%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    width: 150px;
+}
+
+.request_title {
+    position: relative;
+    border: solid 2px black;
+    top: 5%;
+    margin: 0 auto;
+    flex-basis: auto;
+    box-sizing: content-box;
+    width: 90%;
+    text-align: center;
+}
+
+
+.request_user {
+    border: solid 2px black;
+    position: relative;
+    align-self: flex-end;
+    margin-right: 5%;
+    top: 20%;
+    right: 0;
+    width: min-content;    
+    flex-basis: auto;
+}
+
