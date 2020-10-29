@@ -29,5 +29,4 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
     }
-
 }
