@@ -33,12 +33,11 @@ class UserManager extends AbstractManager
         $fkAddressId = $this->pdo->lastInsertId();
 
         $statement2 = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (firstname,lastname,
-        civility,phone,email,fk_address_id) VALUES (:firstname,:lastname,:civility,:phone,:email,"
+        phone,email,fk_address_id) VALUES (:firstname,:lastname,:phone,:email,"
         . $fkAddressId . ")");
 
         $statement2->bindValue('firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement2->bindValue('lastname', $user['lastname'], \PDO::PARAM_STR);
-        $statement2->bindValue('civility', $user['civility'], \PDO::PARAM_STR);
         $statement2->bindValue('phone', $user['phone'], \PDO::PARAM_STR);
         $statement2->bindValue('email', $user['email'], \PDO::PARAM_STR);
         $statement2->execute();

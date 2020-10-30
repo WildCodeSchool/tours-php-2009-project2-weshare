@@ -21,8 +21,7 @@ class UserController extends AbstractController
                 'phone' => $_POST['phone'],
                 'street' => $_POST['street'],
                 'townId' => $_POST['townId'],
-                'email' => $_POST['email'],
-                'civility' => $_POST['civility']
+                'email' => $_POST['email']
             ];
             $userManager->insert($user);
             header('Location:/home/index');
