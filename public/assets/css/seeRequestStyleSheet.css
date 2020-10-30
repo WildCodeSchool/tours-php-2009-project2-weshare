@@ -20,6 +20,7 @@
     flex-direction: column;
     box-sizing: content-box;
     width: 150px;
+    position: relative;
 }
 
 .request_title {
@@ -36,12 +37,10 @@
 
 .request_user {
     /*border: solid 2px black;*/
-    position: relative;
-    align-self: flex-end;
+    position: absolute;
     margin-right: 5%;
-    top: 50%;
+    bottom: 20%;
     right: 0;
     width: min-content;    
-    flex-basis: auto;
 }
 
