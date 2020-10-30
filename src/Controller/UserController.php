@@ -26,7 +26,6 @@ class UserController extends AbstractController
             ];
             $userManager->insert($user);
             header('Location:/home/index');
-            exit();
         }
 
         $townsManager = new TownManager();
