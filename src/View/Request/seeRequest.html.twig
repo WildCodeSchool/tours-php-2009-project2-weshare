@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des demandes
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="publish">
+        Tu as une nouvelle demande que tu veux publier?
+    </div>
+    <div>
+        {# liens à prévoir #}
+        <button>Nouvelle demande</button>
+    </div>
+    <div class="signIn">
+        Tu veux participer et tu n'es pas encore enregistré?
+    </div>
+    <div>
+        {# liens à prévoir #}
+        <button>Je m'enregistre!</button>
+    </div>
+    <div>
+        Liste des demandes
+    </div>
+    <div class="cards_container">
+        {% for request in requests %}
+            <div class="cards">
+                <div class="request_title">{{ request.title }}</div>
+                <div class="request_user">{{ request.firstname }}</div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+
+{% endblock %}

@@ -10,22 +10,25 @@ namespace App\Controller;
 
 use App\Model\RequestManager;
 
-class HomeController extends AbstractController
+class RequestController extends AbstractController
 {
 
     /**
-     * Display home page
+     * Display requests page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    
+    public function list()
     {
         $requestManager = new RequestManager();
-        $request = $requestManager->selectFirsts();
-
-        return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
+        $requests = $requestManager->selectAllRequests();
+        if ($requests === null) {
+            echo 'Problème sur la base de données';
+        }
+        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
     }
 }
