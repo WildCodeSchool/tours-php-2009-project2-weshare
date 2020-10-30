@@ -1,26 +1,31 @@
+
+
+
 .publish, .signIn {
-    background-color: aqua;
+    background-color: var(--third-bg-color);
 }
 
 .cards_container {
-    border: solid 2px blue;
+    /*border: solid 2px blue;*/
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    padding: 2%;
+    row-gap: 10px;
+    column-gap: 5px;
+    padding: 0;
 }
 
 .cards {
-    border: solid 2px red;
+    border: solid 2px black;
     border-radius: 8%;
-    height: 150px;
+    height: 170px;
     display: flex;
     flex-direction: column;
     box-sizing: content-box;
-    width: 150px;
+    width: 170px;
     position: relative;
+    background-color: var(--secondary-bg-color);
 }
 
 .request_title {
@@ -39,8 +44,16 @@
     /*border: solid 2px black;*/
     position: absolute;
     margin-right: 5%;
-    bottom: 20%;
+    bottom: 30%;
     right: 0;
     width: min-content;    
 }
 
+.loupe img {
+    position: absolute;
+    margin-right: 1%;
+    bottom: 1%;
+    right: 0;
+    width: min-content;
+    max-width: 40px;;
+}

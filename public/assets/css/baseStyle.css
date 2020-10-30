@@ -1,3 +1,14 @@
+:root {
+    --main-bg-color: rgb(255, 215, 215);
+    --secondary-bg-color: rgb(253, 147, 165);
+    --third-bg-color: rgb(255, 96, 96); 
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+
 .logo {
     width: 100%;
 }
