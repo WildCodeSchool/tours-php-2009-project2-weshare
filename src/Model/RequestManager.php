@@ -10,7 +10,6 @@ namespace App\Model;
 class RequestManager extends AbstractManager
 {
     const TABLE = 'request';
-    const PROBLEM = 'You have a problem';
 
     /**
      *  Initializes this class.

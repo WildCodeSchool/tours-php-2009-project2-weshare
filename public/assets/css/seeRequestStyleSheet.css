@@ -24,7 +24,7 @@
 
 .request_title {
     position: relative;
-    border: solid 2px black;
+    /*border: solid 2px black;*/
     top: 5%;
     margin: 0 auto;
     flex-basis: auto;
@@ -35,11 +35,11 @@
 
 
 .request_user {
-    border: solid 2px black;
+    /*border: solid 2px black;*/
     position: relative;
     align-self: flex-end;
     margin-right: 5%;
-    top: 20%;
+    top: 50%;
     right: 0;
     width: min-content;    
     flex-basis: auto;
