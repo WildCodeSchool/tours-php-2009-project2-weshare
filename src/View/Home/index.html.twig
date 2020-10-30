@@ -1,5 +1,34 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+<section>
+    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
+    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
+    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+</section>
+<section>
+    <button>Nouvelle demande</button>
+    <button>Toutes les demandes</button>
+</section>
+<section>
+    <h3>Dernières demandes publiées</h3>
+    <div class="caroussel">
+        {% for request in requests %}
+            <p>{{ request.title }} {{ request.firstname }} {{ request.lastname }}</p>
+        {% endfor %}
+    </div>
+</section>
+<section>
+    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
+    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
+    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
+    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
+    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
+    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
+    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+</section>
 {% endblock %}
