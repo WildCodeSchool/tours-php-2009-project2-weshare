@@ -35,8 +35,7 @@ class RequestController extends AbstractController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) && isset($_POST['quantity'])
-        && isset($_POST['measurementId']) && isset($_POST['description'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
             $title = trim($_POST['title']);
             $quantity = trim($_POST['quantity']);
             $measurementId = trim($_POST['measurementId']);
@@ -66,7 +65,7 @@ class RequestController extends AbstractController
             if (empty($errors)) {
                 $requestManager = new RequestManager();
                 $requestManager->insert($request);
-                header('Location:/home/index');
+                header('Location:/request/list');
             }
         }
         $measurementManager = new MeasurementManager();
