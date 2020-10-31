@@ -1,32 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de demande</title>
-</head>
-<body>
-    <form action="" >
-        <div style="text-align: center;">
-            <label for="firstname">Prénom</label>
-            <input id="firstname" type="text">
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle demande{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/styleFormInscription.css">
+{% endblock %}
+
+{% block content %}
+    <div class="bg-c">
+    <div class="boxForm">
+      <h2 id="register">Nouvel demande</h2>
+
+      <form method="POST">
+        <div class="input">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" placeholder="titre" name="title">
+        </div><br>
+        <div class="input">
+            <label for="quantity">Quantité :</label><br />
+            <input type="number" id="quantity" placeholder="quantité" name="quantity">
+        </div><br>
+        <div class="input">
+          <label for="measurement">Unité :</label><br>
+          <select id="measurement" name="measurement" type="choice">                
+            <option>-- --</option>
+            {% for measurement in measurements %}
+            <option name="measurement" value={{ measurement.id }}>{{ measurement.name }} </option>
+            {% endfor %}
+          </select>    
+        </div><br>
+        <div class="input">
+            <label for="description">Description :</label><br>    
+            <textarea id="description" placeholder="description"></textarea>
+        </div><br>
+        <div class="button">
+        <input type="submit" value="Ajouter">
         </div>
-        <div style="text-align: center;">
-            <label for="address">Adresse</label>
-            <input id="address" type="text">
-        </div>
-        <div style="text-align: center;">
-            <label for="tel">Téléphone</label>
-            <input id="tel" type="tel">
-        </div>
-        <div style="text-align: center;">
-            <label for="mail">@</label>
-            <input id="mail" type="email">
-        </div>
-        <div style="text-align: center;">
-            <label for="message">Message</label>
-            <textarea  id="message"></textarea>
-        </div>
-    </form>
-</body>
-</html>
+      </form>
+    </div>
+  </div>
+{% endblock %}

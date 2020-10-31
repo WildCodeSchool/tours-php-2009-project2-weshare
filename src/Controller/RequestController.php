@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\RequestManager;
+use App\Model\MeasurementManager;
 
 class RequestController extends AbstractController
 {
@@ -30,5 +31,13 @@ class RequestController extends AbstractController
             echo 'Problème sur la base de données';
         }
         return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
+    }
+
+    public function add()
+    {
+        $measurementManager = new MeasurementManager();
+        $measurements = $measurementManager->selectAll();
+
+        return $this->twig->render('Request/requestForm.html.twig', ['measurements' => $measurements]);
     }
 }

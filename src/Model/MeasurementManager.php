@@ -12,12 +12,12 @@ namespace App\Model;
 /**
  *
  */
-class TownManager extends AbstractManager
+class MeasurementManager extends AbstractManager
 {
     /**
      *
      */
-    const TABLE = 'town';
+    const TABLE = 'measurement';
 
     /**
      *  Initializes this class.
