@@ -53,7 +53,7 @@ class RequestController extends AbstractController
             }
 
             if ($quantity <= 0) {
-                $errors['quantity'] = "La quantité ne peut pas être égale ou plus petite que 0.";
+                $errors['quantity'] = "La quantité ne peut pas être plus petite ou égale à 0.";
             }
 
             $request = [
