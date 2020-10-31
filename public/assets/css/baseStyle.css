@@ -1,9 +1,9 @@
 :root {
-    --main-bg-color: rgb(255, 215, 215);
-    --secondary-bg-color: rgb(253, 147, 165);
-    --third-bg-color: rgb(255, 96, 96); 
-    --borders-color:red;
-}
+    --main-bg-color: rgb(240, 240, 240);
+    --secondary-bg-color: rgb(255, 255, 255);
+    --third-bg-color: rgb(185, 185, 185); 
+    --borders-color:rgb(0, 0, 0);
+}  
 
 body {
     background-color: var(--main-bg-color);

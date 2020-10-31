@@ -15,13 +15,13 @@
         <div class="publish">
             <p>Tu as une nouvelle demande que tu veux publier?</p>
             {# liens à prévoir #}
-            <button>Nouvelle demande</button>
+            <button onclick="window.location.href ='/home/index'" class="button">Nouvelle demande</button>
         </div>
         <div class="vertical-line"></div>
         <div class="signIn">
             <p>Tu veux participer et tu n'es pas encore enregistré?</p>
             {# liens à prévoir #}
-            <button>Je m'enregistre!</button>
+            <button onclick="window.location.href ='/home/index'" class="button">Je m'enregistre!</a></button>
         </div>
     </div>
     <div class="requests_list">
@@ -33,10 +33,21 @@
                 <div class="cards">
                     <div class="request_title">{{ request.title }}</div>
                     <div class="request_user">{{ request.firstname }}</div>
-                    <div class="loupe"><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></div>
+                    <div class="loupe">
+                        <a href="#popup1"><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                    </div>
                 </div>
             {% endfor %}
         </div>
     </div>
 
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>This is a test</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Thank to pop me out of that button, but now i'm done so you can close this window.
+            </div>
+        </div>
+    </div>
 {% endblock %}
