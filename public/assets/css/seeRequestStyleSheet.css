@@ -1,8 +1,57 @@
 
 
 
-.publish, .signIn {
+.publish-container {
     background-color: var(--third-bg-color);
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 0 3% 0 3%;
+}
+
+.publish, .signIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    width: 100%;    
+    position: relative;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.publish p, .signIn p {
+    margin: 10%;
+}
+
+.publish button, .signIn button {
+    padding: 8%;
+    margin: 10% auto;
+    width: 50%;
+    height: 35px;
+    position: relative;
+    bottom: 0;
+    box-sizing: content-box;
+    min-width: min-content;
+}
+
+.vertical-line{
+    border-left: 2px solid #000;
+    height: 15vh;
+    margin: 10% 2px 10%;
+  }
+
+.requests_list {
+    background-color: var(--main-bg-color);
+}
+
+.list_title {
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    margin: 20px auto 20px;
 }
 
 .cards_container {
@@ -13,11 +62,10 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 10px;
     column-gap: 5px;
-    padding: 0;
 }
 
 .cards {
-    border: solid 2px black;
+    border: solid 2px var(--borders-color);
     border-radius: 8%;
     height: 170px;
     display: flex;
@@ -56,4 +104,9 @@
     right: 0;
     width: min-content;
     max-width: 40px;;
+}
+
+.loupe img:hover {
+    transition: 200ms;
+    transform: scale(1.1);
 }

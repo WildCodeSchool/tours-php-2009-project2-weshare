@@ -2,10 +2,12 @@
     --main-bg-color: rgb(255, 215, 215);
     --secondary-bg-color: rgb(253, 147, 165);
     --third-bg-color: rgb(255, 96, 96); 
+    --borders-color:red;
 }
 
 body {
     background-color: var(--main-bg-color);
+    margin: 0;
 }
 
 
