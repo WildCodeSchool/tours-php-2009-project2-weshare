@@ -35,16 +35,39 @@ class RequestController extends AbstractController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $requestManager = new RequestManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) && isset($_POST['quantity'])
+        && isset($_POST['measurementId']) && isset($_POST['description'])) {
+            $title = trim($_POST['title']);
+            $quantity = trim($_POST['quantity']);
+            $measurementId = trim($_POST['measurementId']);
+            $description = trim($_POST['description']);
+
+            $errors = [];
+
+            if (strlen($title) <= 0) {
+                $errors['title'] = "Le titre doit contenir au moins 1 caractère.";
+            }
+
+            if (strlen($title) > 41) {
+                $errors['title'] = "Le titre doit contenir au maximum 40 caractères.";
+            }
+
+            if ($quantity <= 0) {
+                $errors['quantity'] = "La quantité ne peut pas être égale ou plus petite que 0.";
+            }
+
             $request = [
-                'title' => $_POST['title'],
-                'quantity' => $_POST['quantity'],
-                'measurementId' => $_POST['measurementId'],
-                'description' => $_POST['description']
+                'title' => $title,
+                'quantity' => $quantity,
+                'measurementId' => $measurementId,
+                'description' => $description
             ];
-            $requestManager->insert($request);
-            header('Location:/home/index');
+
+            if (empty($errors)) {
+                $requestManager = new RequestManager();
+                $requestManager->insert($request);
+                header('Location:/home/index');
+            }
         }
         $measurementManager = new MeasurementManager();
         $measurements = $measurementManager->selectAll();
