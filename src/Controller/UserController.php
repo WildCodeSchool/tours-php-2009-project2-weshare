@@ -13,7 +13,9 @@ class UserController extends AbstractController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['firstname']) && isset($_POST['lastname']) &&
+        isset($_POST['phone']) && isset($_POST['street']) && isset($_POST['townId'])
+        && isset($_POST['email'])) {
             $userManager = new UserManager();
             $user = [
                 'firstname' => $_POST['firstname'],
