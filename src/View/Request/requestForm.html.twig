@@ -21,17 +21,17 @@
             <input type="number" id="quantity" placeholder="quantité" name="quantity">
         </div><br>
         <div class="input">
-          <label for="measurement">Unité :</label><br>
-          <select id="measurement" name="measurement" type="choice">                
+          <label for="measurementId">Unité :</label><br>
+          <select id="measurementId" name="measurementId" type="choice">                
             <option>-- --</option>
             {% for measurement in measurements %}
-            <option name="measurement" value={{ measurement.id }}>{{ measurement.name }} </option>
+            <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }} </option>
             {% endfor %}
           </select>    
         </div><br>
         <div class="input">
             <label for="description">Description :</label><br>    
-            <textarea id="description" placeholder="description"></textarea>
+            <textarea id="description" placeholder="description" name="description"></textarea>
         </div><br>
         <div class="button">
         <input type="submit" value="Ajouter">
