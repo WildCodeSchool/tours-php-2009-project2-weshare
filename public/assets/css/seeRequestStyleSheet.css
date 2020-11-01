@@ -100,7 +100,7 @@ a:visited, a:link {
 }
 
 
-.request_user {
+.request_user_firstname {
     /*border: solid 2px black;*/
     position: absolute;
     margin-right: 5%;
@@ -109,7 +109,11 @@ a:visited, a:link {
     width: min-content;    
 }
 
-.loupe img {
+.id_request {
+  visibility: visible;
+}
+
+.loupe-img img {
     position: absolute;
     margin-right: 1%;
     bottom: 1%;
@@ -120,7 +124,7 @@ a:visited, a:link {
     transition: all 0.3s ease-out;
 }
 
-.loupe img:hover {
+.loupe-img img:hover {
     transition: 200ms;
     transform: scale(1.1);
 }
@@ -152,8 +156,8 @@ a:visited, a:link {
     width: 90%;
     height: 90%;
     position: relative;
-    transition: all 2s ease-in-out;
-    max-height: 800px;
+    transition: all 0s ease-in-out;
+    max-height: 700px;
   }
   
   .popup h2 {
@@ -165,7 +169,7 @@ a:visited, a:link {
     position: absolute;
     top: 20px;
     right: 30px;
-    transition: all 200ms;
+    transition: all 2s;
     font-size: 40px;
     font-weight: bold;
     text-decoration: none;
@@ -178,4 +182,3 @@ a:visited, a:link {
     max-height: 30%;
     overflow: auto;
   }
-  

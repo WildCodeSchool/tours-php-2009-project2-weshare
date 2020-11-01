@@ -14,3 +14,7 @@ body {
 .logo {
     width: 100%;
 }
+
+a:visited, a:link {
+    text-decoration: none;
+}
