@@ -23,6 +23,21 @@ class UserController extends AbstractController
             $townId = trim($_POST['townId']);
             $email = trim($_POST['email']);
 
+            $errors = [];
+
+            if (strlen($firstname) > 50) {
+                $errors['firstname'] = 'The firstname is too long, maximum 50 characters';
+            }
+            if (strlen($firstname) <= 0) {
+                $errors['firstname'] = 'The firstname is too short, minimum 1 character';
+            }
+            if (strlen($lastname) > 50) {
+                $errors['lastname'] = 'The lastname is too long, maximum 50 characters';
+            }
+            if (strlen($lastname) <= 0) {
+                $errors['lastname'] = 'The lastname is too short, minimum 1 character';
+            }
+
             $userManager = new UserManager();
             $user = [
                 'firstname' => $firstname,
