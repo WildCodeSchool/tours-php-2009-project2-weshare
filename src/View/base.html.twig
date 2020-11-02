@@ -15,16 +15,18 @@
 <body>
     <header>
         <h1>WeShare</h1>
-        <img src="/assets/images/logo1.png" alt="WeShare Logo"></img>
-        <ul>
-            <li>Toutes les demandes</li>
-            <li>Liste express</li>
-            <li>Poster une nouvelle demande</li>
-            <li>Nouvel utilisateur</li>
-        </ul>
-        <form action="" method="POST">
+        <img src="/assets/images/logo1.png" alt="WeShare Logo" />
+        <nav>
+            <ul>
+                <li>Toutes les demandes</li>
+                <li>Liste express</li>
+                <li>Poster une nouvelle demande</li>
+                <li>Nouvel utilisateur</li>
+            </ul>
+        </nav>
+        <form action="#" method="POST">
             <label for="email">Email :</label>
-            <input type="email" name="email" placeholder="email"></input>
+            <input id="email" type="email" name="email" placeholder="email" />
             <button>Connexion</button>
         </form>
     </header>
@@ -43,5 +45,3 @@
     {% block javascript %}{% endblock %}
 </body>
 </html>
-
-
