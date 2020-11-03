@@ -7,21 +7,27 @@
 
     <title>WeShare - {% block title %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/styleBase.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
 <body>
     <header>
-        <h1>WeShare</h1>
-        <img src="/assets/images/logo1.png" alt="WeShare Logo" />
-        <nav>
-            <ul>
-                <li>Toutes les demandes</li>
-                <li>Liste express</li>
-                <li>Poster une nouvelle demande</li>
-                <li>Nouvel utilisateur</li>
+        <h1 id="baseTitle">WeShare</h1>
+        <img id="logo" src="/assets/images/logo1.png" alt="WeShare Logo" />
+        <div class="openButton">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <nav class='sideNav'>
+            <a href="javascript:void(0)" class="closeButton">&times;</a>
+            <ul class = "nav">
+                <li class="navLink">Toutes les demandes</li>
+                <li class="navLink">Liste express</li>
+                <li class="navLink">Poster une nouvelle demande</li>
+                <li class="navLink">Nouvel utilisateur</li>
             </ul>
         </nav>
         <form action="#" method="POST">
@@ -42,6 +48,7 @@
         </ul>
     </footer>
 
+    <script src="/assets/js/burgerMenu.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>
