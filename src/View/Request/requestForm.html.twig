@@ -13,6 +13,17 @@
 
       <form method="POST">
         <div class="input">
+          <label for="userId">Qui es-tu ?</label><br>
+          <select id="userId" name="userId" type="choice">                
+            <option>-- --</option>
+            {% for users in tables[1] %}
+              {% for user in users %}
+              <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+              {% endfor %}
+            {% endfor %}
+          </select>    
+        </div><br>
+        <div class="input">
             <label for="title">Titre :</label>
             <input type="text" id="title" placeholder="titre" name="title">
         </div><br>
@@ -24,8 +35,10 @@
           <label for="measurementId">Unité :</label><br>
           <select id="measurementId" name="measurementId" type="choice">                
             <option>-- --</option>
-            {% for measurement in measurements %}
-            <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }} </option>
+            {% for measurements in tables[0] %}
+              {% for measurement in measurements %}
+              <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }} </option>
+              {% endfor %}
             {% endfor %}
           </select>    
         </div><br>

@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Model\RequestManager;
 use App\Model\MeasurementManager;
+use App\Model\UserManager;
 
 class RequestController extends AbstractController
 {
@@ -69,8 +70,13 @@ class RequestController extends AbstractController
             }
         }
         $measurementManager = new MeasurementManager();
+        $userManager = new UserManager();
         $measurements = $measurementManager->selectAll();
+        $users = $userManager->selectAll();
 
-        return $this->twig->render('Request/requestForm.html.twig', ['measurements' => $measurements]);
+        return $this->twig->render(
+            'Request/requestForm.html.twig',
+            ['tables' => [['measurements' => $measurements] , ['users' => $users]]]
+        );
     }
 }
