@@ -28,30 +28,31 @@
         <div class="list_title">
         Liste des demandes
         </div>
-        <div class="cards_container">
+        <div id="cards" class="cards_container">
             {% for request in requests %}
                 <div class="cards">
                     <div class="request_title">{{ request.title }}</div>
                     <div class="request_user_firstname">{{ request.firstname }}</div>
-                    <div class="id_request">{{ request.id}}</div>
+                    <div class="id_request">{{ request.id }}</div>
                     <div class="loupe">
-                        <a class="loupe-img" href="#popup1"><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                        <a class="loupe-img" href={{ "#popup" ~ request.id }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-    <div id="popup1" class="overlay">
+    {% for request in requests %}
+    <div id={{ "popup" ~ request.id }} class="overlay">
         <div class="popup">
             <div>
-            {{ request.id }}
+                {{ request.title }}
             </div>
-            <a class="close" href="#">&times;</a>
+            <a class="close" href="#cards">&times;</a>
             <div class="content">
-                Thank to pop me out of that button, but now i'm done so you can close this window.
+                {{ request.firstname }}
             </div>
         </div>
     </div>
-
+    {% endfor %}
 
 {% endblock %}
