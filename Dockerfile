@@ -50,7 +50,7 @@ RUN docker-php-ext-install pcntl
 RUN docker-php-ext-install -j$(nproc) intl
 
 # Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.10.16 --install-dir=/usr/local/bin --filename=composer
 
 # Copy composer.lock and composer.json
 #COPY ./composer.lock ./composer.json /var/www/
