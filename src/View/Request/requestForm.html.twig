@@ -37,7 +37,7 @@
             <option>-- --</option>
             {% for measurements in tables[0] %}
               {% for measurement in measurements %}
-              <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }} </option>
+              <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }}(s)</option>
               {% endfor %}
             {% endfor %}
           </select>    

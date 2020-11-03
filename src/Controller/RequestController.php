@@ -36,7 +36,9 @@ class RequestController extends AbstractController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) &&
+        isset($_POST['userId'])) {
+            $userId = $_POST['userId'];
             $title = trim($_POST['title']);
             $quantity = trim($_POST['quantity']);
             $measurementId = trim($_POST['measurementId']);
@@ -57,6 +59,7 @@ class RequestController extends AbstractController
             }
 
             $request = [
+                'userId' => $userId,
                 'title' => $title,
                 'quantity' => $quantity,
                 'measurementId' => $measurementId,

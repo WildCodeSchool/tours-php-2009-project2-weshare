@@ -44,12 +44,13 @@ class RequestManager extends AbstractManager
     public function insert(array $request) : void
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
-        description,publication_date,fk_measurement_id) VALUES (:title,:quantity,
-        :description,curdate(),:measurementId)");
+        description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
+        :description,curdate(),:userId,:measurementId)");
 
         $statement->bindValue('title', $request['title'], \PDO::PARAM_STR);
         $statement->bindValue('quantity', $request['quantity'], \PDO::PARAM_INT);
         $statement->bindValue('description', $request['description'], \PDO::PARAM_STR);
+        $statement->bindValue('userId', $request['userId'], \PDO::PARAM_INT);
         $statement->bindValue('measurementId', $request['measurementId'], \PDO::PARAM_INT);
         $statement->execute();
     }
