@@ -1,10 +1,8 @@
 function openNav() {
-    if (window.matchMedia("(min-width: 813px)").matches) {
-        document.querySelector('.sideNav').style.width = "250px";
-    } else {
-        document.querySelector('.sideNav').style.width = "160px";
+    if (window.matchMedia("(max-width: 813px)").matches) {
+        document.querySelector('.sideNav').style.width = "170px";
+        document.querySelector('.nav').style.display = "flex";
     }
-    document.querySelector('.nav').style.display = "flex";
 }
 
 function closeNav() {
