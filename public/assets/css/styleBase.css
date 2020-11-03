@@ -1,0 +1,35 @@
+#baseTitle {
+    display: none;
+}
+
+#logo {
+    width: 70%;
+}
+
+.openButton {
+    margin : 8px 8px 0 8px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    border-radius: 10px;
+    margin: 6px 6px;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: grey;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
