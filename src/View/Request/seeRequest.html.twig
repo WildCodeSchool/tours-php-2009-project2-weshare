@@ -11,32 +11,47 @@
 
 {% block content %}
 
-    <div class="publish">
-        Tu as une nouvelle demande que tu veux publier?
+    <div class="publish-container">
+        <div class="publish">
+            <p>Tu as une nouvelle demande que tu veux publier?</p>
+            {# liens à prévoir #}
+            <button onclick="window.location.href ='/home/index'" class="button">Nouvelle demande</button>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="signIn">
+            <p>Tu veux participer et tu n'es pas encore enregistré?</p>
+            {# liens à prévoir #}
+            <button onclick="window.location.href ='/home/index'" class="button">Je m'enregistre!</a></button>
+        </div>
     </div>
-    <div>
-        {# liens à prévoir #}
-        <button>Nouvelle demande</button>
-    </div>
-    <div class="signIn">
-        Tu veux participer et tu n'es pas encore enregistré?
-    </div>
-    <div>
-        {# liens à prévoir #}
-        <button>Je m'enregistre!</button>
-    </div>
-    <div>
+    <div class="requests_list">
+        <div class="list_title">
         Liste des demandes
+        </div>
+        <div class="cards_container">
+            {% for request in requests %}
+                <div class="cards">
+                    <div class="request_title">{{ request.title }}</div>
+                    <div class="request_user_firstname">{{ request.firstname }}</div>
+                    <div class="id_request">{{ request.id}}</div>
+                    <div class="loupe">
+                        <a class="loupe-img" href="#popup1"><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <div class="cards_container">
-        {% for request in requests %}
-            <div class="cards">
-                <div class="request_title">{{ request.title }}</div>
-                <div class="request_user">{{ request.firstname }}</div>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <div>
+            {{ request.id }}
             </div>
-        {% endfor %}
-
-
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Thank to pop me out of that button, but now i'm done so you can close this window.
+            </div>
+        </div>
     </div>
+
 
 {% endblock %}

@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\RequestManager;
+use App\Model\AbstractManager;
 
 class RequestController extends AbstractController
 {
