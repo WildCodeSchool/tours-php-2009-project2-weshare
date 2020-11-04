@@ -57,8 +57,6 @@ class RequestController extends AbstractController
             } else {
                 $errors = $myRequest->getErrors();
             }
-        } else {
-            $errors['notFull'] = 'Veuillez choisir au minimum votre nom dans la liste et un titre';
         }
 
         $measurementManager = new MeasurementManager();
