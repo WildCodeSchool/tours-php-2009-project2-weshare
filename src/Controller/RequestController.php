@@ -11,6 +11,7 @@ namespace App\Controller;
 use App\Model\RequestManager;
 use App\Model\MeasurementManager;
 use App\Model\UserManager;
+use App\Model\Request;
 
 class RequestController extends AbstractController
 {
@@ -36,42 +37,38 @@ class RequestController extends AbstractController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) &&
-        isset($_POST['userId'])) {
-            $userId = $_POST['userId'];
-            $title = trim($_POST['title']);
-            $quantity = trim($_POST['quantity']);
-            $measurementId = trim($_POST['measurementId']);
-            $description = trim($_POST['description']);
+        $errors = [];
 
-            $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) && isset($_POST['userId'])) {
+            $myPost = $this->issetPost($_POST);
 
-            if (strlen($title) <= 0) {
-                $errors['title'] = "Le titre doit contenir au moins 1 caractère.";
-            }
+            $myRequest = new Request(
+                $myPost['userId'],
+                $myPost['title'],
+                $myPost['quantity'],
+                $myPost['measurementId'],
+                $myPost['description']
+            );
 
-            if (strlen($title) > 41) {
-                $errors['title'] = "Le titre doit contenir au maximum 40 caractères.";
-            }
-
-            if ($quantity <= 0) {
-                $errors['quantity'] = "La quantité ne peut pas être plus petite ou égale à 0.";
-            }
-
-            $request = [
-                'userId' => $userId,
-                'title' => $title,
-                'quantity' => $quantity,
-                'measurementId' => $measurementId,
-                'description' => $description
-            ];
+            $errors = $myRequest->isOk();
 
             if (empty($errors)) {
+                $request = [
+                    'userId' => $myRequest->getUserId(),
+                    'title' => $myRequest->getTitle(),
+                    'quantity' => $myRequest->getQuantity(),
+                    'measurementId' => $myRequest->getMeasurementId(),
+                    'description' => $myRequest->getDescription()
+                ];
+
                 $requestManager = new RequestManager();
                 $requestManager->insert($request);
                 header('Location:/request/list');
             }
+        } else {
+            $errors['notFull'] = 'Veuillez choisir au minimum votre nom dans la liste et un titre';
         }
+
         $measurementManager = new MeasurementManager();
         $userManager = new UserManager();
         $measurements = $measurementManager->selectAll();
@@ -79,7 +76,22 @@ class RequestController extends AbstractController
 
         return $this->twig->render(
             'Request/requestForm.html.twig',
-            ['tables' => [['measurements' => $measurements] , ['users' => $users]]]
+            ['tables' => [['measurements' => $measurements], ['users' => $users], ['errors' => $errors]]]
         );
+    }
+
+    private function issetPost(array $myPost) : array
+    {
+        if (!isset($myPost['quantity'])) {
+            $myPost['quantity'] = null;
+        }
+        if (!isset($myPost['measurementId'])) {
+            $myPost['measurementId'] = null;
+        }
+        if (!isset($myPost['description'])) {
+            $myPost['description'] = null;
+        }
+
+        return $myPost;
     }
 }
