@@ -163,7 +163,6 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `civility` varchar(20) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `phone` int NOT NULL,
@@ -181,7 +180,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Mme','Martin','Julia',600000000,'julia.m@mail.com',1),(2,'Mr','Martin','Jules',600000000,'jules.m@mail.com',2),(3,'Mr','Vernon','Geatan',600000000,'gaetan.v@mail.com',3),(4,'Mme','Vernon','Brigitte',600000000,'brigitte.v@mail.com',3),(5,'Mme','Blanche','Elodie',600000000,'elodie.b@mail.com',4),(6,'Autre','Heidrik','Zoé',600000000,'zoe.h@mail.com',5),(7,'Mr','Sando','Eric',600000000,'eric.s@mail.com',6);
+INSERT INTO `user` VALUES (1,'Martin','Julia',600000000,'julia.m@mail.com',1),(2,'Martin','Jules',600000000,'jules.m@mail.com',2),(3,'Vernon','Geatan',600000000,'gaetan.v@mail.com',3),(4,'Vernon','Brigitte',600000000,'brigitte.v@mail.com',3),(5,'Blanche','Elodie',600000000,'elodie.b@mail.com',4),(6,'Heidrik','Zoé',600000000,'zoe.h@mail.com',5),(7,'Sando','Eric',600000000,'eric.s@mail.com',6);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
