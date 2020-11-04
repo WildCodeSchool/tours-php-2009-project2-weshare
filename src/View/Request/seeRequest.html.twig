@@ -29,34 +29,40 @@
         Liste des demandes
         </div>
         <div id="cards" class="cards_container">
-            {% for test in requests %}
+            {% for request in requests %}
                 <div class="cards">
-                    <div class="request_title">{{ test.requestTitle }}</div>
-                    <div class="request_user_firstname">{{ test.userFirstName }} {{ test.userLastName }}</div>
-                    <div class="id_request">{{ test.requestId }}</div>
-                    <div class="request_town_name">{{ test.townName }}</div>
+                    <div class="request_title">{{ request.requestTitle }}</div>
+                    <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div class="id_request">{{ request.requestId }}</div>
+                    <div class="request_town_name">{{ request.townName }}</div>
                     <div class="loupe">
-                        <a class="loupe-img" href={{ "#popup" ~ test.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                        <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-    {% for test in requests %}
-    <div id={{ "popup" ~ test.requestId }} class="overlay">
+    {% for request in requests %}
+    <div id={{ "popup" ~ request.requestId }} class="overlay">
         <div class="popup">
-            <div class="request_street">{{ request.street }}</div>
-            <a class="close" href="#cards">&times;</a>
+            <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
             <div class="content">
-                <div>{{ test. requestTitle}}</div>
-                <div>{{ test.userFirstName }} {{ test.userLastName }}</div>
-                <div>{{ test.addressStreet }}</div>
-                <div>{{ test.townPostalCode}} {{ test.townName }}</div>
-                <div>{{ test.userPhone }}</div>
-                <div>{{ test.userEmail }}</div>
-                <div>{{ test.requestQuantity }} {{ test.measurementName }}</div>
-                <div>{{ test.requestDescription }}</div>
-                <div>Publié le {{ test.requestPublicationDate }}</div>
+                <div class="popup_request_title">{{ request. requestTitle}}</div>
+                <div class="popup_user_informations">
+                    <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div>Adresse: {{ request.addressStreet }}</div>
+                    <div class="popup_request_postalcode">{{ request.townPostalCode}} {{ request.townName }}</div>
+                    <div>Tel: 0{{ request.userPhone }}</div>
+                    <div>@: {{ request.userEmail }}</div>
+                </div>
+                <div class="popup_description_container">
+                    <div class="popup_request_quantity">Quantité: {{ request.requestQuantity }} {{ request.measurementName }}(s)</div>
+                    <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
+                </div>
+                <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+                <div class="button_container">
+                    <div class="take_care_button">Je m'en occupe!</div>
+                </div>
             </div>
         </div>
     </div>

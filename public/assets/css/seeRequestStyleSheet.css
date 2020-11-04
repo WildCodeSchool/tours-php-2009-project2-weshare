@@ -1,5 +1,5 @@
 
-
+/* Regular page*/
 
 .publish-container {
     background-color: var(--secondary-bg-color);
@@ -29,7 +29,7 @@
 
 .button {
     border: 2px solid var(--borders-color);
-    border-radius: 8%;
+    border-radius: 12px;
     background-color: var(--secondary-bg-color);
     padding: 8%;
     margin: 10% 10%;
@@ -78,7 +78,7 @@ a:visited, a:link {
 
 .cards {
     border: solid 2px var(--borders-color);
-    border-radius: 8%;
+    border-radius: 12px;
     height: 170px;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,6 @@ a:visited, a:link {
 .request_title {
     position: relative;
     /*border: solid 2px black;*/
-    text-decoration: underline;
     top: 5%;
     margin: 0 auto;
     flex-basis: auto;
@@ -99,6 +98,7 @@ a:visited, a:link {
     width: 90%;
     text-align: center;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 
@@ -106,9 +106,10 @@ a:visited, a:link {
     /*border: solid 2px black;*/
     position: absolute;
     margin-right: 5%;
-    bottom: 25%;
+    bottom: 40%;
     right: 0;
-    width: max-content;    
+    width: max-content;
+    font-style: italic;    
 }
 
 .id_request {
@@ -118,9 +119,10 @@ a:visited, a:link {
 .request_town_name {
   position: absolute;
   margin-right: 5%;
-  bottom: 40%;
+  bottom: 25%;
   right: 0;
-  width: max-content;    
+  width: max-content;
+  font-size: small;
 }
 
 .loupe-img img {
@@ -160,26 +162,72 @@ a:visited, a:link {
 
   .popup {
     margin: 5% auto;
-    padding: 20px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 12px;
     width: 90%;
-    height: 80%;
+    height: 90%;
     position: relative;
-    transition: all 0s ease-in-out;
-    max-height: 700px;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
   }
-  
-  .popup h2 {
+
+  .popup .content {
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding:6% 3% 3% 3%;
+  }
+
+  .popup_request_title {
     margin-top: 0;
     color: #333;
-    font-family: Tahoma, Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: larger;
   }
+
+  .popup_user_informations {
+    margin: 5% 0;
+    line-height: 1.8em;
+  }
+
+ .popup_request_postalcode {
+    position: relative;
+    left: 75px;
+ }
+
+
+  .popup_description_container {
+    border: solid 1px var(--borders-color);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3%;
+  }
+
+  .popup_description_container{
+    line-height: 1.3em;
+    background-color: var(--main-bg-color);
+  }
+
+  .popup_request_quantity {
+    margin-bottom: 1.3em;
+  }
+
+  .popup_request_publishdate {
+    margin: 2em 0;
+    font-style: italic;
+    font-size: small;
+  }
+
   .popup .close {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 2s;
+    top: 0;
+    right: 4px;
     font-size: 40px;
     font-weight: bold;
     text-decoration: none;
@@ -188,7 +236,23 @@ a:visited, a:link {
   .popup .close:hover {
     color: #06D85F;
   }
-  .popup .content {
-    max-height: 100%;
-    overflow: auto;
+ 
+.button_container{
+  
+}
+
+  .take_care_button {
+    margin: 0 auto 3%;
+    font-weight: bold;
+    border: 1px solid var(--borders-color);
+    min-width: max-content;
+    max-width: max-content;
+    padding: 1.3em;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .take_care_button:hover {
+    background-color: var(--third-bg-color);
   }
