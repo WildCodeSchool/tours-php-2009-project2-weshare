@@ -172,12 +172,12 @@ class User
         return $this->errors;
     }
 
-    public function isIncomplete()
-    {
-    }
-
     public function isValid() : bool
     {
         return empty($this->errors);
+    }
+
+    public function isIncomplete()
+    {
     }
 }
