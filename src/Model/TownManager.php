@@ -13,7 +13,7 @@ namespace App\Model;
 class TownManager extends AbstractManager
 {
     /**
-     *
+     * set the global constant TABLE with the name of the table town in the DB
      */
     const TABLE = 'town';
 

@@ -18,12 +18,12 @@ class User
     
     public function __construct($firstname, $lastname, $phone, $street, $townId, $email)
     {
-        $this->setFirstname(trim($firstname));
-        $this->setLastname(trim($lastname));
-        $this->setPhone(trim($phone));
-        $this->setStreet(trim($street));
-        $this->setTownId(trim($townId));
-        $this->setEmail(trim($email));
+        $this->setFirstname($firstname);
+        $this->setLastname($lastname);
+        $this->setPhone($phone);
+        $this->setStreet($street);
+        $this->setTownId($townId);
+        $this->setEmail($email);
     }
 
     public function getFirstname() : string
@@ -33,6 +33,8 @@ class User
 
     public function setFirstname($firstname)
     {
+        $firstname = trim($firstname);
+
         if (strlen($firstname) > 50) {
             $this->errors['firstname'] = 'The firstname is too long, maximum 50 characters';
         } elseif (strlen($firstname) <= 0) {
@@ -42,13 +44,15 @@ class User
         }
     }
 
-    public function getLastname()
+    public function getLastname() : string
     {
         return $this->lastname;
     }
 
     public function setLastname($lastname)
     {
+        $lastname = trim($lastname);
+
         if (strlen($lastname) > 50) {
             $this->errors['lastname'] = 'The lastname is too long, maximum 50 characters';
         } elseif (strlen($lastname) <= 0) {
@@ -58,13 +62,15 @@ class User
         }
     }
 
-    public function getPhone()
+    public function getPhone() : int
     {
         return $this->phone;
     }
 
     public function setPhone($phone)
     {
+        $phone = trim($phone);
+
         if (strlen($phone) != 10) {
             $this->errors['phone'] = 'The phone number has to be 10 numbers';
         } else {
@@ -72,13 +78,15 @@ class User
         }
     }
 
-    public function getStreet()
+    public function getStreet() : string
     {
         return $this->street;
     }
 
     public function setStreet($street)
     {
+        $street = trim($street);
+
         if (strlen($street) > 255) {
             $this->errors['street'] = 'The street is too long, maximum 255 characters';
         } elseif (strlen($street) <= 0) {
@@ -88,13 +96,15 @@ class User
         }
     }
 
-    public function getTownId()
+    public function getTownId() : int
     {
         return $this->townId;
     }
 
     public function setTownId($townId)
     {
+        $townId = trim($townId);
+
         if (strlen($townId) <= 0) {
             $this->errors['townId'] = 'Choose a town in the list';
         } else {
@@ -109,7 +119,9 @@ class User
 
     public function setEmail($email)
     {
-        if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#i", $email)) {
+        $email = trim($email);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = 'L\'email est invalide';
         } else {
             $this->email = $email;
