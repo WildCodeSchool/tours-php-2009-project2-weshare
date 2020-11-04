@@ -44,7 +44,7 @@ class UserController extends AbstractController
 
         return $this->twig->render(
             'User/formInscription.html.twig',
-            ['tables' => [['towns' => $towns],['errors' => $errors]]]
+            ['towns' => $towns,'errors' => $errors]
         );
     }
 }
