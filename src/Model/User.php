@@ -8,13 +8,37 @@ namespace App\Model;
 
 class User
 {
+    /**
+     * @var string
+     */
     private $firstname;
+
+    /**
+     * @var string
+     */
     private $lastname;
+
     private $phone;
+
+    /**
+     * @var string
+     */
     private $street;
+
     private $townId;
+
+    /**
+     * @var string
+     */
     private $email;
+
+    /**
+     * @var array
+     */
     private $errors = [];
+
+    const NAME_CHAR_MAX = 50;
+    const MIN_CHAR = 0;
     
     public function __construct($firstname, $lastname, $phone, $street, $townId, $email)
     {
@@ -26,6 +50,9 @@ class User
         $this->setEmail($email);
     }
 
+    /**
+     * return string
+     */
     public function getFirstname() : string
     {
         return $this->firstname;
@@ -35,15 +62,18 @@ class User
     {
         $firstname = trim($firstname);
 
-        if (strlen($firstname) > 50) {
+        if (strlen($firstname) > self::NAME_CHAR_MAX) {
             $this->errors['firstname'] = 'The firstname is too long, maximum 50 characters';
-        } elseif (strlen($firstname) <= 0) {
+        } elseif (strlen($firstname) <= self::MIN_CHAR) {
             $this->errors['firstname'] = 'The firstname is too short, minimum 1 character';
         } else {
             $this->firstname = $firstname;
         }
     }
 
+    /**
+     * return string
+     */
     public function getLastname() : string
     {
         return $this->lastname;
@@ -53,16 +83,16 @@ class User
     {
         $lastname = trim($lastname);
 
-        if (strlen($lastname) > 50) {
+        if (strlen($lastname) > self::NAME_CHAR_MAX) {
             $this->errors['lastname'] = 'The lastname is too long, maximum 50 characters';
-        } elseif (strlen($lastname) <= 0) {
+        } elseif (strlen($lastname) <= self::MIN_CHAR) {
             $this->errors['lastname'] = 'The lastname is too short, minimum 1 character';
         } else {
             $this->lastname = $lastname;
         }
     }
 
-    public function getPhone() : int
+    public function getPhone()
     {
         return $this->phone;
     }
@@ -78,6 +108,9 @@ class User
         }
     }
 
+    /**
+     * return string
+     */
     public function getStreet() : string
     {
         return $this->street;
@@ -89,14 +122,14 @@ class User
 
         if (strlen($street) > 255) {
             $this->errors['street'] = 'The street is too long, maximum 255 characters';
-        } elseif (strlen($street) <= 0) {
+        } elseif (strlen($street) <= self::MIN_CHAR) {
             $this->errors['street'] = 'The street is too short, minimum 1 character';
         } else {
             $this->street = $street;
         }
     }
 
-    public function getTownId() : int
+    public function getTownId()
     {
         return $this->townId;
     }
@@ -105,14 +138,17 @@ class User
     {
         $townId = trim($townId);
 
-        if (strlen($townId) <= 0) {
+        if (strlen($townId) <= self::MIN_CHAR) {
             $this->errors['townId'] = 'Choose a town in the list';
         } else {
             $this->townId = $townId;
         }
     }
 
-    public function getEmail()
+    /**
+     * return string
+     */
+    public function getEmail() : string
     {
         return $this->email;
     }
@@ -128,8 +164,20 @@ class User
         }
     }
 
+    /**
+     * return array
+     */
     public function getErrors() : array
     {
         return $this->errors;
+    }
+
+    public function isIncomplete()
+    {
+    }
+
+    public function isValid() : bool
+    {
+        return empty($this->errors);
     }
 }

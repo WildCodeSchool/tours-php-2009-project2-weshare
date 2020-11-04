@@ -27,13 +27,13 @@ class UserController extends AbstractController
                 $_POST['email']
             );
 
-            $errors = $myUser -> getErrors();
-
-            if (empty($errors)) {
+            if ($myUser->isValid()) {
                 $userManager = new UserManager();
 
                 $userManager->insert($myUser);
                 header('Location:/home/index');
+            } else {
+                $errors = $myUser -> getErrors();
             }
         } else {
             $errors['notFull'] = 'Veuillez remplir tous les champs du formulaire.';
