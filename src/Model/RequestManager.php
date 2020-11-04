@@ -26,7 +26,8 @@ class RequestManager extends AbstractManager
     }
 
 
-    // Get all demands; you MUST use an alias otherwise you will have a problem with the request (too many identical names)
+    /* Get all demands; you MUST use an alias otherwise you will have a
+    problem with the request (too many identical names)*/
     public function selectAllRequests(): ?array
     {
         try {
