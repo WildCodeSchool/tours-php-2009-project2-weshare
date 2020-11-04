@@ -82,10 +82,10 @@ class RequestController extends AbstractController
 
     private function issetPost(array $myPost) : array
     {
-        if (!isset($myPost['quantity'])) {
+        if (isset($myPost['quantity']) && $myPost['quantity'] == '') {
             $myPost['quantity'] = null;
         }
-        if (!isset($myPost['measurementId'])) {
+        if (isset($myPost['measurementId']) && $myPost['measurementId'] == '-- --') {
             $myPost['measurementId'] = null;
         }
         if (!isset($myPost['description'])) {
