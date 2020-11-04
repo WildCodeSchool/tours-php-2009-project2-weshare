@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Created by WCS.
+ * User: Célia
+ * Date : 04/11/2020
+ */
 namespace App\Model;
 
 class User
