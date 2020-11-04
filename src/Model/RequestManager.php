@@ -40,10 +40,10 @@ class RequestManager extends AbstractManager
               town.name AS townName, 
               town.postal_code AS townPostalCode, request.publication_date AS requestPublicationDate 
               FROM ' . self::TABLE .
-            ' JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
-            ' JOIN ' . AddressManager::TABLE . ' ON address.id = fk_town_id ' .
-            ' JOIN ' . TownManager::TABLE . ' ON town.id = fk_address_id ' .
-            ' JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id')->fetchAll();
+            ' LEFT JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
+            ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_town_id ' .
+            ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_address_id ' .
+            ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id')->fetchAll();
         } catch (\PDOException $error) {
             return null;
         }
@@ -52,27 +52,27 @@ class RequestManager extends AbstractManager
         }
     }
 
-    public function insert(array $request) : void
+    public function insert(Request $request) : void
     {
-        if ($request['quantity'] === '') {
-            $request['quantity'] = null;
+        if ($request->getQuantity() === '') {
+            $request-> setQuantity(null);
         }
-        if ($request['measurementId'] === '') {
-            $request['measurementId'] = null;
+        if ($request->getMeasurementId() === '') {
+            $request-> setMeasurementId(null);
         }
-        if ($request['description'] === '') {
-            $request['description'] = null;
+        if ($request->getDescription() === '') {
+            $request-> setDescription(null);
         }
 
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
         description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
         :description,curdate(),:userId,:measurementId)");
 
-        $statement->bindValue('title', $request['title'], \PDO::PARAM_STR);
-        $statement->bindValue('quantity', $request['quantity'], \PDO::PARAM_INT);
-        $statement->bindValue('description', $request['description'], \PDO::PARAM_STR);
-        $statement->bindValue('userId', $request['userId'], \PDO::PARAM_INT);
-        $statement->bindValue('measurementId', $request['measurementId'], \PDO::PARAM_INT);
+        $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
+        $statement->bindValue('description', $request->getDescription(), \PDO::PARAM_STR);
+        $statement->bindValue('userId', $request->getUserId(), \PDO::PARAM_INT);
+        $statement->bindValue('measurementId', $request->getmeasurementId(), \PDO::PARAM_INT);
         $statement->execute();
     }
 }

@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: aurelwcs
- * Date: 08/04/19
- * Time: 18:40
+ * Created by Wcs
+ * User: Celia
+ * Date: 04/11/2020
  */
 
 namespace App\Controller;
@@ -51,20 +50,20 @@ class RequestController extends AbstractController
                 $myPost['description']
             );
 
-            $errors = $myRequest->isOk();
-
-            if (empty($errors)) {
-                $request = [
+            if ($myRequest->isValid()) {
+                /*$request = [
                     'userId' => $myRequest->getUserId(),
                     'title' => $myRequest->getTitle(),
                     'quantity' => $myRequest->getQuantity(),
                     'measurementId' => $myRequest->getMeasurementId(),
                     'description' => $myRequest->getDescription()
-                ];
+                ];*/
 
                 $requestManager = new RequestManager();
-                $requestManager->insert($request);
+                $requestManager->insert($myRequest);
                 header('Location:/request/list');
+            } else {
+                $errors = $myRequest->getErrors();
             }
         } else {
             $errors['notFull'] = 'Veuillez choisir au minimum votre nom dans la liste et un titre';

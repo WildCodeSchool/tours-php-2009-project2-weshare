@@ -88,8 +88,13 @@ class Request
         $this->description = $description;
     }
 
-    public function isOk() : array
+    public function getErrors() : array
     {
         return $this->errors;
+    }
+
+    public function isValid() : bool
+    {
+        return empty($this->errors);
     }
 }
