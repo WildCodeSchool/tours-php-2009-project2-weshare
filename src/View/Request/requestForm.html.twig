@@ -10,7 +10,11 @@
     <div class="bg-c">
     <div class="boxForm">
       <h2 id="register">Nouvel demande</h2>
-
+      {% for errors in tables[2] %}
+        {% for error in errors %}
+        <p class="errors">{{ error }}</p>
+        {% endfor %}
+      {% endfor %}
       <form method="POST">
         <div class="input">
           <label for="userId">Qui es-tu ?</label><br>
