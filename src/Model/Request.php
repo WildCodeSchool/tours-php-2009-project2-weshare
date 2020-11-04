@@ -5,19 +5,35 @@ namespace App\Model;
 class Request
 {
     private $userId;
+
+    /*
+    * @var string
+    */
     private $title;
+
     private $quantity;
+
     private $measurementId;
+
+    /*
+    * @var string
+    */
     private $description;
+
+    /*
+    * @var array
+    */
     private $errors = [];
+
+    const MIN_CHAR = 0;
 
     public function __construct($userId, $title, $quantity, $measurementId, $description)
     {
-        $this->setUserId(trim($userId));
-        $this->setTitle(trim($title));
-        $this->setQuantity(trim($quantity));
-        $this->setMeasurementId(trim($measurementId));
-        $this->setDescription(trim($description));
+        $this->setUserId($userId);
+        $this->setTitle($title);
+        $this->setQuantity($quantity);
+        $this->setMeasurementId($measurementId);
+        $this->setDescription($description);
     }
 
     public function getUserId() : int
@@ -27,8 +43,10 @@ class Request
 
     public function setUserId($userId)
     {
-        if (strlen($userId) <= 0) {
-            $this->errors['userId'] = "Veuillez choisir votre nom dans la list ci-dessous";
+        $userId = trim($userId);
+
+        if (strlen($userId) <= self::MIN_CHAR) {
+            $this->errors['userId'] = "Veuillez choisir votre nom dans la liste ci-dessous";
         } else {
             $this->userId = $userId;
         }
@@ -41,7 +59,9 @@ class Request
 
     public function setTitle($title)
     {
-        if (strlen($title) <= 0) {
+        $title = trim($title);
+
+        if (strlen($title) <= self::MIN_CHAR) {
             $this->errors['title'] = "Le titre doit contenir au moins 1 caractère.";
         } elseif (strlen($title) > 40) {
             $this->errors['title'] = "Le titre doit contenir au maximum 40 caractères.";
@@ -57,7 +77,9 @@ class Request
 
     public function setQuantity($quantity)
     {
-        if ($quantity != null && $quantity <= 0) {
+        $quantity = trim($quantity);
+
+        if ($quantity != null && $quantity <= self::MIN_CHAR) {
             $this->errors['quantity'] = "La quantité ne peut pas être plus petite ou égale à 0.";
         } else {
             $this->quantity = $quantity;
@@ -71,7 +93,9 @@ class Request
 
     public function setMeasurementId($measurementId)
     {
-        if ($measurementId != null && $measurementId <= 0) {
+        $measurementId = trim($measurementId);
+
+        if ($measurementId != null && $measurementId <= self::MIN_CHAR) {
             $this->errors['measurementId'] = "Veuillez choisir l'unité dans la list ci-dessous";
         } else {
             $this->measurementId = $measurementId;
@@ -85,6 +109,8 @@ class Request
 
     public function setDescription($description)
     {
+        $description = trim($description);
+
         $this->description = $description;
     }
 
