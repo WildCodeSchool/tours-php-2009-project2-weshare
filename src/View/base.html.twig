@@ -7,25 +7,24 @@
 
     <title>WeShare - {% block title %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/baseStyle.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
 <body>
     <header>
-        <h1>WeShare</h1>
-        <img src="/assets/images/logo1.png" alt="WeShare Logo" />
-        <nav>
+        <h1><a href="/home/index">WeShare</a></h1>
+        <img class ="logo" src="/assets/images/logo1.png" alt="WeShare Logo"></img>
+        <div>
             <ul>
-                <li>Toutes les demandes</li>
-                <li>Liste express</li>
-                <li>Poster une nouvelle demande</li>
-                <li>Nouvel utilisateur</li>
+            <li><a href="/request/list">Toutes les demandes</a></li>
+            <li>Liste express</li>
+            <li>Poster une nouvelle demande</li>
+            <li>Nouvel utilisateur</li>
             </ul>
         </nav>
     </header>
-
     {% block content %}{% endblock %}
 
     <footer>
@@ -36,6 +35,8 @@
             <li>Lien footer</li>
         </ul>
     </footer>
+
+
 
     {% block javascript %}{% endblock %}
 </body>

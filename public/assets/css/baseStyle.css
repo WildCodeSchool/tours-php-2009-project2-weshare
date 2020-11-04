@@ -1,0 +1,20 @@
+:root {
+    --main-bg-color: rgb(240, 240, 240);
+    --secondary-bg-color: rgb(255, 255, 255);
+    --third-bg-color: rgb(185, 185, 185); 
+    --borders-color:rgb(0, 0, 0);
+}  
+
+body {
+    background-color: var(--main-bg-color);
+    margin: 0;
+}
+
+
+.logo {
+    width: 100%;
+}
+
+a:visited, a:link {
+    text-decoration: none;
+}

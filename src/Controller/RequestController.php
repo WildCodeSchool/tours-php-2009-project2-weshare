@@ -29,6 +29,7 @@ class RequestController extends AbstractController
     {
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllRequests();
+
         if ($requests === null) {
             echo 'Problème sur la base de données';
         }
