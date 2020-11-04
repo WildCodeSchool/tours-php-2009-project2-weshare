@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\RequestManager;
+use App\Model\AbstractManager;
 
 class RequestController extends AbstractController
 {
@@ -26,6 +27,7 @@ class RequestController extends AbstractController
     {
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllRequests();
+
         if ($requests === null) {
             echo 'Problème sur la base de données';
         }

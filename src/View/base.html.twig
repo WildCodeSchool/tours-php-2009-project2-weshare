@@ -14,21 +14,22 @@
 
 <body>
     <header>
-        <h1>WeShare</h1>
+        <h1><a href="/home/index">WeShare</a></h1>
         <img class ="logo" src="/assets/images/logo1.png" alt="WeShare Logo"></img>
-        <ul>
-            <li>Toutes les demandes</li>
+        <div>
+            <ul>
+            <li><a href="/request/list">Toutes les demandes</a></li>
             <li>Liste express</li>
             <li>Poster une nouvelle demande</li>
             <li>Nouvel utilisateur</li>
-        </ul>
+            </ul>
+        </div
         <form action="" method="POST">
             <label for="email">Email :</label>
             <input id="email" type="email" name="email" placeholder="email" />
             <button>Connection</button>
         </form>
     </header>
-
     {% block content %}{% endblock %}
 
     <footer>
@@ -39,6 +40,8 @@
             <li>Lien footer</li>
         </ul>
     </footer>
+
+
 
     {% block javascript %}{% endblock %}
 </body>
