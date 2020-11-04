@@ -51,14 +51,6 @@ class RequestController extends AbstractController
             );
 
             if ($myRequest->isValid()) {
-                /*$request = [
-                    'userId' => $myRequest->getUserId(),
-                    'title' => $myRequest->getTitle(),
-                    'quantity' => $myRequest->getQuantity(),
-                    'measurementId' => $myRequest->getMeasurementId(),
-                    'description' => $myRequest->getDescription()
-                ];*/
-
                 $requestManager = new RequestManager();
                 $requestManager->insert($myRequest);
                 header('Location:/request/list');
@@ -76,7 +68,7 @@ class RequestController extends AbstractController
 
         return $this->twig->render(
             'Request/requestForm.html.twig',
-            ['tables' => [['measurements' => $measurements], ['users' => $users], ['errors' => $errors]]]
+            ['measurements' => $measurements, 'users' => $users, 'errors' => $errors]
         );
     }
 
