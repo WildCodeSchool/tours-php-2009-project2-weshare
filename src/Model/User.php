@@ -116,7 +116,7 @@ class User
         }
     }
 
-    public function isOk() : array
+    public function getErrors() : array
     {
         return $this->errors;
     }
