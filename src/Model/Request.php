@@ -25,7 +25,7 @@ class Request
         return $this->userId;
     }
 
-    public function setUserId($userId)
+    public function setUserId($userId) : int
     {
         if ($userId <= 0) {
             $this->errors['userId'] = "Veuillez choisir votre nom dans la list ci-dessous";
@@ -39,7 +39,7 @@ class Request
         return $this->title;
     }
 
-    public function setTitle($title)
+    public function setTitle($title) : string
     {
         if (strlen($title) <= 0) {
             $this->errors['title'] = "Le titre doit contenir au moins 1 caractère.";
