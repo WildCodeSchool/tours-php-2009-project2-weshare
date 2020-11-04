@@ -35,8 +35,6 @@ class UserController extends AbstractController
             } else {
                 $errors = $myUser -> getErrors();
             }
-        } else {
-            $errors['notFull'] = 'Veuillez remplir tous les champs du formulaire.';
         }
 
         $townsManager = new TownManager();

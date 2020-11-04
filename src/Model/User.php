@@ -176,8 +176,4 @@ class User
     {
         return empty($this->errors);
     }
-
-    public function isIncomplete()
-    {
-    }
 }
