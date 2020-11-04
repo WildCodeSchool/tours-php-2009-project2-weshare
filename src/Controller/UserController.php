@@ -42,12 +42,19 @@ class UserController extends AbstractController
                     $userManager->insert($user);
                     header('Location:/home/index');
                 }
+            } else {
+                $errors['notFull'] = 'Veuillez remplir tous les champs du formulaire.';
             }
+        } else {
+            $errors = [];
         }
 
         $townsManager = new TownManager();
         $towns = $townsManager->selectAll();
 
-        return $this->twig->render('User/formInscription.html.twig', ["towns" => $towns]);
+        return $this->twig->render(
+            'User/formInscription.html.twig',
+            ['tables' => [['towns' => $towns],['errors' => $errors]]]
+        );
     }
 }
