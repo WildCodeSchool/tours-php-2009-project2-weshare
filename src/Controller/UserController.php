@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 use App\Model\TownManager;
+use App\Model\User;
 
 /**
  * Class UserController
@@ -16,40 +17,31 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['phone'])
             && isset($_POST['street']) && isset($_POST['townId']) && isset($_POST['email'])) {
-                $firstname = trim($_POST['firstname']);
-                $lastname = trim($_POST['lastname']);
-                $phone = trim($_POST['phone']);
-                $street = trim($_POST['street']);
-                $townId = trim($_POST['townId']);
-                $email = trim($_POST['email']);
+                $myUser = new User(
+                    $_POST['firstname'],
+                    $_POST['lastname'],
+                    $_POST['phone'],
+                    $_POST['street'],
+                    $_POST['townId'],
+                    $_POST['email']
+                );
 
-                $errors = [];
+                $errors = $myUser -> isOk();
 
-                if (strlen($firstname) > 50) {
-                    $errors['firstname'] = 'The firstname is too long, maximum 50 characters';
-                } elseif (strlen($firstname) <= 0) {
-                    $errors['firstname'] = 'The firstname is too short, minimum 1 character';
-                }
-                if (strlen($lastname) > 50) {
-                    $errors['lastname'] = 'The lastname is too long, maximum 50 characters';
-                } elseif (strlen($lastname) <= 0) {
-                    $errors['lastname'] = 'The lastname is too short, minimum 1 character';
-                }
-                if (strlen($phone) != 10) {
-                    $errors['phone'] = 'The phone num has to be 10 numbers';
-                }
+                if (empty($errors)) {
+                    $userManager = new UserManager();
+                    $user = [
+                        'firstname' => $myUser->getFirstname(),
+                        'lastname' => $myUser->getLastname(),
+                        'phone' => $myUser->getPhone(),
+                        'street' => $myUser->getStreet(),
+                        'townId' => $myUser->getTownId(),
+                        'email' => $myUser->getEmail()
+                    ];
 
-                $userManager = new UserManager();
-                $user = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'phone' => $phone,
-                    'street' => $street,
-                    'townId' => $townId,
-                    'email' => $email
-                ];
-                $userManager->insert($user);
-                header('Location:/home/index');
+                    $userManager->insert($user);
+                    header('Location:/home/index');
+                }
             }
         }
 
