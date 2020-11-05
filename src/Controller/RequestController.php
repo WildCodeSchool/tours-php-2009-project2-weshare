@@ -30,7 +30,7 @@ class RequestController extends AbstractController
         $requests = $requestManager->selectAllRequests();
 
         if ($requests === null) {
-            echo 'Problème sur la base de données';
+            echo 'Problème sur la base de données.';
         }
         return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
     }

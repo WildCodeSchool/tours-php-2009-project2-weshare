@@ -8,7 +8,9 @@
 <div class="bg-c">
     <div class="boxForm">
       <h2 id="register">Nouvel utilisateur</h2>
-
+      {% for error in errors %}
+        <p class="errors">{{ error }}</p>
+      {% endfor %}
       <form method="POST">
         <div class="input">
             <label for="firstname">Prénom :</label>
@@ -27,13 +29,13 @@
           <select id="townId" name="townId" type="choice">                
             <option>-- --</option>
             {% for town in towns %}
-            <option name="townId" value={{ town.id }}>{{ town.name }} </option>
+              <option name="townId" value={{ town.id }}>{{ town.name }} </option>
             {% endfor %}
-          </select>    
+          </select>
         </div><br>
         <div class="input">
             <label for="phone">Téléphone :</label>   
-            <input type="text" id="phone" placeholder="téléphone" name="phone">
+            <input type="tel" id="phone" placeholder="téléphone" name="phone">
         </div><br>
         <div class="input">
             <label for="email">E-mail :</label>    

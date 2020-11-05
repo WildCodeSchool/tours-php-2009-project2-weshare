@@ -164,7 +164,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(50) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
   `phone` int NOT NULL,
   `email` varchar(50) NOT NULL,
   `fk_address_id` int DEFAULT NULL,
