@@ -54,6 +54,7 @@ class RequestController extends AbstractController
                 $requestManager = new RequestManager();
                 $requestManager->insert($myRequest);
                 header('Location:/request/list');
+                return '';
             } else {
                 $errors = $myRequest->getErrors();
             }
