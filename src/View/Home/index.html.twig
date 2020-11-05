@@ -15,6 +15,7 @@
 <section>
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
+        <p>{{ errorBDD[0] }}</p>
         {% for request in requests %}
             <p>{{ request.title }} {{ request.firstname }} {{ request.lastname }}</p>
         {% endfor %}
