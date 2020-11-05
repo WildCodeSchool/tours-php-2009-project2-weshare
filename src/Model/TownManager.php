@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sylvain
- * Date: 07/03/18
- * Time: 18:20
- * PHP version 7
+ * Created by WCS.
+ * User: Célia
+ * Date : 04/11/2020
  */
 
 namespace App\Model;
@@ -15,7 +13,7 @@ namespace App\Model;
 class TownManager extends AbstractManager
 {
     /**
-     *
+     * set the global constant TABLE with the name of the table town in the DB
      */
     const TABLE = 'town';
 
