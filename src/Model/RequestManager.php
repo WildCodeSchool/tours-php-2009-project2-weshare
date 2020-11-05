@@ -54,16 +54,6 @@ class RequestManager extends AbstractManager
 
     public function insert(Request $request) : void
     {
-        if ($request->getQuantity() === '') {
-            $request-> setQuantity(null);
-        }
-        if ($request->getMeasurementId() === '') {
-            $request-> setMeasurementId(null);
-        }
-        if ($request->getDescription() === '') {
-            $request-> setDescription(null);
-        }
-
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
         description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
         :description,curdate(),:userId,:measurementId)");

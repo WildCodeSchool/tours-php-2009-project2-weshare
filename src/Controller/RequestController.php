@@ -78,7 +78,7 @@ class RequestController extends AbstractController
         if (isset($myPost['measurementId']) && $myPost['measurementId'] == '-- --') {
             $myPost['measurementId'] = null;
         }
-        if (!isset($myPost['description'])) {
+        if (isset($myPost['description']) && $myPost['description'] == '') {
             $myPost['description'] = null;
         }
 

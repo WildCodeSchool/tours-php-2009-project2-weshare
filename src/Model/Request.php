@@ -81,6 +81,8 @@ class Request
 
         if ($quantity != null && $quantity <= self::MIN_CHAR) {
             $this->errors['quantity'] = "La quantité ne peut pas être plus petite ou égale à 0.";
+        } elseif ($quantity === '') {
+            $this->quantity = null;
         } else {
             $this->quantity = $quantity;
         }
@@ -97,6 +99,8 @@ class Request
 
         if ($measurementId != null && $measurementId <= self::MIN_CHAR) {
             $this->errors['measurementId'] = "Veuillez choisir l'unité dans la list ci-dessous";
+        } elseif ($measurementId === '') {
+            $this->measurementId = null;
         } else {
             $this->measurementId = $measurementId;
         }
@@ -111,7 +115,11 @@ class Request
     {
         $description = trim($description);
 
-        $this->description = $description;
+        if ($description === '') {
+            $this->description = null;
+        } else {
+            $this->description = $description;
+        }
     }
 
     public function getErrors() : array
