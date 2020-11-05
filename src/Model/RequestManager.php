@@ -52,17 +52,24 @@ class RequestManager extends AbstractManager
         }
     }
 
-    public function insert(Request $request) : void
+    public function insert(Request $request) : ?bool
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
-        description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
-        :description,curdate(),:userId,:measurementId)");
+        try {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
+            description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
+            :description,curdate(),:userId,:measurementId)");
 
-        $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
-        $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
-        $statement->bindValue('description', $request->getDescription(), \PDO::PARAM_STR);
-        $statement->bindValue('userId', $request->getUserId(), \PDO::PARAM_INT);
-        $statement->bindValue('measurementId', $request->getmeasurementId(), \PDO::PARAM_INT);
-        $statement->execute();
+            $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
+            $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
+            $statement->bindValue('description', $request->getDescription(), \PDO::PARAM_STR);
+            $statement->bindValue('userId', $request->getUserId(), \PDO::PARAM_INT);
+            $statement->bindValue('measurementId', $request->getmeasurementId(), \PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (\PDOException $error) {
+            return null;
+        }
+        if ($result !== false) {
+            return $result;
+        }
     }
 }

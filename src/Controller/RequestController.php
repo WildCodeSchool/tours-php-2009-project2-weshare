@@ -52,9 +52,14 @@ class RequestController extends AbstractController
 
             if ($myRequest->isValid()) {
                 $requestManager = new RequestManager();
-                $requestManager->insert($myRequest);
-                header('Location:/request/list');
-                return '';
+                $result = $requestManager->insert($myRequest);
+                
+                if ($result === true) {
+                    header('Location:/request/list');
+                    return '';
+                } else {
+                    $errors['BDD'] = 'Problème sur la base de données.';
+                }
             } else {
                 $errors = $myRequest->getErrors();
             }
