@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by WCS.
  * User: Kevin
@@ -12,7 +13,7 @@ class UserManager extends AbstractManager
     /**
      * set the global constant TABLE with the name of the table user in the DB
      */
-    const TABLE = 'user';
+    public const TABLE = 'user';
 
     /**
      *  Initializes this class.
@@ -25,7 +26,7 @@ class UserManager extends AbstractManager
     /**
      * Function for adding a new user in our database
      */
-    public function insert(User $user) : void
+    public function insert(User $user): void
     {
         $statement1 = $this->pdo->prepare("INSERT INTO address (fk_town_id,street)
         VALUES (:townId,:street)");

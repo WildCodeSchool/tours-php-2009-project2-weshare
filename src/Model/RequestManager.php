@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by WCS.
  * User: Kevin
@@ -9,7 +10,7 @@ namespace App\Model;
 
 class RequestManager extends AbstractManager
 {
-    const TABLE = 'request';
+    public const TABLE = 'request';
 
     /**
      *  Initializes this class.
@@ -28,9 +29,7 @@ class RequestManager extends AbstractManager
         } catch (\PDOException $error) {
             return null;
         }
-        if ($statement !== false) {
-            return $statement;
-        }
+        return $statement;
     }
 
 
@@ -54,12 +53,10 @@ class RequestManager extends AbstractManager
         } catch (\PDOException $error) {
             return null;
         }
-        if ($statement !== false) {
-            return $statement;
-        }
+        return $statement;
     }
 
-    public function insert(Request $request) : ?bool
+    public function insert(Request $request): ?bool
     {
         try {
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
@@ -78,5 +75,6 @@ class RequestManager extends AbstractManager
         if ($result !== false) {
             return $result;
         }
+        return null;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by WCS.
  * User: Célia
@@ -15,7 +16,7 @@ class TownManager extends AbstractManager
     /**
      * set the global constant TABLE with the name of the table town in the DB
      */
-    const TABLE = 'town';
+    public const TABLE = 'town';
 
     /**
      *  Initializes this class.
