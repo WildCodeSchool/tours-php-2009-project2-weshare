@@ -19,10 +19,18 @@ class RequestManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectFirsts(): array
+    public function selectFirsts(): ?array
     {
-        return $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
-                            ' ON user.id = fk_requester_id LIMIT 6')->fetchAll();
+        try {
+            $statement = $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
+                            ' ON user.id = fk_requester_id ORDER BY publication_date DESC LIMIT 6')
+                            ->fetchAll();
+        } catch (\PDOException $error) {
+            return null;
+        }
+        if ($statement !== false) {
+            return $statement;
+        }
     }
 
 
@@ -39,15 +47,36 @@ class RequestManager extends AbstractManager
               town.name AS townName, 
               town.postal_code AS townPostalCode, request.publication_date AS requestPublicationDate 
               FROM ' . self::TABLE .
-            ' JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
-            ' JOIN ' . AddressManager::TABLE . ' ON address.id = fk_town_id ' .
-            ' JOIN ' . TownManager::TABLE . ' ON town.id = fk_address_id ' .
-            ' JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id')->fetchAll();
+            ' LEFT JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
+            ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_address_id ' .
+            ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_town_id ' .
+            ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id')->fetchAll();
         } catch (\PDOException $error) {
             return null;
         }
         if ($statement !== false) {
             return $statement;
+        }
+    }
+
+    public function insert(Request $request) : ?bool
+    {
+        try {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
+            description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
+            :description,curdate(),:userId,:measurementId)");
+
+            $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
+            $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
+            $statement->bindValue('description', $request->getDescription(), \PDO::PARAM_STR);
+            $statement->bindValue('userId', $request->getUserId(), \PDO::PARAM_INT);
+            $statement->bindValue('measurementId', $request->getmeasurementId(), \PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (\PDOException $error) {
+            return null;
+        }
+        if ($result !== false) {
+            return $result;
         }
     }
 }

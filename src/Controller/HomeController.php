@@ -23,9 +23,18 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $requestManager = new RequestManager();
-        $request = $requestManager->selectFirsts();
+        $error = [];
 
-        return $this->twig->render('Home/index.html.twig', ['requests' => $request]);
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectFirsts();
+
+        if ($requests === null) {
+            $error = 'Problème sur la base de données.';
+        }
+
+        return $this->twig->render(
+            'Home/index.html.twig',
+            ['requests' => $requests, 'errorBDD' => $error]
+        );
     }
 }
