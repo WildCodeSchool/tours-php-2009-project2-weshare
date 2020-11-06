@@ -25,18 +25,16 @@
             <input type="text" id="street" placeholder="Numéro et voie" name="street">
         </div><br>
         <div class="input">
-            <label for="townId">Ville :</label><br>
-            <div class="select_container">
-              <select id="townId" name="townId" type="choice">                
-                <option>-- --</option>
-                {% for town in towns %}
-                  <option name="townId" value={{ town.id }}>{{ town.name }} </option>
-                {% endfor %}
-              </select>
-            </div>
+          <label for="townId">Ville :</label><br>
+          <select id="townId" name="townId" type="choice">                
+            <option>-- --</option>
+            {% for town in towns %}
+              <option name="townId" value={{ town.id }}>{{ town.name }} </option>
+            {% endfor %}
+          </select>
         </div><br>
         <div class="input">
-            <label for="phone">Téléphone :</label><br>   
+            <label for="phone">Téléphone :</label>   
             <input type="tel" id="phone" placeholder="Téléphone" name="phone">
         </div><br>
         <div class="input">
@@ -44,6 +42,7 @@
             <input type="mail" id="email" placeholder="Email" name="email">
         </div><br>
         <div class="button_container">
+        <div class="button">
         <input type="submit" value="Inscription">
         </div>
       </form>
