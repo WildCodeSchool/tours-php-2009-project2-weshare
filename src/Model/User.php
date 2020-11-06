@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Created by WCS.
  * User: Célia
  * Date : 04/11/2020
  */
+
 namespace App\Model;
 
 class User
@@ -37,9 +39,9 @@ class User
      */
     private $errors = [];
 
-    const NAME_CHAR_MAX = 50;
-    const MIN_CHAR = 0;
-    
+    public const NAME_CHAR_MAX = 50;
+    public const MIN_CHAR = 0;
+
     public function __construct($firstname, $lastname, $phone, $street, $townId, $email)
     {
         $this->setFirstname($firstname);
@@ -53,7 +55,7 @@ class User
     /**
      * return string
      */
-    public function getFirstname() : string
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -74,7 +76,7 @@ class User
     /**
      * return string
      */
-    public function getLastname() : string
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -111,7 +113,7 @@ class User
     /**
      * return string
      */
-    public function getStreet() : string
+    public function getStreet(): string
     {
         return $this->street;
     }
@@ -148,7 +150,7 @@ class User
     /**
      * return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -167,12 +169,12 @@ class User
     /**
      * return array
      */
-    public function getErrors() : array
+    public function getErrors(): array
     {
         return $this->errors;
     }
 
-    public function isValid() : bool
+    public function isValid(): bool
     {
         return empty($this->errors);
     }
