@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by Wcs
  * User: Celia
@@ -23,7 +24,7 @@ class RequestController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    
+
     public function list()
     {
         $requestManager = new RequestManager();
@@ -53,7 +54,7 @@ class RequestController extends AbstractController
             if ($myRequest->isValid()) {
                 $requestManager = new RequestManager();
                 $result = $requestManager->insert($myRequest);
-                
+
                 if ($result === true) {
                     header('Location:/request/list');
                     return '';
@@ -76,7 +77,7 @@ class RequestController extends AbstractController
         );
     }
 
-    private function issetPost(array $myPost) : array
+    private function issetPost(array $myPost): array
     {
         if (isset($myPost['quantity']) && $myPost['quantity'] == '') {
             $myPost['quantity'] = null;

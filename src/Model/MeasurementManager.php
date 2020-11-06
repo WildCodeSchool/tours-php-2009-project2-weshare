@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: sylvain
@@ -17,7 +18,7 @@ class MeasurementManager extends AbstractManager
     /**
      *
      */
-    const TABLE = 'measurement';
+    public const TABLE = 'measurement';
 
     /**
      *  Initializes this class.
