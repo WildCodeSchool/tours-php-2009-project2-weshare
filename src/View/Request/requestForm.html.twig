@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle demande{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/styleFormInscription.css">
+{% endblock %}
+
+{% block content %}
+    <div class="bg-c">
+    <div class="boxForm">
+      <h2 id="register">Nouvelle demande</h2>
+      {% for error in errors %}
+        <p class="errors">{{ error }}</p>
+      {% endfor %}
+      <form method="POST">
+        <div class="input">
+          <label for="userId">Qui es-tu ?</label><br>
+          <select id="userId" name="userId" type="choice">                
+            <option>-- --</option>
+            {% for user in users %}
+              <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+            {% endfor %}
+          </select>    
+        </div><br>
+        <div class="input">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" placeholder="titre" name="title">
+        </div><br>
+        <div class="input">
+            <label for="quantity">Quantité :</label><br />
+            <input type="number" id="quantity" placeholder="quantité" name="quantity">
+        </div><br>
+        <div class="input">
+          <label for="measurementId">Unité :</label><br>
+          <select id="measurementId" name="measurementId" type="choice">                
+            <option>-- --</option>
+            {% for measurement in measurements %}
+              <option name="measurementId" value={{ measurement.id }}>{{ measurement.name }}(s)</option>
+            {% endfor %}
+          </select>    
+        </div><br>
+        <div class="input">
+            <label for="description">Description :</label><br>    
+            <textarea id="description" placeholder="description" name="description"></textarea>
+        </div><br>
+        <div class="button">
+        <input type="submit" value="Ajouter">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
