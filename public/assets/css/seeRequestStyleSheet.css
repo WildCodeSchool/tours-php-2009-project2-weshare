@@ -182,7 +182,7 @@ a:visited, a:link {
 
   .popup .content {
     height: 100%;
-    overflow: visble;
+    overflow: visible;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -208,7 +208,6 @@ a:visited, a:link {
     position: relative;
     left: 75px;
  }
-
 
   .popup_description_container {
     border: solid 1px var(--borders-color);
