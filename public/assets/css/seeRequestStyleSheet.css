@@ -116,13 +116,20 @@ a:visited, a:link {
   visibility: hidden;
 }
 
-.request_town_name {
+.request_town_name, .request_publication_date {
   position: absolute;
   margin-right: 5%;
-  bottom: 25%;
   right: 0;
   width: max-content;
   font-size: small;
+}
+
+.request_town_name {
+  bottom: 25%;
+}
+
+.request_publication_date {
+  bottom: 15%;
 }
 
 .loupe-img img {
@@ -237,10 +244,6 @@ a:visited, a:link {
   .popup .close:hover {
     color: #06D85F;
   }
- 
-.button_container{
-  
-}
 
   .take_care_button {
     margin: 0 auto 3%;

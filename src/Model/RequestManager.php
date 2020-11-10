@@ -23,13 +23,18 @@ class RequestManager extends AbstractManager
     public function selectFirsts(): ?array
     {
         try {
-            $statement = $this->pdo->query('SELECT * FROM ' . self::TABLE . ' JOIN ' . UserManager::TABLE .
-                            ' ON user.id = fk_requester_id ORDER BY publication_date DESC LIMIT 6')
-                            ->fetchAll();
+            $results = $this->pdo->query('SELECT request.id AS requestId, user.firstname AS userFirstName, 
+            user.lastname AS userLastName, request.title AS requestTitle, town.name AS townName, 
+            request.publication_date AS requestPublicationDate 
+            FROM ' . self::TABLE .
+            ' LEFT JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
+            ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_address_id ' .
+            ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_town_id
+            ORDER BY requestPublicationDate DESC LIMIT 6')->fetchAll();
         } catch (\PDOException $error) {
             return null;
         }
-        return $statement;
+        return $results;
     }
 
 

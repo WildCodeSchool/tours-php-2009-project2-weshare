@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+{% endblock %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
@@ -11,15 +15,22 @@ Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votr
 </section>
 <section>
     <button><a href="/request/add">Nouvelle demande</a></button>
-    <button><a href="/user/add">Toutes les demandes</a></button>
+    <button><a href="/request/list">Toutes les demandes</a></button>
 </section>
 <section>
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
         <p>{{ errorBDD[0] }}</p>
+        <div id="cards" class="cards_container">
         {% for request in requests %}
-            <p>{{ request.title }} {{ request.firstname }} {{ request.lastname }}</p>
-        {% endfor %}
+            <div class="cards">
+                <div class="request_title">{{ request.requestTitle }}</div>
+                <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div class="request_town_name">{{ request.townName }}</div>
+                <div class="request_publication_date">{{ request.requestPublicationDate }}</div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 <section>
