@@ -86,6 +86,8 @@ a:visited, a:link {
     width: 170px;
     position: relative;
     background-color: var(--secondary-bg-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .request_title {
@@ -103,13 +105,12 @@ a:visited, a:link {
 
 
 .request_user_firstname {
-    /*border: solid 2px black;*/
     position: absolute;
-    margin-right: 5%;
-    bottom: 40%;
-    right: 0;
-    width: max-content;
-    font-style: italic;    
+    margin-left: 5%;
+    bottom: 45%;
+    left: 0;
+    font-style: italic;
+    width: 100%;
 }
 
 .id_request {
@@ -118,9 +119,9 @@ a:visited, a:link {
 
 .request_town_name {
   position: absolute;
-  margin-right: 5%;
+  margin-left: 5%;
   bottom: 25%;
-  right: 0;
+  left: 0;
   width: max-content;
   font-size: small;
 }
@@ -161,6 +162,19 @@ a:visited, a:link {
   .overlay:target {
     visibility: visible;
     opacity: 1;
+  }
+
+  .popup .close {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .popup .close:hover {
+    color: #06D85F;
   }
 
   .popup {
@@ -210,9 +224,6 @@ a:visited, a:link {
     width: 100%;
     box-sizing: border-box;
     padding: 3%;
-  }
-
-  .popup_description_container{
     line-height: 1.3em;
     background-color: var(--main-bg-color);
   }
@@ -222,40 +233,97 @@ a:visited, a:link {
   }
 
   .popup_request_publishdate {
-    margin: 2em 0;
+    margin: 0.3em 0 2em 0;
     font-style: italic;
     font-size: small;
   }
 
-  .popup .close {
-    position: absolute;
-    top: 0;
-    right: 4px;
-    font-size: 40px;
+  .popup_answerer_name {
+    text-align: center;
+    margin: 0.5em;
+    max-width: 100%;
+  }
+
+  .button_container {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #userId {
+    text-align: center;
     font-weight: bold;
-    text-decoration: none;
-    color: #333;
   }
-  .popup .close:hover {
-    color: #06D85F;
+
+  .iAm {
+   padding-bottom: 0.5em;
+   font-weight: bold;
   }
- 
-.button_container{
-  
-}
 
   .take_care_button {
+    width: 100%;
     margin: 0 auto 3%;
     font-weight: bold;
     border: 1px solid var(--borders-color);
-    min-width: max-content;
     max-width: max-content;
     padding: 1.3em;
     border-radius: 12px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
   }
 
   .take_care_button:hover {
     background-color: var(--third-bg-color);
+  }
+
+
+  /* Relooking the select button*/
+
+/*Réinitilaisation de la liste déroulante*/
+select {
+  appearance: none;
+  outline: 0;
+  border: 0 !important;
+  background: #F9F9F9;
+  background-image: none;
+  box-shadow: none;
+  }
+  
+  /* Mise en place des dimensions. On cache la flèche d’origine */
+  .select {
+  position: relative;
+  width: 208px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid var(--borders-color);
+  margin: 0 auto 0.8em;
+  ;
+  }
+  /* On adapte la liste déroulante à la div qui l’englobe*/
+  select {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding-left: 15px;
+  color: #555555;
+  cursor: pointer;
+  }
+  /* Mise en place de la flèche */
+  .select::after {
+  content: '\276F';
+  position: absolute;
+  top: 8%;
+  right: 0;
+  padding: 0 5px;
+  background: white;
+  pointer-events: none;
+  transform: rotate(90deg);
+  font-size: 1.5em;
+  background: #F9F9F9;
+  }
+  .select:hover::after {
+  color: var(--loupe-color);
   }

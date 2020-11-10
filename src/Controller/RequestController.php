@@ -28,12 +28,14 @@ class RequestController extends AbstractController
     public function list()
     {
         $requestManager = new RequestManager();
+        $userManager = new UserManager;
         $requests = $requestManager->selectAllRequests();
+        $users = $userManager->selectAll();
 
         if ($requests === null) {
             echo 'Problème sur la base de données.';
         }
-        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
+        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests, 'users' => $users]);
     }
 
     public function add()

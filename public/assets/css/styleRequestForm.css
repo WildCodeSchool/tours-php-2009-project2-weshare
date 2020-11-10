@@ -3,7 +3,7 @@
   background-color: var(--secondary-bg-color);
 }
 
-  #phone , input[type=text], input[type=mail], input[type=phone] input[type=choice] #townId {
+  #quantity, input[type=text], input[type=choice], #description {
     width: 100%; /* Full width */
     padding: 8px; /* Some padding */ 
     box-sizing: border-box; 
@@ -13,10 +13,10 @@
 
   }
 
-  #townId {
+  #userId, #measurementId {
     background-color: var(--secondary-bg-color);
   }
-
+  
   .boxForm {
     background-color:var(--secondary-bg-color);
     margin: auto;
@@ -31,8 +31,6 @@
     .errors {
       color: red;
     }
-
-
 
     .button_container {
       margin: 1em auto 0;
@@ -130,3 +128,4 @@ select {
   .select:hover::after {
   color: var(--loupe-color);
   }
+
