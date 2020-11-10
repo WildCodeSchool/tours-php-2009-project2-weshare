@@ -55,7 +55,7 @@ class RequestController extends AbstractController
                 $requestManager = new RequestManager();
                 $result = $requestManager->insert($myRequest);
 
-                if ($result === true) {
+                if ($result) {
                     header('Location:/request/list');
                     return '';
                 } else {
