@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: sylvain
@@ -17,7 +18,7 @@ class AddressManager extends AbstractManager
     /**
      *
      */
-    const TABLE = 'address';
+    public const TABLE = 'address';
 
     /**
      *  Initializes this class.

@@ -25,7 +25,7 @@ class Request
     */
     private $errors = [];
 
-    const MIN_CHAR = 0;
+    public const MIN_CHAR = 0;
 
     public function __construct($userId, $title, $quantity, $measurementId, $description)
     {
@@ -36,7 +36,7 @@ class Request
         $this->setDescription($description);
     }
 
-    public function getUserId() : int
+    public function getUserId(): int
     {
         return $this->userId;
     }
@@ -52,7 +52,7 @@ class Request
         }
     }
 
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -122,12 +122,12 @@ class Request
         }
     }
 
-    public function getErrors() : array
+    public function getErrors(): array
     {
         return $this->errors;
     }
 
-    public function isValid() : bool
+    public function isValid(): bool
     {
         return empty($this->errors);
     }
