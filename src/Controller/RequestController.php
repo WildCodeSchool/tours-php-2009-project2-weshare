@@ -41,7 +41,7 @@ class RequestController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title']) && isset($_POST['userId'])) {
-            $myPost = $this->issetPost($_POST);
+            $myPost = $this->issetPost();
 
             $myRequest = new Request(
                 $myPost['userId'],
@@ -77,8 +77,9 @@ class RequestController extends AbstractController
         );
     }
 
-    private function issetPost(array $myPost): array
+    private function issetPost(): array
     {
+        $myPost = $_POST;
         if (isset($myPost['quantity']) && $myPost['quantity'] == '') {
             $myPost['quantity'] = null;
         }
@@ -88,7 +89,6 @@ class RequestController extends AbstractController
         if (isset($myPost['description']) && $myPost['description'] == '') {
             $myPost['description'] = null;
         }
-
         return $myPost;
     }
 }
