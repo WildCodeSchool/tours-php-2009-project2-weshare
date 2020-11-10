@@ -20,24 +20,19 @@
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
         <p>{{ errorBDD[0] }}</p>
-        <div class="slideshow-container">
+        <div class="slides cards_container">
+        {% set slideNumber = 1 %}
         {% for request in requests %}
-            <div class="mySlides fade">
+            <div id={{ "slide-" ~ slideNumber }} class="cards">
                 <div class="request_title">{{ request.title }}</div>
                 <div class="request_user_firstname">{{ request.firstname }} {{ request.lastname }}</div>
             </div>
+            {% set slideNumber = slideNumber + 1 %}
         {% endfor %}
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <div class="slideButtons">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-            <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(6)"></span>
-        </div>
+        <a href="#slide-1" class="dot">1</a>
+        <a href="#slide-4" class="dot">2</a>
+        <a href="#slide-6" class="dot">3</a>
     </div>
 </section>
 <section>
