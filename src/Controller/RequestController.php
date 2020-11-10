@@ -28,7 +28,7 @@ class RequestController extends AbstractController
     public function list()
     {
         $requestManager = new RequestManager();
-        $userManager = new UserManager;
+        $userManager = new UserManager();
         $requests = $requestManager->selectAllRequests();
         $users = $userManager->selectAll();
 
