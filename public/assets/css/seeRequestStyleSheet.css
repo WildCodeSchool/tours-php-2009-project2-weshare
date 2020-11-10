@@ -134,6 +134,8 @@ a:visited, a:link {
     max-width: 40px;;
     cursor: pointer;
     transition: all 0.3s ease-out;
+    border-radius: 21px;
+    background-color: var(--loupe-color);
 }
 
 .loupe-img img:hover {
