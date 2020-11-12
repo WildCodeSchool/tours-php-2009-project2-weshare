@@ -93,18 +93,20 @@ class RequestController extends AbstractController
 
     public function acceptedList()
     {
+        $errors = [];
+
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllAcceptedRequests();
 
         if ($requests === null) {
-            echo 'Problème sur la base de données.';
+            $errors[] = 'Problème sur la base de données.';
         }
 
         $users = $this->selectAllUsers();
 
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
-            ['requests' => $requests,'users' => $users]
+            ['requests' => $requests,'users' => $users, 'errors' => $errors]
         );
     }
 
