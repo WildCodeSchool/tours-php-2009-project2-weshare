@@ -11,20 +11,29 @@
 {% block content %}
 <div class="requests_list">
     <div class="list_title">Liste des demandes acceptées</div>
-    <option>
-    </option>
-    <div id="cards" class="cards_container">
-        {% for request in requests %}
-            <div class="cards">
-                <div class="request_title">{{ request.requestTitle }}</div>
-                <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
-                <div class="id_request">{{ request.requestId }}</div>
-                <div class="request_town_name">{{ request.townName }}</div>
-                <div class="loupe">
-                    <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
-                </div>
-            </div>
+    <form action="/request/acceptedListByUser" method="POST">
+        <label for="userId">Qui es-tu ?</label>
+        <select id="userId" name="userId" type="choice">
+            <option>Toutes les demandes</option>
+        {% for user in users %}
+            <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
         {% endfor %}
+        </select>
+        <button>Voir</button>
+    </form>
+    <p>{{ error }}</p>
+    <div id="cards" class="cards_container">
+    {% for request in requests %}
+        <div class="cards">
+            <div class="request_title">{{ request.requestTitle }}</div>
+            <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+            <div class="id_request">{{ request.requestId }}</div>
+            <div class="request_town_name">{{ request.townName }}</div>
+            <div class="loupe">
+                <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+            </div>
+        </div>
+    {% endfor %}
     </div>
 </div>
 {% for request in requests %}
@@ -45,7 +54,7 @@
                 <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
             </div>
             <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
-            <div>{{ request.fk_answerer_id }}</div>
+            <div>{{ request.fk_answerer_id }} s'en occupe !</div>
         </div>
     </div>
 </div>

@@ -101,6 +101,44 @@ class RequestController extends AbstractController
             echo 'Problème sur la base de données.';
         }
 
-        return $this->twig->render('Request/answeredRequests.html.twig', ['requests' => $requests]);
+        $userManager = new UserManager();
+        $users = $userManager->selectAll();
+
+        return $this->twig->render(
+            'Request/answeredRequests.html.twig',
+            ['requests' => $requests,'users' => $users]
+        );
+    }
+
+    public function acceptedListByUser()
+    {
+        $errors = [];
+        $requests = [];
+        $users = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
+            if ($_POST['userId'] !== 'Toutes les demandes') {
+                $answererId = trim($_POST['userId']);
+                $answererId = (int)$answererId;
+
+                $requestManager = new RequestManager();
+                $requests = $requestManager->selectAllAcceptedById($answererId);
+
+                if (!isset($requests['error'])) {
+                    $userManager = new UserManager();
+                    $users = $userManager->selectAll();
+                } else {
+                    $errors = $requests['error'];
+                }
+            } else {
+                header('Location:/request/acceptedList');
+                return '';
+            }
+        }
+
+        return $this->twig->render(
+            'Request/answeredRequests.html.twig',
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
+        );
     }
 }
