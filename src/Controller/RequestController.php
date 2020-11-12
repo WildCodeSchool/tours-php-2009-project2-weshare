@@ -67,9 +67,8 @@ class RequestController extends AbstractController
         }
 
         $measurementManager = new MeasurementManager();
-        $userManager = new UserManager();
         $measurements = $measurementManager->selectAll();
-        $users = $userManager->selectAll();
+        $users = $this->selectAllUsers();
 
         return $this->twig->render(
             'Request/requestForm.html.twig',
@@ -101,8 +100,7 @@ class RequestController extends AbstractController
             echo 'Problème sur la base de données.';
         }
 
-        $userManager = new UserManager();
-        $users = $userManager->selectAll();
+        $users = $this->selectAllUsers();
 
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
@@ -125,8 +123,7 @@ class RequestController extends AbstractController
                 $requests = $requestManager->selectAllAcceptedById($answererId);
 
                 if (!isset($requests['error'])) {
-                    $userManager = new UserManager();
-                    $users = $userManager->selectAll();
+                    $users = $this->selectAllUsers();
                 } else {
                     $errors = $requests['error'];
                 }
@@ -140,5 +137,10 @@ class RequestController extends AbstractController
             'Request/answeredRequests.html.twig',
             ['requests' => $requests, 'users' => $users, 'errors' => $errors]
         );
+    }
+
+    private function selectAllUsers(): array
+    {
+        return (new UserManager())->selectAll();
     }
 }
