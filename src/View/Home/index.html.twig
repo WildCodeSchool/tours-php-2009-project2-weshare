@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/indexStyle.css">
+{% endblock %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
@@ -17,9 +21,19 @@ Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votr
     <h3>Dernières demandes publiées</h3>
     <div class="caroussel">
         <p>{{ errorBDD[0] }}</p>
+        <div class="slides cards_container">
+        {% set slideNumber = 1 %}
         {% for request in requests %}
-            <p>{{ request.title }} {{ request.firstname }} {{ request.lastname }}</p>
+            <div id={{ "slide-" ~ slideNumber }} class="cards">
+                <div class="request_title">{{ request.title }}</div>
+                <div class="request_user_firstname">{{ request.firstname }} {{ request.lastname }}</div>
+            </div>
+            {% set slideNumber = slideNumber + 1 %}
         {% endfor %}
+        </div>
+        <a href="#slide-1" class="dot">1</a>
+        <a href="#slide-4" class="dot">2</a>
+        <a href="#slide-6" class="dot">3</a>
     </div>
 </section>
 <section>
