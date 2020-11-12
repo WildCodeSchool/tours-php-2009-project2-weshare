@@ -91,4 +91,16 @@ class RequestController extends AbstractController
 
         return $myPost;
     }
+
+    public function acceptedList()
+    {
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectAllAcceptedRequests();
+
+        if ($requests === null) {
+            echo 'Problème sur la base de données.';
+        }
+
+        return $this->twig->render('Request/answeredRequests.html.twig', ['requests' => $requests]);
+    }
 }
