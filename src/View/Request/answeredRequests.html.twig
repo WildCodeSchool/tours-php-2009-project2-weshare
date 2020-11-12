@@ -15,14 +15,17 @@
         <label for="userId">Qui es-tu ?</label>
         <select id="userId" name="userId" type="choice">
             <option>Toutes les demandes</option>
-        {% for user in users %}
+            {% for user in users %}
             <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
-        {% endfor %}
+            {% endfor %}
         </select>
         <button>Voir</button>
     </form>
     <p>{{ errors[0] }}</p>
     <div id="cards" class="cards_container">
+    {% if requests is empty %}
+        <p>Rien à afficher</p>
+    {% endif %}
     {% for request in requests %}
         <div class="cards">
             <div class="request_title">{{ request.requestTitle }}</div>
