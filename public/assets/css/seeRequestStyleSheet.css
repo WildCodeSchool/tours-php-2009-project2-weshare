@@ -281,7 +281,8 @@ a:visited, a:link {
 
   /* Relooking the select button*/
 
-/*Réinitilaisation de la liste déroulante*/
+/*Reinitialisation of the list*/
+  /* Creating dimensions, hidding original arrow */
 select {
   appearance: none;
   outline: 0;
@@ -291,7 +292,7 @@ select {
   box-shadow: none;
   }
   
-  /* Mise en place des dimensions. On cache la flèche d’origine */
+  /* Creating dimensions, hidding original arrow */
   .select {
   position: relative;
   width: 208px;
@@ -302,7 +303,7 @@ select {
   margin: 0 auto 0.8em;
   ;
   }
-  /* On adapte la liste déroulante à la div qui l’englobe*/
+  /* Adapting list to div*/
   select {
   width: 100%;
   height: 100%;
@@ -311,7 +312,7 @@ select {
   color: #555555;
   cursor: pointer;
   }
-  /* Mise en place de la flèche */
+  /* Placing arrow */
   .select::after {
   content: '\276F';
   position: absolute;
