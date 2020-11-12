@@ -16,7 +16,11 @@
         <select id="userId" name="userId" type="choice">
             <option>Toutes les demandes</option>
             {% for user in users %}
+                {% if selectedUser == user.id %}
+            <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
+                {% else %}
             <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                {% endif %}
             {% endfor %}
         </select>
         <button>Voir</button>

@@ -115,6 +115,7 @@ class RequestController extends AbstractController
         $errors = [];
         $requests = [];
         $users = [];
+        $answererId = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
             if ($_POST['userId'] !== 'Toutes les demandes') {
@@ -134,10 +135,9 @@ class RequestController extends AbstractController
                 return '';
             }
         }
-
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
-            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors, 'selectedUser' => $answererId]
         );
     }
 
