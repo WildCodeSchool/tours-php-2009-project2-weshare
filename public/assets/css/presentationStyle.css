@@ -1,0 +1,13 @@
+.presentation-picture {
+    border-radius: 200px;
+    height : auto;
+    width: 200px;
+}
+
+.presentation-div-odd {
+    background-color: var(--secondary-bg-color);
+}
+
+.presentation-div-even {
+    background-color: var(--third-bg-color);
+}
