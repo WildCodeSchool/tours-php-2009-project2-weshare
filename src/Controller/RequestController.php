@@ -93,4 +93,28 @@ class RequestController extends AbstractController
 
         return $myPost;
     }
+
+    public function takeCare()
+    {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId']) && isset($_POST['requestId'])) {
+            if ($_POST['userId'] != '-- --') {
+                $answererId = trim($_POST['userId']);
+                $requestId = trim($_POST['requestId']);
+                $answererId = (int)$answererId;
+                $requestId = (int)$requestId;
+                $requestManager = new RequestManager();
+                $result = $requestManager->updateOnAnswerer($answererId, $requestId);
+                if ($result === true) {
+                    header('Location:/request/list');
+                    return '';
+                } else {
+                    $errors['BDD'] = 'Problème sur la base de données.';
+                }
+            } else {
+                header('Location:/request/list#popup' . $_POST['requestId']);
+            }
+        }
+    }
 }
