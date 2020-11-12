@@ -65,9 +65,9 @@ class User
         $firstname = trim($firstname);
 
         if (strlen($firstname) > self::NAME_CHAR_MAX) {
-            $this->errors['firstname'] = 'The firstname is too long, maximum 50 characters';
+            $this->errors['firstname'] = 'Le prénom est trop long, merci de mettre au maximum 50 charactères.';
         } elseif (strlen($firstname) <= self::MIN_CHAR) {
-            $this->errors['firstname'] = 'The firstname is too short, minimum 1 character';
+            $this->errors['firstname'] = 'Le prénom est trop court, merci de mettre au minimum 1 charactère.';
         } else {
             $this->firstname = $firstname;
         }
@@ -86,9 +86,9 @@ class User
         $lastname = trim($lastname);
 
         if (strlen($lastname) > self::NAME_CHAR_MAX) {
-            $this->errors['lastname'] = 'The lastname is too long, maximum 50 characters';
+            $this->errors['lastname'] = 'Le nom est trop long, merci de mettre au maximum 50 charactères.';
         } elseif (strlen($lastname) <= self::MIN_CHAR) {
-            $this->errors['lastname'] = 'The lastname is too short, minimum 1 character';
+            $this->errors['lastname'] = 'Le nom est trop court, merci de mettre au minimum 1 charactère.';
         } else {
             $this->lastname = $lastname;
         }
@@ -104,7 +104,7 @@ class User
         $phone = trim($phone);
 
         if (strlen($phone) != 10) {
-            $this->errors['phone'] = 'The phone number has to be 10 numbers';
+            $this->errors['phone'] = 'Le numéro de téléphone doit être composé de 10 chiffres au format 0612345678.';
         } else {
             $this->phone = $phone;
         }
@@ -123,9 +123,9 @@ class User
         $street = trim($street);
 
         if (strlen($street) > 255) {
-            $this->errors['street'] = 'The street is too long, maximum 255 characters';
+            $this->errors['street'] = 'Le nom de la rue est trop long, merci de mettre au maximum 255 charactères.';
         } elseif (strlen($street) <= self::MIN_CHAR) {
-            $this->errors['street'] = 'The street is too short, minimum 1 character';
+            $this->errors['street'] = 'Le nom de la rue est trop court, merci de mettre au minimum 1 charactère.';
         } else {
             $this->street = $street;
         }
@@ -141,7 +141,7 @@ class User
         $townId = trim($townId);
 
         if (strlen($townId) <= self::MIN_CHAR) {
-            $this->errors['townId'] = 'Choose a town in the list';
+            $this->errors['townId'] = 'Veuillez choisir une ville dans la liste déroulante.';
         } else {
             $this->townId = $townId;
         }
@@ -160,7 +160,7 @@ class User
         $email = trim($email);
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'] = 'L\'email est invalide';
+            $this->errors['email'] = 'L\'email est invalide.';
         } else {
             $this->email = $email;
         }

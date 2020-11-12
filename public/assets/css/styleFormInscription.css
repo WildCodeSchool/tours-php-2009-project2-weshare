@@ -1,39 +1,45 @@
-input[type=submit] {
-    border-radius: 10px;
-    color: white;
-    border: none;
-    box-shadow: 10px 10px 30px 0px rgba(71, 68, 68, 0.75);
-    font-size: 20px;
-    background-color:grey;
-    text-align: center;
-  }
+.bg-c {
+  background-color: var(--secondary-bg-color);
+}
 
   .button{
       text-align: center;
       padding-top:6px;
   }
 
-  input[type=text], input[type=mail], input[type=phone] input[type=choice]{
+  #phone , input[type=text], input[type=mail], input[type=phone] input[type=choice]{
     width: 100%; /* Full width */
     padding: 8px; /* Some padding */ 
-    border: 1px solid #ccc; /* Gray border */
+    border: 1px solid var(--borders-color); /* Gray border */
     border-radius: 4px; /* Rounded borders */
     box-sizing: border-box; 
-    border-right: none ; border-top: none; border-left: none;
     resize: vertical;
-    background-color:lightgray;
-    color: black;
+    background-color: var(--main-bg-color);
     vertical-align: top;
+  }
+
+  select {
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 7px; /* Some padding */ 
+    border: 1px solid var(--borders-color); /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    background-color: var(--main-bg-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: auto;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-position: 98% center;
   }
 
   .boxForm {
 
-    background-color:whitesmoke;
-    width: 55%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color:var(--secondary-bg-color);
+    width: 80%;
+    margin: auto;
     padding: 5px 50px 20px 50px;
-    margin-top: 100px;
     border-radius: 10px;
     color: black;
     }
@@ -42,3 +48,28 @@ input[type=submit] {
        text-align: center; 
     }
     
+    .errors {
+      color: red;
+    }
+
+    .button_container {
+      margin: 1em auto 0;
+      font-weight: bold;
+      border: 2px solid var(--borders-color);
+      min-width: max-content;
+      max-width: max-content;
+      border-radius: 12px;
+    }
+
+    .button_container input {
+      background-color: var(--secondary-bg-color);
+      font-size: 20px;
+      text-align: center;
+      padding: 1.2em;
+      border: none;
+      border-radius: 15px;
+    }
+  
+    .button_container:hover, .button_container input:hover{
+      background-color: var(--third-bg-color);
+    }
