@@ -6,8 +6,16 @@
 
 .presentation-div-odd {
     background-color: var(--secondary-bg-color);
+    padding: 1em;
+    text-align: center;
 }
 
 .presentation-div-even {
     background-color: var(--third-bg-color);
+    padding: 1em;
+    text-align: center;
+}
+
+p {
+    margin : 0;
 }
