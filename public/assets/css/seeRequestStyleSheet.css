@@ -272,6 +272,8 @@ a:visited, a:link {
     box-sizing: border-box;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+
   }
 
   .take_care_button:hover {
