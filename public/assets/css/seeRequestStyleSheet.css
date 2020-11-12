@@ -114,7 +114,8 @@ a:visited, a:link {
 }
 
 .id_request {
-  display: none;}
+  display: none;
+}
 
 .request_town_name {
   position: absolute;
