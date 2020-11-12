@@ -13,7 +13,7 @@
     <div class="list_title">Liste des demandes acceptées</div>
     <form action="/request/acceptedListByUser" method="POST">
         <label for="userId">Qui es-tu ?</label>
-        <select id="userId" name="userId" type="choice">
+        <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>
             <option>Toutes les demandes</option>
             {% for user in users %}
                 {% if selectedUser == user.id %}
@@ -23,7 +23,6 @@
                 {% endif %}
             {% endfor %}
         </select>
-        <button>Voir</button>
     </form>
     <p>{{ errors[0] }}</p>
     <div id="cards" class="cards_container">
