@@ -49,7 +49,8 @@ class RequestManager extends AbstractManager
             ' LEFT JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .
             ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_address_id ' .
             ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_town_id ' .
-            ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id')->fetchAll();
+            ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id
+            WHERE fk_answerer_id IS NULL')->fetchAll();
         } catch (\PDOException $error) {
             return null;
         }
