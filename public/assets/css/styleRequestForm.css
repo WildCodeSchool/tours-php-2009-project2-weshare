@@ -10,7 +10,6 @@
     margin: 0.2em 0;
     border: 1px solid var(--borders-color);
     border-radius: 5px;
-
   }
 
   #userId, #measurementId {
@@ -93,39 +92,38 @@ select {
   
   /* Creating dimensions, hidding original arrow */
   .select {
-  position: relative;
-  width: 100%;
-  height: 30px;
-  overflow: hidden;
-  border-radius: 5px;
-  border: 1px solid var(--borders-color);
-  margin: 0 auto 0.8em;
-  ;
+    position: relative;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--borders-color);
+    margin: 0 auto 0.8em;
   }
   /* Adapting list to div*/
   select {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  padding-left: 8px;
-  color: #555555;
-  cursor: pointer;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding-left: 8px;
+    color: #555555;
+    cursor: pointer;
   }
 
   /* Placing arrow */
   .select::after {
-  content: '\276F';
-  position: absolute;
-  top: 8%;
-  right: 0;
-  padding: 0 5px;
-  background: white;
-  pointer-events: none;
-  transform: rotate(90deg);
-  font-size: 1.5em;
-  background-color: var(--secondary-bg-color)
+    content: '\276F';
+    position: absolute;
+    top: 8%;
+    right: 0;
+    padding: 0 5px;
+    background: white;
+    pointer-events: none;
+    transform: rotate(90deg);
+    font-size: 1.5em;
+    background-color: var(--secondary-bg-color)
   }
   .select:hover::after {
-  color: var(--loupe-color);
+    color: var(--loupe-color);
   }
 
