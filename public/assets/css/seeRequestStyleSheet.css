@@ -185,18 +185,16 @@ a:visited, a:link {
     height: 90%;
     position: relative;
     max-height: 800px;
-    display: flex;
-    flex-direction: column;
   }
 
   .popup .content {
     height: 100%;
-    overflow: visble;
     width: 100%;
-    display: flex;
     flex-direction: column;
     box-sizing: border-box;
     padding:6% 3% 3% 3%;
+    display: flex;
+   flex-basis: 100%;
   }
 
   .popup_request_title {
