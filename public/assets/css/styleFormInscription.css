@@ -1,7 +1,7 @@
+
 .bg-c {
   background-color: var(--secondary-bg-color);
 }
-
   .button{
       text-align: center;
       padding-top:6px;
@@ -10,11 +10,9 @@
   #phone , input[type=text], input[type=mail], input[type=phone] input[type=choice]{
     width: 100%; /* Full width */
     padding: 8px; /* Some padding */ 
-    border: 1px solid var(--borders-color); /* Gray border */
     border-radius: 4px; /* Rounded borders */
     box-sizing: border-box; 
     resize: vertical;
-    background-color: var(--main-bg-color);
     vertical-align: top;
   }
 
@@ -35,7 +33,6 @@
   }
 
   .boxForm {
-
     background-color:var(--secondary-bg-color);
     width: 80%;
     margin: auto;
@@ -47,7 +44,32 @@
     h2 {
        text-align: center; 
     }
-    
+    .errors {
+      color: red;
+    }
+
+    .button_container {
+      margin: 1em auto 0;
+      font-weight: bold;
+      border: 2px solid var(--borders-color);
+      min-width: max-content;
+      max-width: max-content;
+      border-radius: 12px;
+    }
+
+    .button_container input {
+      background-color: var(--secondary-bg-color);
+      font-size: 20px;
+      text-align: center;
+      padding: 1.2em;
+      border: none;
+      border-radius: 15px;
+    }
+  
+    .button_container:hover, .button_container input:hover{
+      background-color: var(--third-bg-color);
+    }
+
     .errors {
       color: red;
     }

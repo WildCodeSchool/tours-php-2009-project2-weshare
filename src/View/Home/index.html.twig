@@ -8,13 +8,14 @@
 
 {% block content %}
 <section>
-    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
-    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
-    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+    <h2>Et si on partageait nos affaires ?</h2>
+    <p>Vous êtes pour l'entraide et avez besoin d'un coup de main ou souhaitez donner un coup de main, ce site est fait pour vous.<br>
+Vous avez besoin d'une motte de beurre, d'un kilo de pomme ou d'une grelinette, dites le sur WeShare.<br>
+Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votre jardin, ou vous n'utilisez pas vos outils de jardinage cette semaine, vérifier si d'autres en ont besoin et partagez !</p>
 </section>
 <section>
-    <button>Nouvelle demande</button>
-    <button>Toutes les demandes</button>
+    <button onclick="window.location.href ='/request/add'">Nouvelle demande</button>
+    <button onclick="window.location.href ='/request/list'">Toutes les demandes</button>
 </section>
 <section>
     <h3>Dernières demandes publiées</h3>
@@ -24,8 +25,10 @@
         {% set slideNumber = 1 %}
         {% for request in requests %}
             <div id={{ "slide-" ~ slideNumber }} class="cards">
-                <div class="request_title">{{ request.title }}</div>
-                <div class="request_user_firstname">{{ request.firstname }} {{ request.lastname }}</div>
+                <div class="request_title">{{ request.requestTitle }}</div>
+                <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div class="request_town_name">{{ request.townName }}</div>
+                <div class="request_publication_date">{{ request.requestPublicationDate }}</div>
             </div>
             {% set slideNumber = slideNumber + 1 %}
         {% endfor %}
@@ -36,14 +39,20 @@
     </div>
 </section>
 <section>
-    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
-    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
-    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
-    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
-    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
-    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
-    <p>Ut enim excepteur ipsum esse sit qui ea esse exercitation labore ullamco fugiat dolore quis. Cillum nostrud laboris 
-    sit ea occaecat veniam et culpa ad aliqua. Eiusmod anim voluptate quis eiusmod cupidatat nulla ipsum ea eiusmod ad 
-    officia reprehenderit nisi id. Minim Lorem incididunt excepteur aliquip duis consequat eu non.</p>
+    <h2>Partagez au lieu d’acheter !</h2>
+    <p>Partageons et mettons en commun au lieu d’acheter pour un usage unique ! La planète et votre porte-monnaie vous dirons merci 😉<br>
+Louer plutôt qu'acheter, se rendre service, partager nos savoir-faire... Vous pouvez continuer à vous faire plaisir tout autant, et même davantage, dans une démarche plus responsable.<br>
+Échangez entre voisins et améliorez votre quotidien, organisez tous vos partages autour de chez vous et ainsi créer une boîte à outils de quartier, une bibliothèque partagée de voisinage (que vous pouvez gérer grâce à nos amis de <a href="https://tours-php-2009-project2-mybooks.phprover.wilders.dev/">MyBooks™</a>), mettre en commun vos outils de jardinage ou du matériel de puériculture.<br>
+Adoptez un style de vie plus collaboratif, plus local, pour limiter sa consommation et ne plus gaspiller. Nous pensons que chaque action compte pour sauver la planète : renouer avec ses commerçants locaux, donner au lieu de jeter, se déplacer à plusieurs… vous réaliserez aussi de réelles économies !</p>
+
+    <h2>Changez votre manière de consommer</h2>
+    <p>Sociale, solidaire, collaborative ou circulaire, l'économie se transforme et les modes de consommation évoluent. On peut tous améliorer notre manière de consommer, en adoptant ces nouvelles pratiques et en donnant du sens à nos actions.<br>
+Privilégiez l'<a href="https://fr.wikipedia.org/wiki/%C3%89conomie_de_fonctionnalit%C3%A9">économie de fonctionnalité</a> (d'usage) plutôt que la propriété.</p>
+    
+    <h2>Création de lien social</h2>
+    <p>Nous combattons l’individualisme et l’isolement social, véritables défis de nos sociétés modernes, en recréant du lien et des conditions propices aux échanges dans la vraie vie. Rejoignez WeShare et renouez avec votre vie de quartier (et même votre ville et les communes avoisinantes), vos amis et votre famille proche.</p>
+
+    <h2>En toute confiance</h2>
+    <p>Sur WeShare, vos voisins sont bien vos voisins dans la vraie vie. Cela vous permettra de partager vos objets en toute confiance.</p>
 </section>
 {% endblock %}
