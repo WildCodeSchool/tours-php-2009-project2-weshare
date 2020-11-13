@@ -14,8 +14,13 @@ Vous avez besoin d'une motte de beurre, d'un kilo de pomme ou d'une grelinette, 
 Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votre jardin, ou vous n'utilisez pas vos outils de jardinage cette semaine, vérifier si d'autres en ont besoin et partagez !</p>
 </section>
 <section>
+<<<<<<< HEAD
     <button onclick="window.location.href ='/request/add'" class="button">Nouvelle demande</button>
     <button onclick="window.location.href ='/request/list'" class="button">Toutes les demandes</button>
+=======
+    <button onclick="window.location.href ='/request/add'">Nouvelle demande</button>
+    <button onclick="window.location.href ='/request/list'">Toutes les demandes</button>
+>>>>>>> 16a9b57ab56c949163dd472828f0ba6e6c387347
 </section>
 <section>
     <h3>Dernières demandes publiées</h3>
@@ -25,8 +30,10 @@ Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votr
         {% set slideNumber = 1 %}
         {% for request in requests %}
             <div id={{ "slide-" ~ slideNumber }} class="cards">
-                <div class="request_title">{{ request.title }}</div>
-                <div class="request_user_firstname">{{ request.firstname }} {{ request.lastname }}</div>
+                <div class="request_title">{{ request.requestTitle }}</div>
+                <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div class="request_town_name">{{ request.townName }}</div>
+                <div class="request_publication_date">{{ request.requestPublicationDate }}</div>
             </div>
             {% set slideNumber = slideNumber + 1 %}
         {% endfor %}
