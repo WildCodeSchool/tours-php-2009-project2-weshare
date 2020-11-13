@@ -55,7 +55,7 @@ class RequestManager extends AbstractManager
             ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_address_id ' .
             ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_town_id ' .
             ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id
-            WHERE fk_answerer_id IS NULL 
+            WHERE fk_answerer_id IS NULL
             ORDER BY requestPublicationDate DESC')->fetchAll();
         } catch (\PDOException $error) {
             return null;
@@ -79,20 +79,14 @@ class RequestManager extends AbstractManager
         return $result;
     }
 
-    public function updateOnAnswerer(int $anwererId, int $requestId): ?bool
+    public function updateOnAnswerer(int $anwererId, int $requestId): bool
     {
-        try {
-            $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
-            $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
-            $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
-            $result = $statement->execute();
-        } catch (\PDOException $error) {
-            return null;
-        }
-        if ($result !== false) {
-            return $result;
-        }
-            return null;
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
+        $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
+        $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
+        $result = $statement->execute();
+
+        return $result;
     }
 }
