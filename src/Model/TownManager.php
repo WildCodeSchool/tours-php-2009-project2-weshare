@@ -8,9 +8,6 @@
 
 namespace App\Model;
 
-/**
- *
- */
 class TownManager extends AbstractManager
 {
     /**
