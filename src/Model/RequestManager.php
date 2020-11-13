@@ -79,20 +79,14 @@ class RequestManager extends AbstractManager
         return $result;
     }
 
-    public function updateOnAnswerer(int $anwererId, int $requestId): ?bool
+    public function updateOnAnswerer(int $anwererId, int $requestId): bool
     {
-        try {
-            $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
-            $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
-            $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
-            $result = $statement->execute();
-        } catch (\PDOException $error) {
-            return null;
-        }
-        if ($result !== false) {
-            return $result;
-        }
-        return null;
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
+        $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
+        $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
+        $result = $statement->execute();
+
+        return $result;
     }
 }

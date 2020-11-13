@@ -106,6 +106,7 @@ class RequestController extends AbstractController
                 $requestId = (int)$requestId;
                 $requestManager = new RequestManager();
                 $result = $requestManager->updateOnAnswerer($answererId, $requestId);
+
                 if ($result === true) {
                     header('Location:/request/list');
                     return '';
