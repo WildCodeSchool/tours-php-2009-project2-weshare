@@ -36,6 +36,17 @@ class RequestController extends AbstractController
         return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
     }
 
+    public function listExpress()
+    {
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectAllRequests();
+
+        if ($requests === null) {
+            echo 'Problème sur la base de données.';
+        }
+        return $this->twig->render('Request/listExpress.html.twig', ['requests' => $requests]);
+    }
+
     public function add()
     {
         $errors = [];
@@ -90,16 +101,5 @@ class RequestController extends AbstractController
             $myPost['description'] = null;
         }
         return $myPost;
-    }
-
-    public function listExpress()
-    {
-        $requestManager = new RequestManager();
-        $requests = $requestManager->selectAllRequests();
-
-        if ($requests === null) {
-            echo 'Problème sur la base de données.';
-        }
-        return $this->twig->render('Request/listExpress.html.twig', ['requests' => $requests]);
     }
 }
