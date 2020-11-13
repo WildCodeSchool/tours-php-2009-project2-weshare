@@ -1,0 +1,97 @@
+/* caroussel */
+.dot {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 0 2px;
+    background-color: rgb(158, 150, 150);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    text-align: center;
+    color: whitesmoke;
+  }
+  
+.active, .dot:hover {
+    background-color: #3f3d3d;
+}
+
+* {
+    box-sizing: border-box;
+}
+  
+.caroussel {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+  
+.slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;    
+}
+
+.slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    margin-right: 25px;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    position: relative;
+  }
+
+/* make cards beautifull */
+
+.cards {
+    border: solid 2px var(--borders-color);
+    border-radius: 12px;
+    height: 170px;
+    box-sizing: content-box;
+    width: 170px;
+    background-color: var(--secondary-bg-color);
+}
+
+.request_title {
+    position: relative;
+    top: 5%;
+    margin: 0 auto;
+    flex-basis: auto;
+    box-sizing: content-box;
+    width: 90%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.request_user_firstname {
+    position: absolute;
+    margin-right: 5%;
+    bottom: 40%;
+    right: 0;
+    width: max-content;
+    font-style: italic;    
+}
+
+.request_town_name {
+    position: absolute;
+    margin-right: 5%;
+    bottom: 25%;
+    right: 0;
+    width: max-content;  
+}
+
+.request_publication_date {
+    position: absolute;
+    margin-right: 5%;
+    bottom: 15%;
+    right: 0;
+    width: max-content;
+}
+
+@media screen and (min-width: 1000px) {
+    .dot {
+        display: none;
+    }
+}

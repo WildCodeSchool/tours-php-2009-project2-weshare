@@ -1,0 +1,115 @@
+:root {
+    --main-bg-color: rgb(240, 240, 240);
+    --secondary-bg-color: rgb(255, 255, 255);
+    --third-bg-color: rgb(185, 185, 185); 
+    --borders-color:rgb(0, 0, 0);
+}  
+
+body {
+    background-color: var(--main-bg-color);
+    margin: 0;
+}
+
+
+.logo {
+    width: 100%;
+}
+
+a:visited, a:link {
+    text-decoration: none;
+}
+
+/* burger menu style */
+#baseTitle {
+    display: none;
+}
+
+#logo {
+    width: 70%;
+}
+
+.openButton {
+    margin : 8px 8px 0 8px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    border-radius: 10px;
+    margin: 6px 6px;
+}
+
+.closeButton {
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+  margin : 8px;
+  padding: 3px;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: grey;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    height: 70%;
+}
+
+.head, .foot {
+    list-style: none;
+}
+
+.navLink {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 813px) {
+
+    .bar1, .bar2, .bar3 {
+        display: none;
+    }
+    
+    .closeButton {
+        display: none;
+    }
+
+    .sideNav {
+        overflow-x: visible;
+        position: relative;
+        z-index: 0;
+        display: flex;
+        width: 100%;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+
+
+}  

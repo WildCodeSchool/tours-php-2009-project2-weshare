@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WeShare - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="/assets/css/baseStyle.css">
+    {% block stylesheet %}{% endblock %}
+    <link rel="icon" href="/assets/images/favicon.png">
+</head>
+
+<body>
+    <header>
+        <h1 id="baseTitle">WeShare</h1>
+        <a href="/home/index"><img id="logo" src="/assets/images/logo1.png" alt="WeShare Logo"></a>
+        <div class="openButton">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <nav class='sideNav'>
+            <a href="javascript:void(0)" class="closeButton">&times;</a>
+            <ul class = "nav head">
+                <li class="navLink"><a href="/request/list">Toutes les demandes</a></li>
+                <li class="navLink">Liste express</li>
+                <li class="navLink"><a href="/request/add">Nouvelle demande</a></li>
+                <li class="navLink"><a href="/user/add">Nouvel utilisateur</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+
+    <footer>
+        <ul class = "foot">
+            <li>Nous contacter</li>
+            <li>Mentions légales</li>
+            <li>Lien footer</li>
+            <li>Lien footer</li>
+        </ul>
+    </footer>
+
+    <script src="/assets/js/burgerMenu.js"></script>
+    {% block javascript %}{% endblock %}
+</body>
+</html>

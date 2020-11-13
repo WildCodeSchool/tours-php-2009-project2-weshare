@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des demandes
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="publish-container">
+        <div class="publish">
+            <p>Tu as une nouvelle demande que tu veux publier?</p>
+            {# liens à prévoir #}
+            <button onclick="window.location.href ='/request/add'" class="button">Nouvelle demande</button>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="signIn">
+            <p>Tu veux participer et tu n'es pas encore enregistré?</p>
+            <button onclick="window.location.href ='/user/add'" class="button">Je m'enregistre!</button>
+        </div>
+    </div>
+    <div class="requests_list">
+        <div class="list_title">
+        Liste des demandes
+        </div>
+        <div id="cards" class="cards_container">
+            {% for request in requests %}
+                <div class="cards">
+                    <div class="request_title">{{ request.requestTitle }}</div>
+                    <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div class="id_request">{{ request.requestId }}</div>
+                    <div class="request_town_name">{{ request.townName }}</div>
+                    <div class="loupe">
+                        <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% for request in requests %}
+    <div id={{ "popup" ~ request.requestId }} class="overlay">
+        <div class="popup">
+            <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
+            <div class="content">
+                <div class="popup_request_title">{{ request. requestTitle}}</div>
+                <div class="popup_user_informations">
+                    <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div>Adresse: {{ request.addressStreet }}</div>
+                    <div class="popup_request_postalcode">{{ request.townPostalCode}} {{ request.townName }}</div>
+                    <div>Tel: 0{{ request.userPhone }}</div>
+                    <div>@: {{ request.userEmail }}</div>
+                </div>
+                <div class="popup_description_container">
+                    <div class="popup_request_quantity">Quantité: {{ request.requestQuantity }} {{ request.measurementName }}(s)</div>
+                    <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
+                </div>
+                <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+                <div class="button_container">
+                    <div class="take_care_button">Je m'en occupe!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

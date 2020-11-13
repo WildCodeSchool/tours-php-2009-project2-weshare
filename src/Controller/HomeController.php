@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: aurelwcs
@@ -7,6 +8,8 @@
  */
 
 namespace App\Controller;
+
+use App\Model\RequestManager;
 
 class HomeController extends AbstractController
 {
@@ -21,6 +24,18 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $error = [];
+
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectFirsts();
+
+        if ($requests === null) {
+            $error = 'Problème sur la base de données.';
+        }
+
+        return $this->twig->render(
+            'Home/index.html.twig',
+            ['requests' => $requests, 'errorBDD' => $error]
+        );
     }
 }
