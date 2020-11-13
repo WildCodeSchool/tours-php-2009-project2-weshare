@@ -117,11 +117,13 @@ a:visited, a:link {
   display: none;
 }
 
-.request_town_name {
+.request_town_name, .request_publication_date {
   position: absolute;
   margin-left: 5%;
   bottom: 25%;
   left: 0;
+  margin-right: 5%;
+  right: 0;
   width: max-content;
   font-size: small;
 }
@@ -191,7 +193,7 @@ a:visited, a:link {
 
   .popup .content {
     height: 100%;
-    overflow: visble;
+    overflow: visible;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -217,7 +219,6 @@ a:visited, a:link {
     position: relative;
     left: 75px;
  }
-
 
   .popup_description_container {
     border: solid 1px var(--borders-color);

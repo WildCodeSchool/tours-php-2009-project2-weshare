@@ -74,6 +74,22 @@
     font-style: italic;    
 }
 
+.request_town_name {
+    position: absolute;
+    margin-right: 5%;
+    bottom: 25%;
+    right: 0;
+    width: max-content;  
+}
+
+.request_publication_date {
+    position: absolute;
+    margin-right: 5%;
+    bottom: 15%;
+    right: 0;
+    width: max-content;
+}
+
 @media screen and (min-width: 1000px) {
     .dot {
         display: none;
