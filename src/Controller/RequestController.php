@@ -102,8 +102,8 @@ class RequestController extends AbstractController
             if ($_POST['userId'] != '-- --') {
                 $answererId = trim($_POST['userId']);
                 $requestId = trim($_POST['requestId']);
-                $answererId = (int)$answererId;
-                $requestId = (int)$requestId;
+                $answererId = filter_var($answererId, FILTER_VALIDATE_INT);
+                $requestId = filter_var($requestId, FILTER_VALIDATE_INT);
                 $requestManager = new RequestManager();
                 $result = $requestManager->updateOnAnswerer($answererId, $requestId);
 
