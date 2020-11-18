@@ -76,9 +76,8 @@ class RequestController extends AbstractController
         }
 
         $measurementManager = new MeasurementManager();
-        $userManager = new UserManager();
         $measurements = $measurementManager->selectAll();
-        $users = $userManager->selectAll();
+        $users = $this->selectAllUsers();
 
         return $this->twig->render(
             'Request/requestForm.html.twig',
@@ -102,6 +101,63 @@ class RequestController extends AbstractController
         return $myPost;
     }
 
+    public function acceptedList()
+    {
+        $errors = [];
+
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectAllAcceptedRequests();
+
+        if ($requests === null) {
+            $errors[] = 'Problème sur la base de données.';
+        }
+
+        $users = $this->selectAllUsers();
+
+        return $this->twig->render(
+            'Request/answeredRequests.html.twig',
+            ['requests' => $requests,'users' => $users, 'errors' => $errors]
+        );
+    }
+
+    public function acceptedListByUser()
+    {
+        $errors = [];
+        $requests = [];
+        $users = [];
+        $answererId = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
+            if ($_POST['userId'] !== 'Toutes les demandes') {
+                $answererId = trim($_POST['userId']);
+
+                if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
+                    $answererId = intval($answererId);
+
+                    $requestManager = new RequestManager();
+                    $requests = $requestManager->selectAllAcceptedById($answererId);
+
+                    if (!isset($requests['error'])) {
+                        $users = $this->selectAllUsers();
+                    } else {
+                        $errors = $requests['error'];
+                    }
+                }
+            } else {
+                header('Location:/request/acceptedList');
+                return '';
+            }
+        }
+        return $this->twig->render(
+            'Request/answeredRequests.html.twig',
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors, 'selectedUser' => $answererId]
+        );
+    }
+
+    private function selectAllUsers(): array
+    {
+        return (new UserManager())->selectAll();
+    }
     /*this method is called when a user decide to take care of the user request of someone else */
     public function takeCare()
     {
