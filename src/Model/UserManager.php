@@ -28,19 +28,27 @@ class UserManager extends AbstractManager
      */
     public function insert(User $user): bool
     {
-        $statement1 = $this->pdo->prepare("INSERT INTO address (fk_town_id,street)
-        VALUES (:townId,:street)");
+        try {
+            $statement1 = $this->pdo->prepare("INSERT INTO address (fk_town_id,street)
+            VALUES (:townId,:street)");
+        } catch (\PDOException $error) {
+            return false;
+        }
 
         $statement1->bindValue('townId', $user->getTownId(), \PDO::PARAM_INT);
         $statement1->bindValue('street', $user->getStreet(), \PDO::PARAM_STR);
         $result1 = $statement1->execute();
 
-        if ($result1 !== false) {
+        if ($result1) {
             $fkAddressId = $this->pdo->lastInsertId();
 
-            $statement2 = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (firstname,lastname,
-            phone,email,fk_address_id) VALUES (:firstname,:lastname,:phone,:email,"
-            . $fkAddressId . ")");
+            try {
+                $statement2 = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (firstname,lastname,
+                phone,email,fk_address_id) VALUES (:firstname,:lastname,:phone,:email,"
+                . $fkAddressId . ")");
+            } catch (\PDOException $error) {
+                return false;
+            }
 
             $statement2->bindValue('firstname', $user->getFirstname(), \PDO::PARAM_STR);
             $statement2->bindValue('lastname', $user->getLastname(), \PDO::PARAM_STR);
