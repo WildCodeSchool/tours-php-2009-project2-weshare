@@ -169,8 +169,9 @@ class RequestController extends AbstractController
     {
         return (new UserManager())->selectAll();
     }
+
     /*this method is called when a user decide to take care of the user request of someone else */
-    public function takeCare()
+    public function takeCare(string $source)
     {
         $errors = [];
 
@@ -188,8 +189,7 @@ class RequestController extends AbstractController
                         $result = $requestManager->updateOnAnswerer($answererId, $requestId);
 
                         if ($result === true) {
-                            header('Location:/request/list');
-                            return '';
+                            return $this->chooseHeader($source);
                         } else {
                             $errors['BDD'] = 'Problème sur la base de données.';
                         }
@@ -198,6 +198,20 @@ class RequestController extends AbstractController
             } else {
                 header('Location:/request/list#popup' . $_POST['requestId']);
             }
+        }
+    }
+
+    private function chooseHeader(string $source): string
+    {
+        if ($source === 'classic') {
+            header('Location:/request/list');
+            return '';
+        } elseif ($source === 'express') {
+            header('Location:/request/listExpress');
+            return '';
+        } else {
+            header('Location:/');
+            return '';
         }
     }
 }

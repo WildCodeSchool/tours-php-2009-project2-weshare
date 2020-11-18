@@ -20,16 +20,16 @@ html[data-theme='unicorn'] {
     --text-color: rgb(255, 21, 157);
     }
 
-    .theme-toggle2 {
-        position: absolute;
-        right: 75px;
-        top: 20px;
-        cursor: pointer;
-    }
+.theme-toggle2 {
+    position: absolute;
+    right: 75px;
+    top: 20px;
+    cursor: pointer;
+}
 
-    .theme-toggle2 img {
-        width: 40px;
-    }
+.theme-toggle2 img {
+    width: 40px;
+}
 
 html[data-theme='dark'] {
     --main-bg-color: #00241B;
@@ -40,42 +40,16 @@ html[data-theme='dark'] {
     --text-color: #B5FFE1;
     }
 
-    .theme-toggle {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        cursor: pointer;
-    }
-
-    .theme-toggle img {
-        width: 40px;
-    }
-
-@media screen and (max-width: 813px) {
-
-    .theme-toggle2 {
-        position: absolute;
-        right: 2%;
-        top: 7%;
-        cursor: pointer;
-    }
-
-    .theme-toggle2 img {
-        width: 20px;
-    }
-
-    .theme-toggle {
-        position: absolute;
-        right: 8%;
-        top: 7%;
-        cursor: pointer;
-    }
-
-    .theme-toggle img {
-        width: 20px;
-    }
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
 }
 
+.theme-toggle img {
+    width: 40px;
+}
 
 body {
     background-color: var(--main-bg-color);
@@ -159,13 +133,41 @@ a:visited, a:link {
     font-weight: bold;
 }
 
-
 select, input, textarea {
     background-color: var(--list-color)
-  }
+}
 
-@media screen and (min-width: 813px) {
+@media screen and (max-width: 813px)
+{
+    .theme-toggle2 {
+        position: absolute;
+        right: 2%;
+        top: 7%;
+        cursor: pointer;
+    }
 
+    .theme-toggle2 img {
+        width: 20px;
+    }
+
+    .theme-toggle {
+        position: absolute;
+        right: 8%;
+        top: 7%;
+        cursor: pointer;
+    }
+
+    .theme-toggle img {
+        width: 20px;
+    }
+}
+
+@media screen and (min-width: 813px)
+{
+    body {
+        margin: 0 15%;
+    }
+    
     .bar1, .bar2, .bar3 {
         display: none;
     }
