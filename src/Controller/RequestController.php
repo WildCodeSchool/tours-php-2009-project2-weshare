@@ -25,6 +25,7 @@ class RequestController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
+    /*this method is called to load the requests list page */
     public function list()
     {
         $errors = [];
@@ -43,6 +44,7 @@ class RequestController extends AbstractController
         );
     }
 
+    /*this method is called when a user add a new user request*/
     public function add()
     {
         $errors = [];
@@ -84,6 +86,7 @@ class RequestController extends AbstractController
         );
     }
 
+    /*this method is called in the add() for check our form */
     private function issetPost(): array
     {
         $myPost = $_POST;
@@ -99,6 +102,7 @@ class RequestController extends AbstractController
         return $myPost;
     }
 
+    /*this method is called when a user decide to take care of the user request of someone else */
     public function takeCare()
     {
         $errors = [];

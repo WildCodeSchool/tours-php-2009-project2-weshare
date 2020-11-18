@@ -20,6 +20,7 @@ class RequestManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /*return the last 6 user requests of the dbb */
     public function selectFirsts(): ?array
     {
         try {
@@ -64,6 +65,7 @@ class RequestManager extends AbstractManager
         return $results;
     }
 
+    /*insert in the dbb a new user request, if the sql request fail, return false */
     public function insert(Request $request): bool
     {
         try {
@@ -84,6 +86,7 @@ class RequestManager extends AbstractManager
         return $result;
     }
 
+    /*update a given user request with the id of the user who decide to respond at this user request */
     public function updateOnAnswerer(int $anwererId, int $requestId): bool
     {
         try {
