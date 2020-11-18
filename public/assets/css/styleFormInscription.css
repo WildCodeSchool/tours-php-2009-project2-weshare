@@ -13,10 +13,6 @@
 
   }
 
-  #townId {
-    background-color: var(--secondary-bg-color);
-  }
-
   .boxForm {
     background-color:var(--secondary-bg-color);
     margin: auto;
@@ -124,8 +120,9 @@ select {
   pointer-events: none;
   transform: rotate(90deg);
   font-size: 1.5em;
-  background-color: var(--secondary-bg-color)
+  background-color: var(--list-color)
   }
+
   .select:hover::after {
   color: var(--loupe-color);
   }

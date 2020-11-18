@@ -197,6 +197,7 @@ a:visited, a:link {
     padding:6% 3% 3% 3%;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: var(--third-bg-color);
   }
 
   .popup_request_title {
@@ -255,6 +256,7 @@ a:visited, a:link {
   #userId {
     text-align: center;
     font-weight: bold;
+    background-color: var(--list-color)
   }
 
   .iAm {
@@ -281,7 +283,7 @@ a:visited, a:link {
     text-align: center;
     padding: 1.2em;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
   }
 
 
@@ -318,6 +320,7 @@ select {
   color: #555555;
   cursor: pointer;
   }
+
   /* Placing arrow */
   .select::after {
   content: '\276F';
@@ -329,8 +332,9 @@ select {
   pointer-events: none;
   transform: rotate(90deg);
   font-size: 1.5em;
-  background: #F9F9F9;
+  background-color: var(--list-color)
   }
+
   .select:hover::after {
   color: var(--loupe-color);
   }
