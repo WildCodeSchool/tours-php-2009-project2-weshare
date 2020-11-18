@@ -23,4 +23,9 @@ class OthersController extends AbstractController
     {
         return $this->twig->render('Others/legalMention.html.twig');
     }
+
+    public function partners()
+    {
+        return $this->twig->render('Others/partners.html.twig');
+    }
 }
