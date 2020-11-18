@@ -17,6 +17,7 @@ body {
 
 a:visited, a:link {
     text-decoration: none;
+    color: var(--borders-color);
 }
 
 /* burger menu style */
@@ -115,85 +116,87 @@ a:visited, a:link {
 }  
 
 
-        /*---------FOOTER-----------*/
-        footer{
-            background-color:var(--third-bg-color);
-        }
-        
-        .footer-container{
-            column-count: 2;
-            justify-content: space-around;
-          
-        }
-        .column{
-            text-align: center;
-            width: 100%;
-            padding: 5px;
-        }
-        
-        h3:hover{
-            color:var(--secondary-bg-color);
-        }
-        h4{
-            color: rgb(73, 71, 71);
-        }
-        .reseaux-container{
-            display: flex;
-            justify-items: center;
-            justify-content: space-between;
-            justify-content: space-around;
-        }
-        
-        .copyright-container{
-            display: flex;
-            justify-content:center;
-        }
-        
-        .reseaux-container img{
-            width: 40px;
-            height: 40px;
-        }
-        
-        /* Zoom */
-        .reseaux-container img {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-            -webkit-transition: .3s ease-in-out;
-            transition: .3s ease-in-out;
-        }
-        .reseaux-container img:hover {
-            -webkit-transform: scale(1.3);
-            transform: scale(1.3);
-        }
-        
-        /*Bouton qui remonte en haut de page et animation pulse*/
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2);}
-            100% { transform: scale(1); }
-            }
-        
-          #scroll_to_top {
-            width: 50px;
-            height: 50px;
-            padding-right: 4px;
-            right: 0;
-            position: absolute;
-          }
-          #scroll_to_top:hover{
-            animation: pulse 1s infinite;
-            animation-timing-function: linear;
-          }
-          #scroll_to_top img {
-            width: 36px;
-          }
-        
-        
-          @media screen and (min-width: 813px) {
-          .footer-container{
-            justify-content: space-around;
-            display: flex;
-          
-            }
-          }
+/*---------FOOTER-----------*/
+footer{
+    background-color:var(--third-bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+.footer-container{
+    column-count: 2;
+    justify-content: space-around;
+}
+
+.column{
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+
+h3:hover{
+    color:var(--secondary-bg-color);
+}
+h4{
+    color: rgb(73, 71, 71);
+}
+.reseaux-container{
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.copyright-container{
+    display: flex;
+    justify-content:center;
+}
+
+.reseaux-container img{
+    width: 40px;
+    height: 40px;
+}
+
+/* Zoom */
+.reseaux-container img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.reseaux-container img:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+/*Bouton qui remonte en haut de page et animation pulse*/
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2);}
+    100% { transform: scale(1); }
+    }
+
+    #scroll_to_top {
+    
+    padding-right: 4px;
+    float: right;
+    
+    }
+
+    #scroll_to_top:hover{
+    animation: pulse 1s infinite;
+    animation-timing-function: linear;
+    }
+    #scroll_to_top img {
+    width: 36px;
+    }
+
+
+    @media screen and (min-width: 813px) {
+    .footer-container{
+    justify-content: space-around;
+    display: flex;
+    
+    }
+    }
         
