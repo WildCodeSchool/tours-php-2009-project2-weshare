@@ -3,7 +3,62 @@
     --secondary-bg-color: rgb(255, 255, 255);
     --third-bg-color: rgb(185, 185, 185); 
     --borders-color:rgb(0, 0, 0);
+    --loupe-color: green;
+    --global-theme-toggle-bg: #ccc;
+    --global-theme-toggle-content: '🌞 THEME';
 }  
+
+html[data-theme='unicorn'] {
+    --main-bg-color: #fffafa;
+    --secondary-bg-color: #ffc6fb;
+    --third-bg-color: #d6b9ff;
+    --borders-color: #c188d7;
+    --loupe-color:yellow;
+    --global-theme-toggle-bg: #000;
+    --global-theme-toggle-content: '🌝 THEME';
+    }
+
+    .theme-toggle {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        background: var(--global-theme-toggle-bg);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    .theme-toggle::after {
+        content: var(--global-theme-toggle-content);
+    }
+
+html[data-theme='dark'] {
+    --main-bg-color: #413535;
+    --secondary-bg-color: #3a3a3a;
+    --third-bg-color: #d6b9ff;
+    --borders-color: #1c1b24;
+    --loupe-color:rgb(36, 184, 23);
+    --global-theme-toggle-bg: rgb(102, 100, 100);
+    --global-theme-toggle-content: '🌝 THEME';
+    }
+
+    .theme-toggle2 {
+        position: fixed;
+        right: 100px;
+        top: 20px;
+        background: var(--global-theme-toggle-bg);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    .theme-toggle2::after {
+        content: var(--global-theme-toggle-content);
+    }
 
 body {
     background-color: var(--main-bg-color);
@@ -59,7 +114,7 @@ a:visited, a:link {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: grey;
+    background-color:var(--third-bg-color);
     overflow-x: hidden;
     transition: 0.5s;
 }
