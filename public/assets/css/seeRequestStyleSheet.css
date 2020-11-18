@@ -135,10 +135,7 @@ a:visited, a:link {
     max-width: 40px;;
     cursor: pointer;
     transition: all 0.3s ease-out;
-<<<<<<< HEAD
-=======
     border-radius: 21px;
->>>>>>> 4995349949357475392600cd480bd0913c7a7445
     background-color: var(--loupe-color);
 }
 

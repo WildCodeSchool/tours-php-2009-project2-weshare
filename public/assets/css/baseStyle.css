@@ -72,8 +72,6 @@ body {
     color:var(--text-color);
 }
 
-.logo {
-    width: 100%;
 #logo {
     width: 75%;
     margin: 10px 0 0 10px ;
