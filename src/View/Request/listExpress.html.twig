@@ -14,20 +14,36 @@
         <div class="list_title">
         Liste Express
         </div>
-        <div id="cards" class="cards_container">
-            {% for request in requests %}
-            <div class="cards" id={{ "card" ~ request.requestId }}>
-                <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
-                <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
-                <div class="item id_request">{{ request.requestId }}</div>
-                <div class="item request_town_name">{{ request.townName }}</div>
-                <div class="checkbox">
-                    <label for="box"></label>
-                    <input type="checkbox" id="box" name="box" class="box" value="">
-                </div>
+         <form action="/request/listExpress" method="POST">
+            <div class="iAm" >
+                <label for="userId">Je suis</label>
             </div>
-            {% endfor %}            
-        </div>
+            <div class="select">
+                <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>  
+                    <option>-- --</option>
+                    {% for user in users %}
+                    <option name="userId" value="{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+        <form action="/request/takeCare/express" method="POST">     
+            <div id="cards" class="cards_container">
+                {% for request in requests %}
+                <div class="cards" id={{ "card" ~ request.requestId }}>
+                    <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
+                    <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div class="item id_request">{{ request.requestId }}</div>
+                    <div class="item request_town_name">{{ request.townName }}</div>
+                    <div class="checkbox">
+                        <input class="requestId" type="number" name="requestId" value={{ request.requestId }}>
+                        <label for="userId"></label>
+                        <input type="checkbox" name="userId" class="box" value="{{ answererId }}" onclick="this.form.submit()">
+                    </div>
+                </div>
+                {% endfor %}            
+            </div>
+        </form>
     </div>
     {% for request in requests %}
     <div id={{ "popup" ~ request.requestId }} class="overlay">
@@ -47,7 +63,7 @@
                     <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
                 </div>
                 <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
-                <div class="button_container">
+                <!--<div class="button_container">
                     <div class="popup_answerer_name">
                         <form action="/request/takeCare/express" method="POST">
                             <input type="number" name="requestId" value="{{ request.requestId }}">
@@ -60,8 +76,8 @@
                                     {% for user in users %}
                                         <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
                                     {% endfor %}
-                                </select>  
-                            </div>  
+                                </select>
+                            </div>
                             <div class="take_care_button">
                                 <button>
                                     et je m'en occupe!
@@ -69,7 +85,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

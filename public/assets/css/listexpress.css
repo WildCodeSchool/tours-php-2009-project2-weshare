@@ -133,6 +133,10 @@ width: 20%;
   font-size: small;
 }
 
+.requestId {
+  /*display: none;*/
+}
+
 .popup .close {
   position: absolute;
   top: 0;
@@ -142,6 +146,7 @@ width: 20%;
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: #06D85F;
 }
@@ -189,8 +194,8 @@ select {
   border-radius: 5px;
   border: 1px solid var(--borders-color);
   margin: 0 auto 0.8em;
-  ;
   }
+
   /* Adapting list to div*/
   select {
   width: 100%;
