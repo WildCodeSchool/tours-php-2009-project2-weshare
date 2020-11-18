@@ -3,6 +3,7 @@
     --secondary-bg-color: rgb(255, 255, 255);
     --third-bg-color: rgb(185, 185, 185); 
     --borders-color:rgb(0, 0, 0);
+    --loupe-color: #bbeb77;
 }  
 
 body {
@@ -13,12 +14,14 @@ h1 {
     text-align: center;
 }
 
-.logo {
-    width: 100%;
+#logo {
+    width: 75%;
+    margin: 10px 0 0 10px ;
 }
 
 a:visited, a:link {
     text-decoration: none;
+    color: black;
 }
 
 /* burger menu style */
@@ -47,11 +50,11 @@ a:visited, a:link {
 }
 
 .closeButton {
-  font-size: 2rem;
-  color: black;
-  text-decoration: none;
-  margin : 8px;
-  padding: 3px;
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    margin : 8px;
+    padding: 3px;
 }
 
 .sideNav {
