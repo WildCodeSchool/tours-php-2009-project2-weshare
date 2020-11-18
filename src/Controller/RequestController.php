@@ -120,15 +120,18 @@ class RequestController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
             if ($_POST['userId'] !== 'Toutes les demandes') {
                 $answererId = trim($_POST['userId']);
-                $answererId = (int)$answererId;
 
-                $requestManager = new RequestManager();
-                $requests = $requestManager->selectAllAcceptedById($answererId);
+                if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
+                    $answererId = intval($answererId);
 
-                if (!isset($requests['error'])) {
-                    $users = $this->selectAllUsers();
-                } else {
-                    $errors = $requests['error'];
+                    $requestManager = new RequestManager();
+                    $requests = $requestManager->selectAllAcceptedById($answererId);
+
+                    if (!isset($requests['error'])) {
+                        $users = $this->selectAllUsers();
+                    } else {
+                        $errors = $requests['error'];
+                    }
                 }
             } else {
                 header('Location:/request/acceptedList');
