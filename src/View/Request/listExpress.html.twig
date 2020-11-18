@@ -37,19 +37,19 @@
             </div>
         </div>
         <div id="cards" class="cards_container">
-                <div class="cards">
                 {% for request in requests %}
-                    <div class="cards-item">
-                    <div class="item request_title">{{ request.requestTitle }}</div>
+                <div class="cards">
+                    <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
                     <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
                     <div class="item id_request">{{ request.requestId }}</div>
                     <div class="item request_town_name">{{ request.townName }}</div>
-                    <div class="loupe">
-                        <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                    <div class="checkbox">
+                        <input type="checkbox" id="box" name="box" class="box">
+                        <label for="box"></label>
+
                     </div>
                 </div>
                 {% endfor %}
-                </div>
             
         </div>
     </div>
