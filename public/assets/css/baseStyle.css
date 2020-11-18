@@ -125,7 +125,7 @@ footer{
 
 .footer-container{
     column-count: 2;
-    justify-content: space-around;
+    padding-top: 2rem;
 }
 
 .column{
@@ -145,6 +145,7 @@ h4{
     justify-items: center;
     justify-content: space-between;
     justify-content: space-around;
+    padding-top: 2rem;
 }
 
 .copyright-container{
