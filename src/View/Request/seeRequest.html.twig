@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="requests_list">
-        <div class="list_title">
+        <div class="list_title" id="startList">
         Liste des demandes
         </div>
         <div id="cards" class="cards_container">
@@ -46,7 +46,7 @@
         <div class="popup">
             <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
             <div class="content">
-                <div class="popup_request_title">{{ request. requestTitle}}</div>
+                <div class="popup_request_title">{{ request.requestTitle}}</div>
                 <div class="popup_user_informations">
                     <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
                     <div>Adresse: {{ request.addressStreet }}</div>
@@ -59,8 +59,29 @@
                     <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
                 </div>
                 <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+                
                 <div class="button_container">
-                    <div class="take_care_button">Je m'en occupe!</div>
+                    <div class="popup_answerer_name">
+                        <form action="/request/takeCare" method="POST">
+                            <input type="number" name="requestId" value="{{ request.requestId }}">
+                            <div class="iAm" >
+                                <label for="userId">Je suis</label>
+                            </div>
+                            <div class="select">
+                                <select id="userId" name="userId" type="choice">  
+                                    <option>-- --</option>
+                                    {% for user in users %}
+                                        <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                                    {% endfor %}
+                                </select>  
+                            </div>  
+                            <div class="take_care_button">
+                                <button>
+                                    et je m'en occupe!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,3 +89,4 @@
     {% endfor %}
 
 {% endblock %}
+{% block test %}{% endblock %}

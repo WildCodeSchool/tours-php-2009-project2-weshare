@@ -25,17 +25,26 @@ class RequestController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
+    /*this method is called to load the requests list page */
     public function list()
     {
+        $errors = [];
+
         $requestManager = new RequestManager();
+        $userManager = new UserManager();
         $requests = $requestManager->selectAllRequests();
+        $users = $userManager->selectAll();
 
         if ($requests === null) {
-            echo 'Problème sur la base de données.';
+            $errors['bdd'] = 'Problème sur la base de données.';
         }
-        return $this->twig->render('Request/seeRequest.html.twig', ['requests' => $requests]);
+        return $this->twig->render(
+            'Request/seeRequest.html.twig',
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
+        );
     }
 
+    /*this method is called when a user add a new user request*/
     public function add()
     {
         $errors = [];
@@ -76,6 +85,7 @@ class RequestController extends AbstractController
         );
     }
 
+    /*this method is called in the add() for check our form */
     private function issetPost(): array
     {
         $myPost = $_POST;
@@ -147,5 +157,36 @@ class RequestController extends AbstractController
     private function selectAllUsers(): array
     {
         return (new UserManager())->selectAll();
+    }
+    /*this method is called when a user decide to take care of the user request of someone else */
+    public function takeCare()
+    {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId']) && isset($_POST['requestId'])) {
+            if ($_POST['userId'] != '-- --') {
+                $answererId = trim($_POST['userId']);
+                $requestId = trim($_POST['requestId']);
+
+                if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
+                    if (filter_var($requestId, FILTER_VALIDATE_INT) !== false) {
+                        $answererId = intval($answererId);
+                        $requestId = intval($requestId);
+
+                        $requestManager = new RequestManager();
+                        $result = $requestManager->updateOnAnswerer($answererId, $requestId);
+
+                        if ($result === true) {
+                            header('Location:/request/list');
+                            return '';
+                        } else {
+                            $errors['BDD'] = 'Problème sur la base de données.';
+                        }
+                    }
+                }
+            } else {
+                header('Location:/request/list#popup' . $_POST['requestId']);
+            }
+        }
     }
 }

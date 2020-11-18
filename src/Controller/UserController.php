@@ -12,7 +12,7 @@ use App\Model\User;
  */
 class UserController extends AbstractController
 {
-
+    /*this method is called when a new user is sign up on the website */
     public function add()
     {
         $errors = [];
@@ -55,6 +55,7 @@ class UserController extends AbstractController
         );
     }
 
+    /*this method is called in the add() for check our form*/
     private function issetPost(): ?array
     {
         $myPost = $_POST;

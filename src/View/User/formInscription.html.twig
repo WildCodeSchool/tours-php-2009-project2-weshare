@@ -26,12 +26,14 @@
         </div><br>
         <div class="input">
           <label for="townId">Ville :</label><br>
+          <div class="select">
           <select id="townId" name="townId" type="choice">                
             <option>-- --</option>
             {% for town in towns %}
               <option name="townId" value={{ town.id }}>{{ town.name }} </option>
             {% endfor %}
           </select>
+          </div>
         </div><br>
         <div class="input">
             <label for="phone">Téléphone :</label>   
