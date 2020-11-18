@@ -20,6 +20,7 @@ class RequestManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /*return the last 6 user requests of the dbb */
     public function selectFirsts(): ?array
     {
         try {
@@ -55,24 +56,48 @@ class RequestManager extends AbstractManager
             ' LEFT JOIN ' . AddressManager::TABLE . ' ON address.id = fk_address_id ' .
             ' LEFT JOIN ' . TownManager::TABLE . ' ON town.id = fk_town_id ' .
             ' LEFT JOIN ' . MeasurementManager::TABLE . ' ON measurement.id = fk_measurement_id
+            WHERE fk_answerer_id IS NULL
             ORDER BY requestPublicationDate DESC')->fetchAll();
         } catch (\PDOException $error) {
             return null;
         }
+
         return $results;
     }
 
+    /*insert in the dbb a new user request, if the sql request fail, return false */
     public function insert(Request $request): bool
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
-        description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
-        :description,curdate(),:userId,:measurementId)");
+        try {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
+            description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
+            :description,curdate(),:userId,:measurementId)");
+        } catch (\PDOException $error) {
+            return false;
+        }
 
         $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
         $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
         $statement->bindValue('description', $request->getDescription(), \PDO::PARAM_STR);
         $statement->bindValue('userId', $request->getUserId(), \PDO::PARAM_INT);
         $statement->bindValue('measurementId', $request->getmeasurementId(), \PDO::PARAM_INT);
+        $result = $statement->execute();
+
+        return $result;
+    }
+
+    /*update a given user request with the id of the user who decide to respond at this user request */
+    public function updateOnAnswerer(int $anwererId, int $requestId): bool
+    {
+        try {
+            $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
+        } catch (\PDOException $error) {
+            return false;
+        }
+
+        $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
+        $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
         $result = $statement->execute();
 
         return $result;

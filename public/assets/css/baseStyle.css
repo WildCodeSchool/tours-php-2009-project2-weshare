@@ -10,6 +10,7 @@
     --global-theme-toggle-content: 'THEME 1';
     --global-theme-toggle-content2: 'THEME 2';
 
+    --loupe-color: #bbeb77;
 }  
 
 html[data-theme='unicorn'] {
@@ -73,10 +74,14 @@ body {
 
 .logo {
     width: 100%;
+#logo {
+    width: 75%;
+    margin: 10px 0 0 10px ;
 }
 
 a:visited, a:link {
     text-decoration: none;
+    color: black;
 }
 
 /* burger menu style */
