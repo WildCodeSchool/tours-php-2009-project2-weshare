@@ -60,14 +60,19 @@ class RequestManager extends AbstractManager
         } catch (\PDOException $error) {
             return null;
         }
+
         return $results;
     }
 
     public function insert(Request $request): bool
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
-        description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
-        :description,curdate(),:userId,:measurementId)");
+        try {
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (title,quantity,
+            description,publication_date,fk_requester_id,fk_measurement_id) VALUES (:title,:quantity,
+            :description,curdate(),:userId,:measurementId)");
+        } catch (\PDOException $error) {
+            return false;
+        }
 
         $statement->bindValue('title', $request->getTitle(), \PDO::PARAM_STR);
         $statement->bindValue('quantity', $request->getQuantity(), \PDO::PARAM_INT);
@@ -81,8 +86,13 @@ class RequestManager extends AbstractManager
 
     public function updateOnAnswerer(int $anwererId, int $requestId): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
+        try {
+            $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET fk_answerer_id=:answererId" . " WHERE request.id=:requestId");
+        } catch (\PDOException $error) {
+            return false;
+        }
+
         $statement->bindValue('answererId', $anwererId, \PDO::PARAM_INT);
         $statement->bindValue('requestId', $requestId, \PDO::PARAM_INT);
         $result = $statement->execute();
