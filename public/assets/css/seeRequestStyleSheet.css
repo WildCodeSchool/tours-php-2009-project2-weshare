@@ -189,13 +189,14 @@ a:visited, a:link {
 
   .popup .content {
     height: 100%;
-    overflow: visible;
     width: 100%;
+    display: flex;
+    justify-content: start;
     flex-direction: column;
     box-sizing: border-box;
     padding:6% 3% 3% 3%;
-    display: flex;
-    flex-basis: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .popup_request_title {
