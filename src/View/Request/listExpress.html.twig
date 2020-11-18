@@ -11,54 +11,30 @@
 
 {% block content %}
     <div class="requests_list">
-        <div class="list_title">
-        Liste Express
-        </div>
-        <div class="row">
-            <div class="col">
-                <select name="categorie" id="categorie" class="select-width-100">
-                <option value="item1">item1</option>
-                <option value="item2">item2</option>
-                <option value="item3">item3</option>
-                <option value="item4">item4</option>
-                </select>
-            </div>
-            <div class="col">
-            </div>
-            <div class="col">
-            </div>
-            <div class="col">
-                <select name="categorie" id="categorie" class="select-width-100">
-                <option value="item1">item1</option>
-                <option value="item2">item2</option>
-                <option value="item3">item3</option>
-                <option value="item4">item4</option>
-                </select>
-            </div>
-        </div>
         <div id="cards" class="cards_container">
-                {% for request in requests %}
-                <div class="cards">
-                    <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
-                    <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
-                    <div class="item id_request">{{ request.requestId }}</div>
-                    <div class="item request_town_name">{{ request.townName }}</div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="box" name="box" class="box">
-                        <label for="box"></label>
-
-                    </div>
+            <div class="list_title">
+            Liste Express
+            </div>
+            {% for request in requests %}
+            <div class="cards" id={{ "card" ~ request.requestId }}>
+                <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
+                <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div class="item id_request">{{ request.requestId }}</div>
+                <div class="item request_town_name">{{ request.townName }}</div>
+                <div class="checkbox">
+                    <label for="box"></label>
+                    <input type="checkbox" id="box" name="box" class="box" value="">
                 </div>
-                {% endfor %}
-            
+            </div>
+            {% endfor %}            
         </div>
     </div>
     {% for request in requests %}
     <div id={{ "popup" ~ request.requestId }} class="overlay">
         <div class="popup">
-            <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
+            <div class="close"><a href={{ "#card" ~ request.requestId }}>&times;</a></div>
             <div class="content">
-                <div class="popup_request_title">{{ request. requestTitle}}</div>
+                <div class="popup_request_title">{{ request.requestTitle}}</div>
                 <div class="popup_user_informations">
                     <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
                     <div>Adresse: {{ request.addressStreet }}</div>
