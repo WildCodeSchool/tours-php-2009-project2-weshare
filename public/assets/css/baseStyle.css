@@ -4,8 +4,12 @@
     --third-bg-color: rgb(185, 185, 185); 
     --borders-color:rgb(0, 0, 0);
     --loupe-color: green;
-    --global-theme-toggle-bg: #ccc;
-    --global-theme-toggle-content: '🌞 THEME';
+    --text-color: black;
+    --global-theme-toggle-bg: black;
+    --global-theme-toggle-bg2: #ffc6fb;
+    --global-theme-toggle-content: 'THEME 1';
+    --global-theme-toggle-content2: 'THEME 2';
+
 }  
 
 html[data-theme='unicorn'] {
@@ -13,20 +17,16 @@ html[data-theme='unicorn'] {
     --secondary-bg-color: #ffc6fb;
     --third-bg-color: #d6b9ff;
     --borders-color: #c188d7;
-    --loupe-color:yellow;
-    --global-theme-toggle-bg: #000;
-    --global-theme-toggle-content: '🌝 THEME';
+    --loupe-color:rgb(175, 113, 247);
+    --text-color: rgb(255, 21, 157);
+    --global-theme-toggle-bg: #ccc;
+    --global-theme-toggle-content: 'THEME 3';
     }
 
     .theme-toggle {
         position: fixed;
-        right: 20px;
+        right: 100px;
         top: 20px;
-        background: var(--global-theme-toggle-bg);
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 0.8rem;
-        font-weight: 700;
         cursor: pointer;
     }
     
@@ -40,15 +40,17 @@ html[data-theme='dark'] {
     --third-bg-color: #d6b9ff;
     --borders-color: #1c1b24;
     --loupe-color:rgb(36, 184, 23);
-    --global-theme-toggle-bg: rgb(102, 100, 100);
-    --global-theme-toggle-content: '🌝 THEME';
+    --text-color: rgb(233, 233, 233);
+    --global-theme-toggle-bg2: #ccc;
+    --global-theme-toggle-content2: '🌝 THEME2';
+    
     }
 
     .theme-toggle2 {
         position: fixed;
-        right: 100px;
+        right: 20px;
         top: 20px;
-        background: var(--global-theme-toggle-bg);
+        background: var(--global-theme-toggle-bg2);
         padding: 10px;
         border-radius: 5px;
         font-size: 0.8rem;
@@ -57,7 +59,7 @@ html[data-theme='dark'] {
     }
     
     .theme-toggle2::after {
-        content: var(--global-theme-toggle-content);
+        content: var(--global-theme-toggle-content2);
     }
 
 body {
@@ -65,6 +67,9 @@ body {
     margin: 0;
 }
 
+* {
+    color:var(--text-color);
+}
 
 .logo {
     width: 100%;
