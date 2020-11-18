@@ -111,16 +111,22 @@ class RequestController extends AbstractController
             if ($_POST['userId'] != '-- --') {
                 $answererId = trim($_POST['userId']);
                 $requestId = trim($_POST['requestId']);
-                $answererId = filter_var($answererId, FILTER_VALIDATE_INT);
-                $requestId = filter_var($requestId, FILTER_VALIDATE_INT);
-                $requestManager = new RequestManager();
-                $result = $requestManager->updateOnAnswerer($answererId, $requestId);
 
-                if ($result === true) {
-                    header('Location:/request/list');
-                    return '';
-                } else {
-                    $errors['BDD'] = 'Problème sur la base de données.';
+                if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
+                    if (filter_var($requestId, FILTER_VALIDATE_INT) !== false) {
+                        $answererId = intval($answererId);
+                        $requestId = intval($requestId);
+
+                        $requestManager = new RequestManager();
+                        $result = $requestManager->updateOnAnswerer($answererId, $requestId);
+
+                        if ($result === true) {
+                            header('Location:/request/list');
+                            return '';
+                        } else {
+                            $errors['BDD'] = 'Problème sur la base de données.';
+                        }
+                    }
                 }
             } else {
                 header('Location:/request/list#popup' . $_POST['requestId']);
