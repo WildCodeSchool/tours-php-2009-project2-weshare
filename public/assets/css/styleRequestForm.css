@@ -11,10 +11,6 @@
     border: 1px solid var(--borders-color);
     border-radius: 5px;
   }
-
-  #userId, #measurementId {
-    background-color: var(--secondary-bg-color);
-  }
   
   .boxForm {
     background-color:var(--secondary-bg-color);
@@ -121,7 +117,7 @@ select {
     pointer-events: none;
     transform: rotate(90deg);
     font-size: 1.5em;
-    background-color: var(--secondary-bg-color)
+    background-color: var(--list-color)
   }
   .select:hover::after {
     color: var(--loupe-color);
