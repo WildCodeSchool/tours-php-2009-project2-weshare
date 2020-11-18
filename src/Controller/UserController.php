@@ -17,31 +17,32 @@ class UserController extends AbstractController
     {
         $errors = [];
 
-        if (
-            $_SERVER['REQUEST_METHOD'] === 'POST' &&
-            isset($_POST['firstname']) &&
-            isset($_POST['lastname']) &&
-            isset($_POST['phone']) &&
-            isset($_POST['street']) &&
-            isset($_POST['townId']) &&
-            isset($_POST['email'])
-        ) {
-            $myUser = new User(
-                $_POST['firstname'],
-                $_POST['lastname'],
-                $_POST['phone'],
-                $_POST['street'],
-                $_POST['townId'],
-                $_POST['email']
-            );
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $myPost = $this->issetPost();
 
-            if ($myUser->isValid()) {
-                $userManager = new UserManager();
+            if ($myPost !== null) {
+                $myUser = new User(
+                    $myPost['firstname'],
+                    $myPost['lastname'],
+                    $myPost['phone'],
+                    $myPost['street'],
+                    $myPost['townId'],
+                    $myPost['email']
+                );
 
-                $userManager->insert($myUser);
-                header('Location:/home/index');
-            } else {
-                $errors = $myUser -> getErrors();
+                if ($myUser->isValid()) {
+                    $userManager = new UserManager();
+                    $result = $userManager->insert($myUser);
+
+                    if ($result) {
+                        header('Location:/home/index');
+                        return '';
+                    } else {
+                        $errors['BDD'] = 'Problème sur la base de données.';
+                    }
+                } else {
+                    $errors = $myUser -> getErrors();
+                }
             }
         }
 
@@ -52,5 +53,22 @@ class UserController extends AbstractController
             'User/formInscription.html.twig',
             ['towns' => $towns,'errors' => $errors]
         );
+    }
+
+    private function issetPost(): ?array
+    {
+        $myPost = $_POST;
+        if (
+            isset($myPost['firstname']) &&
+            isset($myPost['lastname']) &&
+            isset($myPost['phone']) &&
+            isset($myPost['street']) &&
+            isset($myPost['townId']) &&
+            isset($myPost['email'])
+        ) {
+            return $myPost;
+        } else {
+            return null;
+        }
     }
 }
