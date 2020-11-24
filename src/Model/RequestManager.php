@@ -49,7 +49,7 @@ class RequestManager extends AbstractManager
             request.title AS requestTitle, request.description AS requestDescription,
             request.quantity AS requestQuantity, measurement.name AS measurementName, 
             user.phone AS userPhone, user.email AS userEmail, address.street AS addressStreet, 
-            town.name AS townName, 
+            town.name AS townName, fk_requester_id as userId,
             town.postal_code AS townPostalCode, request.publication_date AS requestPublicationDate 
             FROM ' . self::TABLE .
             ' LEFT JOIN ' . UserManager::TABLE . ' ON user.id = fk_requester_id ' .

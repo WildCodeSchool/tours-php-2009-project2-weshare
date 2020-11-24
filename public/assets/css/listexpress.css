@@ -8,7 +8,7 @@
 .cards {
   border: solid 2px var(--borders-color);
   border-radius: 8px;
-  height: 40px;
+  height: 45px;
   display: flex;
   flex-direction: row;
   box-sizing: content-box;
@@ -20,12 +20,15 @@
 
 .request_title {
   position: relative;
-  top: 5%;
   margin-left: 5px;
   box-sizing: content-box;
   width: 50%;
   font-weight: bold;
   text-decoration: none;
+}
+
+.requestTitle:visited, .requestTitle:link {
+  color: var(--text-color);
 }
 
 .request_user_firstname {
@@ -90,6 +93,7 @@ width: 20%;
   flex-direction: column;
   box-sizing: border-box;
   padding:6% 3% 3% 3%;
+  background-color: var(--third-bg-color);
 }
 
 .popup_request_title {
@@ -133,8 +137,8 @@ width: 20%;
   font-size: small;
 }
 
-.requestId {
-  /*display: none;*/
+.answererId {
+  display: none;
 }
 
 .popup .close {

@@ -22,7 +22,11 @@
                 <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>  
                     <option>-- --</option>
                     {% for user in users %}
-                    <option name="userId" value="{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</option>
+                        {% if answererId == user.id %}
+                    <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
+                        {% else %}
+                    <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -30,17 +34,19 @@
         <form action="/request/takeCare/express" method="POST">     
             <div id="cards" class="cards_container">
                 {% for request in requests %}
+                    {% if request.userId != answererId %}
                 <div class="cards" id={{ "card" ~ request.requestId }}>
-                    <div class="item request_title"> <a href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
+                    <div class="item request_title"> <a class="requestTitle" href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
                     <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
                     <div class="item id_request">{{ request.requestId }}</div>
                     <div class="item request_town_name">{{ request.townName }}</div>
                     <div class="checkbox">
-                        <input class="requestId" type="number" name="requestId" value={{ request.requestId }}>
+                        <input class="answererId" type="number" name="answererId" value="{{ answererId }}">
                         <label for="userId"></label>
-                        <input type="checkbox" name="userId" class="box" value="{{ answererId }}" onclick="this.form.submit()">
+                        <input type="checkbox" name="requestId" class="box" value="{{ request.requestId }}" onclick="submit()">
                     </div>
                 </div>
+                    {% endif %}
                 {% endfor %}            
             </div>
         </form>

@@ -12,7 +12,7 @@
 <div class="requests_list">
     <div class="list_title">Liste des demandes acceptées</div>
     <form action="/request/acceptedListByUser" method="POST">
-        <label for="userId">Qui es-tu ?</label>
+        <label for="userId">Je suis</label>
         <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>
             <option>Toutes les demandes</option>
             {% for user in users %}
