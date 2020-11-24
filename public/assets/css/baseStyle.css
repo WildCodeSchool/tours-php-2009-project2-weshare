@@ -159,6 +159,90 @@ a:visited, a:link {
     font-weight: bold;
 }
 
+/*---------FOOTER-----------*/
+footer {
+    background-color:var(--third-bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+.footer-container {
+    column-count: 2;
+    padding-top: 2rem;
+}
+
+.column {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+
+h3:hover {
+    color:var(--secondary-bg-color);
+}
+
+h4 {
+    color: rgb(73, 71, 71);
+}
+.reseaux-container{
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    justify-content: space-around;
+    padding-top: 2rem;
+}
+
+.copyright-container {
+    display: flex;
+    justify-content:center;
+}
+
+.reseaux-container img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Zoom */
+.reseaux-container img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.reseaux-container img:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+/*return top button*/
+
+#returnTop {
+    color: rgb(83, 81, 81);
+    margin: 1rem;
+    text-decoration: none;
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    font-size: 18px;
+    border: solid;
+    outline: none;
+    background-color: whitesmoke;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 30%;
+    transition: all 0.1s ease-in-out;
+  }
+
+  #returnTop:hover {
+    transform: scale(1.10);
+    color: rgb(13, 95, 2);
+    background-color: rgb(76, 189, 48);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
 
 select, input, textarea {
     background-color: var(--list-color)
@@ -190,4 +274,10 @@ select, input, textarea {
         padding: 0;
         width: 100%;
     }
+
+    .footer-container{
+        justify-content: space-around;
+        display: flex;
+    }    
 }  
+        
