@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/cardsStyle.css">
 <link rel="stylesheet" href="/assets/css/indexStyle.css">
 {% endblock %}
 
@@ -27,8 +28,11 @@ Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votr
             <div id={{ "slide-" ~ slideNumber }} class="cards">
                 <div class="request_title">{{ request.requestTitle }}</div>
                 <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div class="id_request">{{ request.requestId }}</div>
                 <div class="request_town_name">{{ request.townName }}</div>
-                <div class="request_publication_date">{{ request.requestPublicationDate }}</div>
+                <div class="loupe">
+                    <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+                </div>
             </div>
             {% set slideNumber = slideNumber + 1 %}
         {% endfor %}
@@ -55,4 +59,52 @@ Privilégiez l'<a href="https://fr.wikipedia.org/wiki/%C3%89conomie_de_fonctionn
     <h2>En toute confiance</h2>
     <p>Sur WeShare, vos voisins sont bien vos voisins dans la vraie vie. Cela vous permettra de partager vos objets en toute confiance.</p>
 </section>
+
+{% for request in requests %}
+<div id={{ "popup" ~ request.requestId }} class="overlay">
+    <div class="popup">
+        <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
+        <div class="content">
+            <div class="popup_request_title">{{ request.requestTitle}}</div>
+            <div class="popup_user_informations">
+                <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div>Adresse: {{ request.addressStreet }}</div>
+                <div class="popup_request_postalcode">{{ request.townPostalCode}} {{ request.townName }}</div>
+                <div>Tel: 0{{ request.userPhone }}</div>
+                <div>@: {{ request.userEmail }}</div>
+            </div>
+            <div class="popup_description_container">
+                <div class="popup_request_quantity">Quantité: {{ request.requestQuantity }} {{ request.measurementName }}(s)</div>
+                <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
+            </div>
+            <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+            
+            <div class="button_container">
+                <div class="popup_answerer_name">
+                    <form action="/request/takeCare/classic" method="POST">
+                        <input type="number" name="requestId" value="{{ request.requestId }}">
+                        <div class="iAm" >
+                            <label for="userId">Je suis</label>
+                        </div>
+                        <div class="select">
+                            <select id="userId" name="userId" type="choice">  
+                                <option>-- --</option>
+                                {% for user in users %}
+                                    <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                                {% endfor %}
+                            </select>  
+                        </div>  
+                        <div class="take_care_button">
+                            <button>
+                                et je m'en occupe!
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 {% endblock %}

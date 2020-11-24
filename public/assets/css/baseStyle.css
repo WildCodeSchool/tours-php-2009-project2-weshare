@@ -133,8 +133,6 @@ a:visited, a:link {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
-=======
 /*---------FOOTER-----------*/
 footer {
     background-color:var(--third-bg-color);
@@ -214,13 +212,12 @@ h4 {
   #returnTop:hover {
     transform: scale(1.10);
     color: rgb(13, 95, 2);
-    background-color: rgb(76, 189, 48);
+    background-color:var(--loupe-color);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 
->>>>>>> f81289e37fb627948a04b5743987db83735c5486
 select, input, textarea {
     background-color: var(--list-color)
 }
@@ -287,3 +284,4 @@ select, input, textarea {
     }    
 }  
         
+
