@@ -132,13 +132,16 @@ class RequestController extends AbstractController
 
         $nbRequests = count($requests);
         for ($i = 0; $i < $nbRequests; $i++) {
-            $answerers[$requests[$i]['requestId']] = (
+            $answerers[$i] = (
                 new UserManager())->selectAnswererInfo($requests[$i]['fk_answerer_id']);
+
+            $requests[$i]['answererFirstname'] = $answerers[$i]['firstname'];
+            $requests[$i]['answererLastname'] = $answerers[$i]['lastname'];
         }
 
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
-            ['requests' => $requests, 'users' => $users, 'answerers' => $answerers, 'errors' => $errors]
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
         );
     }
 
