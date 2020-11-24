@@ -32,7 +32,7 @@ html[data-theme='unicorn'] {
 }
 
 html[data-theme='dark'] {
-    --main-bg-color: #00241B;
+    --main-bg-color: #004433;
     --secondary-bg-color: #65B891;
     --third-bg-color: #4E878C;
     --borders-color: #4D4730;
