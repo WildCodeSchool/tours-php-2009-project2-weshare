@@ -211,8 +211,7 @@ class RequestController extends AbstractController
             header('Location:/request/list');
             return '';
         } elseif ($source === 'express') {
-            header('Location:/request/listExpress');
-            return '';
+            return $this->listExpress();
         } else {
             header('Location:/');
             return '';
