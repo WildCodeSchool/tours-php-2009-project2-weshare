@@ -119,6 +119,7 @@ class RequestController extends AbstractController
     public function acceptedList()
     {
         $errors = [];
+        $answerers = [];
 
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllAcceptedRequests();
@@ -129,9 +130,15 @@ class RequestController extends AbstractController
 
         $users = $this->selectAllUsers();
 
+        $nbRequests = count($requests);
+        for ($i = 0; $i < $nbRequests; $i++) {
+            $answerers[$requests[$i]['requestId']] = (
+                new UserManager())->selectAnswererInfo($requests[$i]['fk_answerer_id']);
+        }
+
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
-            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
+            ['requests' => $requests, 'users' => $users, 'answerers' => $answerers, 'errors' => $errors]
         );
     }
 
