@@ -6,14 +6,15 @@
 
 {% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/listexpress.css">
+<link rel="stylesheet" href="/assets/css/overlayStyle.css">
 {% endblock %}
 
 
 {% block content %}
+    <div class="list_title">
+        <h2>Liste Express</h2>
+    </div>
     <div class="requests_list">
-        <div class="list_title">
-        Liste Express
-        </div>
          <form action="/request/listExpress" method="POST">
             <div class="iAm" >
                 <label for="userId">Je suis</label>

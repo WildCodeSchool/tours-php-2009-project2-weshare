@@ -2,7 +2,7 @@
 /* Regular page*/
 
 .publish-container {
-    background-color: var(--secondary-bg-color);
+    background-color: var(--main-bg-color);
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -57,11 +57,4 @@ a:visited, a:link {
 
 .requests_list {
     background-color: var(--main-bg-color);
-}
-
-.list_title {
-    width: 100%;
-    text-align: center;
-    font-weight: bolder;
-    margin: 20px auto 20px;
 }
