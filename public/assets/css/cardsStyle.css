@@ -1,0 +1,81 @@
+
+/* Cards on all pages */
+
+.cards_container {
+    /*border: solid 2px blue;*/
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 5px;
+}
+
+.cards {
+    border: solid 2px var(--borders-color);
+    border-radius: 12px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    width: 170px;
+    position: relative;
+    background-color: var(--secondary-bg-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.id_request {
+    display: none;
+  }
+
+
+  
+  .loupe-img img {
+      position: absolute;
+      margin-right: 1%;
+      bottom: 1%;
+      right: 0;
+      width: min-content;
+      max-width: 40px;;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+      border-radius: 21px;
+      background-color: var(--loupe-color);
+  }
+  
+  .loupe-img img:hover {
+      transition: 200ms;
+      transform: scale(1.1);
+  }
+
+
+.request_title {
+    position: relative;
+    top: 5%;
+    margin: 0 auto;
+    flex-basis: auto;
+    box-sizing: content-box;
+    width: 90%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.request_user_firstname {
+    position: absolute;
+    margin-left: 5%;
+    bottom: 40%;
+    left: 0;
+    width: max-content;
+    font-style: italic;    
+}
+
+.request_town_name, .request_publication_date {
+    position: absolute;
+    margin-left: 5%;
+    bottom: 25%;
+    left: 0;
+    width: max-content;
+    font-size: small;
+  }

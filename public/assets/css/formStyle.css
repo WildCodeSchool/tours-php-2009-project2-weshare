@@ -7,11 +7,12 @@
     margin: auto;
     padding: 5px 50px 20px 50px;
     border-radius: 10px;
-    color: black;
 }
 
 h2 {
     text-align: center; 
+    background-color: var(--secondary-bg-color);
+    margin: 10px 0;
 }
 
 .errors {
