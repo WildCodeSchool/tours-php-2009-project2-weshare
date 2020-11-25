@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste Express
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/listexpress.css">
+<link rel="stylesheet" href="/assets/css/overlayStyle.css">
+{% endblock %}
+
+
+{% block content %}
+    <div class="list_title">
+        <h2>Liste Express</h2>
+    </div>
+    <div class="requests_list">
+         <form action="/request/listExpress" method="POST">
+            <div class="iAm" >
+                <label for="userId">Je suis</label>
+            </div>
+            <div class="select">
+                <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>  
+                    <option>-- --</option>
+                    {% for user in users %}
+                        {% if answererId == user.id %}
+                    <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
+                        {% else %}
+                    <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+        <form action="/request/takeCare/express" method="POST">     
+            <div id="cards" class="cards_container">
+                {% for request in requests %}
+                    {% if request.userId != answererId %}
+                <div class="cards" id={{ "card" ~ request.requestId }}>
+                    <div class="item request_title"> <a class="requestTitle" href={{ "#popup" ~ request.requestId }}>{{ request.requestTitle }}</a></div>
+                    <div class="item request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div class="item id_request">{{ request.requestId }}</div>
+                    <div class="item request_town_name">{{ request.townName }}</div>
+                    <div class="checkbox">
+                        <input class="userId" type="number" name="userId" value="{{ answererId }}">
+                        <label for="userId"></label>
+                        <input type="checkbox" name="requestId" class="box" value="{{ request.requestId }}" onclick="submit()">
+                    </div>
+                </div>
+                    {% endif %}
+                {% endfor %}            
+            </div>
+        </form>
+    </div>
+    {% for request in requests %}
+    <div id={{ "popup" ~ request.requestId }} class="overlay">
+        <div class="popup">
+            <div class="close"><a href={{ "#card" ~ request.requestId }}>&times;</a></div>
+            <div class="content">
+                <div class="popup_request_title">{{ request.requestTitle}}</div>
+                <div class="popup_user_informations">
+                    <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
+                    <div>Adresse: {{ request.addressStreet }}</div>
+                    <div class="popup_request_postalcode">{{ request.townPostalCode}} {{ request.townName }}</div>
+                    <div>Tel: 0{{ request.userPhone }}</div>
+                    <div>@: {{ request.userEmail }}</div>
+                </div>
+                <div class="popup_description_container">
+                    <div class="popup_request_quantity">Quantité: {{ request.requestQuantity }} {{ request.measurementName }}(s)</div>
+                    <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
+                </div>
+                <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

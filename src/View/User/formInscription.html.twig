@@ -2,7 +2,7 @@
 
 {% block title %}Inscription{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/styleFormInscription.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/formStyle.css">{% endblock %}
 
 {% block content %}
 <div class="bg-c">
@@ -14,32 +14,34 @@
       <form method="POST">
         <div class="input">
             <label for="firstname">Prénom :</label>
-            <input type="text" id="firstname" placeholder="Prénom" name="firstname">
+            <input class="field" type="text" id="firstname" placeholder="Prénom" name="firstname">
         </div><br>
         <div class="input">
             <label for="lastname">Nom :</label>
-            <input type="text" id="lastname" placeholder="Nom" name="lastname">
+            <input class="field" type="text" id="lastname" placeholder="Nom" name="lastname">
         </div><br>
         <div class="input">
             <label for="street">N° et voie :</label>   
-            <input type="text" id="street" placeholder="Numéro et voie" name="street">
+            <input class="field" type="text" id="street" placeholder="Numéro et voie" name="street">
         </div><br>
         <div class="input">
           <label for="townId">Ville :</label><br>
+          <div class="select">
           <select id="townId" name="townId" type="choice">                
             <option>-- --</option>
             {% for town in towns %}
               <option name="townId" value={{ town.id }}>{{ town.name }} </option>
             {% endfor %}
           </select>
+          </div>
         </div><br>
         <div class="input">
             <label for="phone">Téléphone :</label>   
-            <input type="tel" id="phone" placeholder="Téléphone" name="phone">
+            <input class="field" type="tel" id="phone" placeholder="Téléphone" name="phone">
         </div><br>
         <div class="input">
             <label for="email">E-mail :</label>    
-            <input type="mail" id="email" placeholder="Email" name="email">
+            <input class="field" type="mail" id="email" placeholder="Email" name="email">
         </div><br>
         <div class="button_container">
         <div class="button">

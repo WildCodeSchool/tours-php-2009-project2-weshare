@@ -1,6 +1,6 @@
 function openNav() {
     if (window.matchMedia("(max-width: 813px)").matches) {
-        document.querySelector('.sideNav').style.width = "170px";
+        document.querySelector('.sideNav').style.width = "60%";
         document.querySelector('.nav').style.display = "flex";
     }
 }

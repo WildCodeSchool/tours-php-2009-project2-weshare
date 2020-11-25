@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\RequestManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -32,10 +33,11 @@ class HomeController extends AbstractController
         if ($requests === null) {
             $error = 'Problème sur la base de données.';
         }
+        $users = (new UserManager())->selectAll();
 
         return $this->twig->render(
             'Home/index.html.twig',
-            ['requests' => $requests, 'errorBDD' => $error]
+            ['requests' => $requests, 'errorBDD' => $error, 'users' => $users]
         );
     }
 }

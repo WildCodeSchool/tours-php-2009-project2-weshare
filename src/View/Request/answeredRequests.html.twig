@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Demandes acceptées
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+    <link rel="stylesheet" href="/assets/css/overlayStyle.css">
+    <link rel="stylesheet" href="/assets/css/cardsStyle.css">
+{% endblock %}
+
+{% block content %}
+<div class="requests_list">
+    <div class="list_title"><h2>Liste des demandes acceptées</h2></div>
+    <form action="/request/acceptedListByUser" method="POST">
+        <div class="iAm">
+            <label for="userId">Je suis</label>
+        </div>
+        <div class="select">
+            <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>
+                <option>-- --</option>
+                {% for user in users %}
+                    {% if selectedUser == user.id %}
+                <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
+                    {% else %}
+                <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>  
+    </form>
+    <p>{{ errors[0] }}</p>
+    <div id="cards" class="cards_container">
+    {% if requests is empty %}
+        <p>Rien à afficher</p>
+    {% endif %}
+    {% for request in requests %}
+        <div class="cards">
+            <div class="request_title">{{ request.requestTitle }}</div>
+            <div class="request_user_firstname">{{ request.userFirstName }} {{ request.userLastName }}</div>
+            <div class="id_request">{{ request.requestId }}</div>
+            <div class="request_town_name">{{ request.townName }}</div>
+            <div class="loupe">
+                <a class="loupe-img" href={{ "#popup" ~ request.requestId }}><img src="/assets/images/loupe_small_size2.png" alt="Une petite loupe pour rentrer dans la demande"></a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% for request in requests %}
+<div id={{ "popup" ~ request.requestId }} class="overlay">
+    <div class="popup">
+        <div class="close"><a href={{ "#loupe-img" ~ request.requestId }}>&times;</a></div>
+        <div class="content">
+            <div class="popup_request_title">{{ request. requestTitle}}</div>
+            <div class="popup_user_informations">
+                <div>Nom: {{ request.userFirstName }} {{ request.userLastName }}</div>
+                <div>Adresse: {{ request.addressStreet }}</div>
+                <div class="popup_request_postalcode">{{ request.townPostalCode}} {{ request.townName }}</div>
+                <div>Tel: 0{{ request.userPhone }}</div>
+                <div>@: {{ request.userEmail }}</div>
+            </div>
+            <div class="popup_description_container">
+                <div class="popup_request_quantity">Quantité: {{ request.requestQuantity }} {{ request.measurementName }}(s)</div>
+                <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
+            </div>
+            <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+            <div>{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
+            <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
+                <div class="take_care_button">
+                    <button onClick="return confirm('En cliquant sur \'Ok\', cette demande sera supprimée définitivement. Êtes-vous sur ?');">
+                        C'est fait !
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

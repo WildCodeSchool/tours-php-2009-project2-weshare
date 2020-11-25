@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr"
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -16,6 +16,8 @@
     <header>
         <h1 id="baseTitle">WeShare</h1>
         <a href="/home/index"><img id="logo" src="/assets/images/logo1.png" alt="WeShare Logo"></a>
+        <span id="theme-toggle" class="theme-toggle"><img src="/assets/images/dark-theme-logo.png" alt=""></span>
+        <span id="theme-toggle2" class="theme-toggle2"><img src="/assets/images/unicorn-theme-logo.png" alt=""></span>
         <div class="openButton">
             <div class="bar1"></div>
             <div class="bar2"></div>
@@ -24,8 +26,9 @@
         <nav class='sideNav'>
             <a href="javascript:void(0)" class="closeButton">&times;</a>
             <ul class = "nav head">
-                <li class="navLink"><a href="/request/list">Toutes les demandes</a></li>
-                <li class="navLink">Liste express</li>
+                <li class="navLink"><a href="/request/list">Toutes les demandes en attente</a></li>
+                <li class="navLink"><a href="/request/acceptedList">Toutes les demandes prises en charge</a></li>
+                <li class="navLink"><a href="/request/listExpress">Liste express</a></li>
                 <li class="navLink"><a href="/request/add">Nouvelle demande</a></li>
                 <li class="navLink"><a href="/user/add">Nouvel utilisateur</a></li>
             </ul>
@@ -34,15 +37,58 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <ul class = "foot">
-            <li>Nous contacter</li>
-            <li>Mentions légales</li>
-            <li>Lien footer</li>
-            <li>Lien footer</li>
-        </ul>
+        <button id="returnTop">🔝</button>
+        <div class="footer-container">
+            
+            <div class ="column">
+                <h3>Nous contacter</h3>
+                <p>wesharewcs@gmail.com<br><br>49 Boulevard Preuilly, 37000 Tours</p>
+            </div>
+            <div class ="column">
+                <a href="/other/presentation"><h3>L'équipe</h3></a> 
+            </div>
+            <div class ="column">
+                <a href="other/mentionslegales"><h3>Mentions légales</h3></a>
+            </div>
+            <div class ="column">
+                <a href="other/partenaires"><h3>Nos partenaires</h3></a>
+            </div>
+            
+        </div>
+        
+        <div class="reseaux-container">
+            <div>
+                <a href="https://www.facebook.com" target="_blank">
+                <img class="fb"
+                src="/assets/images/045-facebook.png"
+                alt="facebook weshare"></a>
+            </div>
+            <div>
+                <a href="https://www.instagram.com" target="_blank">
+                <img class="insta"
+                src="/assets/images/034-instagram.png"
+                alt="instagram weshare"></a>
+            </div>
+            <div>
+                <a href="https://twitter.com" target="_blank">
+                <img class="twitter"
+                src="/assets/images/013-twitter-1.png"
+                alt="twitter weshare"></a>
+            </div>
+            <div>
+                <a href="https://github.com/WildCodeSchool/tours-php-2009-project2-weshare" target="_blank">
+                <img class="github"
+                src="/assets/images/039-github.png"
+                alt="github weshare"></a>
+            </div>
+        </div>
+        <div class="copyright-container">
+            <h4>© 2020 Célia  Kevin.R  Quentin  Emre  Léo , Wild Code School</h4>
+        </div>
     </footer>
-
+    <script src="/assets/js/themes.js"></script>
     <script src="/assets/js/burgerMenu.js"></script>
+    <script src="/assets/js/returnTop.js"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>
