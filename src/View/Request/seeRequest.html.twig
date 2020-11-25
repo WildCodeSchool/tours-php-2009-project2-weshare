@@ -6,15 +6,18 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+    <link rel="stylesheet" href="/assets/css/cardsStyle.css">
+    <link rel="stylesheet" href="/assets/css/overlayStyle.css">
 {% endblock %}
 
 
 {% block content %}
-
+<div class="list_title" id="startList">
+    <h2>Liste des demandes</h2>
+    </div>
     <div class="publish-container">
         <div class="publish">
             <p>Tu as une nouvelle demande que tu veux publier?</p>
-            {# liens à prévoir #}
             <button onclick="window.location.href ='/request/add'" class="button">Nouvelle demande</button>
         </div>
         <div class="vertical-line"></div>
@@ -24,9 +27,6 @@
         </div>
     </div>
     <div class="requests_list">
-        <div class="list_title" id="startList">
-        Liste des demandes
-        </div>
         <div id="cards" class="cards_container">
             {% for request in requests %}
                 <div class="cards">
@@ -62,7 +62,7 @@
                 
                 <div class="button_container">
                     <div class="popup_answerer_name">
-                        <form action="/request/takeCare" method="POST">
+                        <form action="/request/takeCare/classic" method="POST">
                             <input type="number" name="requestId" value="{{ request.requestId }}">
                             <div class="iAm" >
                                 <label for="userId">Je suis</label>

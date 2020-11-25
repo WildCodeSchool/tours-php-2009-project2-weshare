@@ -3,7 +3,7 @@
 {% block title %}Nouvelle demande{% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/styleRequestForm.css">
+    <link rel="stylesheet" href="/assets/css/formStyle.css">
 {% endblock %}
 
 {% block content %}
@@ -27,11 +27,11 @@
         </div><br>
         <div class="input">
             <label for="title">Titre :</label>
-            <input type="text" id="title" placeholder="Titre" name="title">
+            <input class="field" type="text" id="title" placeholder="Titre" name="title">
         </div><br>
         <div class="input">
             <label for="quantity">Quantité :</label><br />
-            <input type="number" id="quantity" placeholder="Quantité" name="quantity">
+            <input class="field" type="number" id="quantity" placeholder="Quantité" name="quantity">
         </div><br>
         <div class="input">
           <label for="measurementId">Unité :</label><br>
@@ -46,7 +46,7 @@
         </div><br>
         <div class="input">
             <label for="description">Description :</label><br>    
-            <textarea id="description" placeholder="Description" name="description"></textarea>
+            <textarea class="field" id="description" placeholder="Description" name="description"></textarea>
         </div><br>
         <div class="button_container">
         <div class="button">

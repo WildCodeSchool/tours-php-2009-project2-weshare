@@ -31,9 +31,8 @@ class RequestController extends AbstractController
         $errors = [];
 
         $requestManager = new RequestManager();
-        $userManager = new UserManager();
         $requests = $requestManager->selectAllRequests();
-        $users = $userManager->selectAll();
+        $users = $this->selectAllUsers();
 
         if ($requests === null) {
             $errors['bdd'] = 'Problème sur la base de données.';
@@ -41,6 +40,22 @@ class RequestController extends AbstractController
         return $this->twig->render(
             'Request/seeRequest.html.twig',
             ['requests' => $requests, 'users' => $users, 'errors' => $errors]
+        );
+    }
+
+    public function listExpress()
+    {
+        $answererId = $this->getAnswererId();
+        $requestManager = new RequestManager();
+        $requests = $requestManager->selectAllRequests();
+        $users = $this->selectAllUsers();
+
+        if ($requests === null) {
+            echo 'Problème sur la base de données.';
+        }
+        return $this->twig->render(
+            'Request/listExpress.html.twig',
+            ['requests' => $requests, 'users' => $users, 'answererId' => $answererId]
         );
     }
 
@@ -104,6 +119,7 @@ class RequestController extends AbstractController
     public function acceptedList()
     {
         $errors = [];
+        $answerers = [];
 
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllAcceptedRequests();
@@ -114,9 +130,18 @@ class RequestController extends AbstractController
 
         $users = $this->selectAllUsers();
 
+        $nbRequests = count($requests);
+        for ($i = 0; $i < $nbRequests; $i++) {
+            $answerers[$i] = (
+                new UserManager())->selectAnswererInfo($requests[$i]['fk_answerer_id']);
+
+            $requests[$i]['answererFirstname'] = $answerers[$i]['firstname'];
+            $requests[$i]['answererLastname'] = $answerers[$i]['lastname'];
+        }
+
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
-            ['requests' => $requests,'users' => $users, 'errors' => $errors]
+            ['requests' => $requests, 'users' => $users, 'errors' => $errors]
         );
     }
 
@@ -158,8 +183,9 @@ class RequestController extends AbstractController
     {
         return (new UserManager())->selectAll();
     }
+
     /*this method is called when a user decide to take care of the user request of someone else */
-    public function takeCare()
+    public function takeCare(string $source)
     {
         $errors = [];
 
@@ -177,16 +203,52 @@ class RequestController extends AbstractController
                         $result = $requestManager->updateOnAnswerer($answererId, $requestId);
 
                         if ($result === true) {
-                            header('Location:/request/list');
-                            return '';
+                            return $this->chooseHeaderTrue($source);
                         } else {
                             $errors['BDD'] = 'Problème sur la base de données.';
                         }
                     }
                 }
             } else {
-                header('Location:/request/list#popup' . $_POST['requestId']);
+                return $this->chooseHeaderFalse($source);
             }
+        }
+    }
+
+    private function chooseHeaderTrue(string $source): string
+    {
+        if ($source === 'classic') {
+            header('Location:/request/list');
+            return '';
+        } elseif ($source === 'express') {
+            return $this->listExpress();
+        } else {
+            header('Location:/');
+            return '';
+        }
+    }
+
+    private function chooseHeaderFalse(string $source): string
+    {
+        if ($source === 'classic') {
+            header('Location:/request/list#popup' . $_POST['requestId']);
+            return '';
+        } elseif ($source === 'express') {
+            header('Location:/request/listExpress');
+            return '';
+        } else {
+            header('Location:/');
+            return '';
+        }
+    }
+
+    public function getAnswererId(): string
+    {
+        if (isset($_POST['userId'])) {
+            $answererId = $_POST['userId'];
+            return $answererId;
+        } else {
+            return '';
         }
     }
 }

@@ -58,13 +58,17 @@
     width: 100%;
     text-align: center;
     overflow: hidden;
+    z-index: 0;
+    position: relative;
+
 }
   
 .slides {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;    
+    scroll-behavior: smooth;   
+    flex-flow: row; 
 }
 
 .slides > div {
@@ -75,54 +79,6 @@
     transition: transform 0.5s;
     position: relative;
   }
-
-/* make cards beautifull */
-
-.cards {
-    border: solid 2px var(--borders-color);
-    border-radius: 12px;
-    height: 170px;
-    box-sizing: content-box;
-    width: 170px;
-    background-color: var(--secondary-bg-color);
-}
-
-.request_title {
-    position: relative;
-    top: 5%;
-    margin: 0 auto;
-    flex-basis: auto;
-    box-sizing: content-box;
-    width: 90%;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.request_user_firstname {
-    position: absolute;
-    margin-right: 5%;
-    bottom: 40%;
-    right: 0;
-    width: max-content;
-    font-style: italic;    
-}
-
-.request_town_name {
-    position: absolute;
-    margin-right: 5%;
-    bottom: 25%;
-    right: 0;
-    width: max-content;  
-}
-
-.request_publication_date {
-    position: absolute;
-    margin-right: 5%;
-    bottom: 15%;
-    right: 0;
-    width: max-content;
-}
 
 @media screen and (min-width: 1000px) {
     .dot {

@@ -1,0 +1,56 @@
+.cards_container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  row-gap: 5px;
+}
+
+.cards {
+  border: solid 2px var(--borders-color);
+  border-radius: 8px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: content-box;
+  width: 95%;
+  position: relative;
+  background-color: var(--secondary-bg-color);
+  align-items: center;
+}
+
+.request_title {
+  position: relative;
+  margin-left: 5px;
+  box-sizing: content-box;
+  width: 50%;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.requestTitle:visited, .requestTitle:link {
+  color: var(--text-color);
+}
+
+.request_user_firstname {
+  font-style: italic;
+  width: 20%;    
+}
+
+.id_request {
+  display : none;
+}
+
+.request_town_name{
+font-size: small;
+width: 20%; 
+}
+
+.checkbox{
+  width: 10%;
+}
+
+.box{
+  width: 20px;
+  height: 20px;
+}
+
