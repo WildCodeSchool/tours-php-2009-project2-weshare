@@ -13,12 +13,16 @@
 Vous avez besoin d'une motte de beurre, d'un kilo de pomme ou d'une grelinette, dites le sur WeShare.<br>
 Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votre jardin, ou vous n'utilisez pas vos outils de jardinage cette semaine, vérifier si d'autres en ont besoin et partagez !</p>
 </section>
-<section class="presentation-div-even">
-    <button onclick="window.location.href ='/request/add'" class="button">Nouvelle demande</button>
-    <button onclick="window.location.href ='/request/list'" class="button">Toutes les demandes</button>
+<section class="presentation-div-even" class="publish-container">
+    <div class="publish">
+    <button onclick="window.location.href ='/request/add'" class="button" >Nouvelle demande</button>
+    </div>
+    <div class="publish">
+    <button onclick="window.location.href ='/request/list'" class="button" >Toutes les demandes</button>
+    </div>
 </section>
 <section>
-    <h3>Dernières demandes publiées</h3>
+    <h2>Dernières demandes publiées</h2>
     <div class="caroussel">
         <p>{{ errorBDD[0] }}</p>
         <div class="slides cards_container">
