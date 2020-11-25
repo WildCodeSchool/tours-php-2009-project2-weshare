@@ -153,7 +153,7 @@ class RequestController extends AbstractController
         $answererId = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
-            if ($_POST['userId'] !== 'Toutes les demandes') {
+            if ($_POST['userId'] !== '-- --') {
                 $answererId = trim($_POST['userId']);
 
                 if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
