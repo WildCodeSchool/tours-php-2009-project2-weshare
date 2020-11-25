@@ -1,17 +1,4 @@
-.presentation-div-odd {
-    background-color: var(--secondary-bg-color);
-    padding: 1em;
-    text-align: center;
-}
-
-.presentation-div-even {
-    background-color: var(--third-bg-color);
-    padding: 1em;
-    text-align: center;
-}
-
 .publish-container {
-    background-color: var(--main-bg-color);
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -68,6 +55,24 @@ p, h2 {
     text-align: justify;
     padding: 0 8px;
 
+}
+
+p a:link, p a:visited{
+    color: black;
+    text-decoration: underline;
+
+}
+
+.presentation-div-odd {
+    background-color: var(--secondary-bg-color);
+    padding: 1em;
+    text-align: center;
+}
+
+.presentation-div-even {
+    background-color: var(--third-bg-color);
+    padding: 1em;
+    text-align: center;
 }
 
 /* caroussel */
