@@ -66,8 +66,7 @@
                 <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
             </div>
             <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
-<<<<<<< HEAD
-            <div>{{ request.fk_answerer_id }} s'en occupe !</div>
+            <div>{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
             <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
                 <div class="take_care_button">
                     <button onClick="return confirm('En cliquant sur \'Ok\', cette demande sera supprimée définitivement. Êtes-vous sur ?');">
@@ -75,9 +74,6 @@
                     </button>
                 </div>
             </form>
-=======
-            <div>{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
->>>>>>> e9f81123af19aa10c1b0d6484596b1f04904a3b0
         </div>
     </div>
 </div>
