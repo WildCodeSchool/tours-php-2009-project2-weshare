@@ -119,7 +119,6 @@ class RequestController extends AbstractController
     public function acceptedList()
     {
         $errors = [];
-        $answerers = [];
 
         $requestManager = new RequestManager();
         $requests = $requestManager->selectAllAcceptedRequests();
@@ -130,14 +129,7 @@ class RequestController extends AbstractController
 
         $users = $this->selectAllUsers();
 
-        $nbRequests = count($requests);
-        for ($i = 0; $i < $nbRequests; $i++) {
-            $answerers[$i] = (
-                new UserManager())->selectAnswererInfo($requests[$i]['fk_answerer_id']);
-
-            $requests[$i]['answererFirstname'] = $answerers[$i]['firstname'];
-            $requests[$i]['answererLastname'] = $answerers[$i]['lastname'];
-        }
+        $requests = self::getAnswererInfo($requests);
 
         return $this->twig->render(
             'Request/answeredRequests.html.twig',
@@ -153,7 +145,7 @@ class RequestController extends AbstractController
         $answererId = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
-            if ($_POST['userId'] !== 'Toutes les demandes') {
+            if ($_POST['userId'] !== '-- --') {
                 $answererId = trim($_POST['userId']);
 
                 if (filter_var($answererId, FILTER_VALIDATE_INT) !== false) {
@@ -161,6 +153,8 @@ class RequestController extends AbstractController
 
                     $requestManager = new RequestManager();
                     $requests = $requestManager->selectAllAcceptedById($answererId);
+
+                    $requests = self::getAnswererInfo($requests);
 
                     if (!isset($requests['error'])) {
                         $users = $this->selectAllUsers();
@@ -250,5 +244,36 @@ class RequestController extends AbstractController
         } else {
             return '';
         }
+    }
+
+    public function deleteRequest(int $id): string
+    {
+        $error = [];
+
+        $requestManager = new RequestManager();
+        $result = $requestManager->delete($id);
+
+        if (!$result) {
+            $error['bdd'] = 'Problème sur la base de données.';
+        }
+
+        header('Location:/request/acceptedList');
+        return '';
+    }
+
+    private function getAnswererInfo(array $requests): array
+    {
+        $answerers = [];
+
+        $nbRequests = count($requests);
+        for ($i = 0; $i < $nbRequests; $i++) {
+            $answerers[$i] = (
+                new UserManager())->selectAnswererInfo($requests[$i]['fk_answerer_id']);
+
+            $requests[$i]['answererFirstname'] = $answerers[$i]['firstname'];
+            $requests[$i]['answererLastname'] = $answerers[$i]['lastname'];
+        }
+
+        return $requests;
     }
 }
