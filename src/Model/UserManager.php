@@ -61,4 +61,20 @@ class UserManager extends AbstractManager
             return $result1;
         }
     }
+
+    public function selectAnswererInfo(int $answererId): array
+    {
+        $error = [];
+        try {
+            $statement = $this->pdo->prepare('SELECT id, firstname, lastname FROM ' . self::TABLE . '
+            WHERE id =:answererId');
+
+            $statement->bindValue('answererId', $answererId, \PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetch();
+        } catch (\PDOException $e) {
+            return $error['bdd'] = ["Erreur sur la BDD"];
+        }
+        return $result;
+    }
 }

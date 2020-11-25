@@ -12,19 +12,23 @@
 
 {% block content %}
 <div class="requests_list">
-    <div class="list_title">Liste des demandes acceptées</div>
+    <div class="list_title"><h2>Liste des demandes acceptées</h2></div>
     <form action="/request/acceptedListByUser" method="POST">
-        <label for="userId">Qui es-tu ?</label>
-        <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>
-            <option>Toutes les demandes</option>
-            {% for user in users %}
-                {% if selectedUser == user.id %}
-            <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
-                {% else %}
-            <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
+        <div class="iAm">
+            <label for="userId">Je suis</label>
+        </div>
+        <div class="select">
+            <select id="userId" name="userId" type="choice" onchange='this.form.submit()'>
+                <option>-- --</option>
+                {% for user in users %}
+                    {% if selectedUser == user.id %}
+                <option name="userId" value={{ user.id }} selected>{{ user.firstname }} {{ user.lastname }}</option>
+                    {% else %}
+                <option name="userId" value={{ user.id }}>{{ user.firstname }} {{ user.lastname }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>  
     </form>
     <p>{{ errors[0] }}</p>
     <div id="cards" class="cards_container">
@@ -62,6 +66,7 @@
                 <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
             </div>
             <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
+<<<<<<< HEAD
             <div>{{ request.fk_answerer_id }} s'en occupe !</div>
             <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
                 <div class="take_care_button">
@@ -70,6 +75,9 @@
                     </button>
                 </div>
             </form>
+=======
+            <div>{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
+>>>>>>> e9f81123af19aa10c1b0d6484596b1f04904a3b0
         </div>
     </div>
 </div>
