@@ -103,10 +103,14 @@ class User
     {
         $phone = trim($phone);
 
-        if (strlen($phone) != 10) {
-            $this->errors['phone'] = 'Le numéro de téléphone doit avoir 10 caractères.';
+        if (filter_var($phone, FILTER_VALIDATE_INT) !== false) {
+            if (strlen($phone) != 10) {
+                $this->errors['phone'] = 'Le numéro de téléphone doit avoir 10 caractères.';
+            } else {
+                $this->phone = $phone;
+            }
         } else {
-            $this->phone = $phone;
+            $this->errors['phone'] = 'Le numéro de téléphone est invalide.';
         }
     }
 
