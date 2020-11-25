@@ -246,6 +246,21 @@ class RequestController extends AbstractController
         }
     }
 
+    public function deleteRequest(int $id): string
+    {
+        $error = [];
+
+        $requestManager = new RequestManager();
+        $result = $requestManager->delete($id);
+
+        if (!$result) {
+            $error['bdd'] = 'Problème sur la base de données.';
+        }
+
+        header('Location:/request/acceptedList');
+        return '';
+    }
+
     private function getAnswererInfo(array $requests): array
     {
         $answerers = [];
