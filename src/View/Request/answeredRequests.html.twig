@@ -6,6 +6,8 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/seeRequestStyleSheet.css">
+    <link rel="stylesheet" href="/assets/css/overlayStyle.css">
+    <link rel="stylesheet" href="/assets/css/cardsStyle.css">
 {% endblock %}
 
 {% block content %}
@@ -61,6 +63,13 @@
             </div>
             <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
             <div>{{ request.fk_answerer_id }} s'en occupe !</div>
+            <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
+                <div class="take_care_button">
+                    <button onClick="return confirm('En cliquant sur \'Ok\', cette demande sera supprimée définitivement. Êtes-vous sur ?');">
+                        C'est fait !
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

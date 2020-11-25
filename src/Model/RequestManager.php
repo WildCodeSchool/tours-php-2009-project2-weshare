@@ -150,4 +150,18 @@ class RequestManager extends AbstractManager
 
         return $result;
     }
+
+    public function delete(int $id): bool
+    {
+        try {
+            $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id = :id");
+        } catch (\PDOException $error) {
+            return false;
+        }
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $result = $statement->execute();
+
+        return $result;
+    }
 }

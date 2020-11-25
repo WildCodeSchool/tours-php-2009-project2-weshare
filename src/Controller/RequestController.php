@@ -158,6 +158,7 @@ class RequestController extends AbstractController
     {
         return (new UserManager())->selectAll();
     }
+
     /*this method is called when a user decide to take care of the user request of someone else */
     public function takeCare()
     {
@@ -188,5 +189,20 @@ class RequestController extends AbstractController
                 header('Location:/request/list#popup' . $_POST['requestId']);
             }
         }
+    }
+
+    public function deleteRequest(int $id): string
+    {
+        $error = [];
+
+        $requestManager = new RequestManager();
+        $result = $requestManager->delete($id);
+
+        if (!$result) {
+            $error['bdd'] = 'Problème sur la base de données.';
+        }
+
+        header('Location:/request/acceptedList');
+        return '';
     }
 }
