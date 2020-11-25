@@ -10,18 +10,24 @@
 
 {% block content %}
 <section>
-    <h2>Et si on partageait nos affaires ?</h2>
-    <p>Vous êtes pour l'entraide et avez besoin d'un coup de main ou souhaitez donner un coup de main, ce site est fait pour vous.<br>
+    <div class="div-h2"><h2>Et si on partageait nos affaires ?</h2></div>
+    <p class="text" >Vous êtes pour l'entraide et avez besoin d'un coup de main ou souhaitez donner un coup de main, ce site est fait pour vous.<br>
 Vous avez besoin d'une motte de beurre, d'un kilo de pomme ou d'une grelinette, dites le sur WeShare.<br>
 Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votre jardin, ou vous n'utilisez pas vos outils de jardinage cette semaine, vérifier si d'autres en ont besoin et partagez !</p>
 </section>
-<section class="presentation-div-even" class="publish-container">
+<section class="presentation-div-even">
+<div class="publish-container">
     <div class="publish">
+    <p>Tu as une nouvelle demande que tu veux publier ?</p>
     <button onclick="window.location.href ='/request/add'" class="button" >Nouvelle demande</button>
     </div>
+    <div class="vertical-line"></div>
     <div class="publish">
+    <p>Tu veux voir toutes les demandes en attente ?</p>
+
     <button onclick="window.location.href ='/request/list'" class="button" >Toutes les demandes</button>
     </div>
+</div>
 </section>
 <section>
     <h2>Dernières demandes publiées</h2>
