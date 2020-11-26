@@ -1,4 +1,28 @@
-body {
+.content {
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
+a:visited, a:link {
+    color: var(--text-color);
+}
+
+.box {
+    width: 50%;
+}
+
+img {
+    width: 40%;
+}
+
+@media screen and (max-width: 813px)
+{
+    img {
+        width: 75%;
+    }
+}

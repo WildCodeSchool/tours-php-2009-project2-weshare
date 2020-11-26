@@ -203,10 +203,9 @@ class RequestController extends AbstractController
                         }
                     }
                 }
-            } else {
-                return $this->chooseHeaderFalse($source);
             }
         }
+        return $this->chooseHeaderFalse($source);
     }
 
     private function chooseHeaderTrue(string $source): string
