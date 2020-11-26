@@ -1,14 +1,19 @@
 
 /* Regular page*/
 
+.list_title {
+    margin-bottom: 0;
+}
+
 .publish-container {
-    background-color: var(--main-bg-color);
+    background-color: var(--third-bg-color);
     display: flex;
     width: 100%;
     justify-content: space-around;
     box-sizing: border-box;
     padding: 0 3% 0 3%;
     flex-flow: row;
+    margin-bottom: 3%;
 }
 
 .publish, .signIn {
@@ -30,7 +35,7 @@
 .button {
     border: 2px solid var(--borders-color);
     border-radius: 12px;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--main-bg-color);
     padding: 8%;
     margin: 10% 10%;
     width: 50%;
