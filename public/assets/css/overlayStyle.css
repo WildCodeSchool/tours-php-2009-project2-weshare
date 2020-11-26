@@ -124,6 +124,10 @@
    font-weight: bold;
   }
 
+  .answerer {
+    margin-left: 5%;
+  }
+
   .take_care_button {
     margin: 1em auto 0;
     font-weight: bold;
@@ -134,7 +138,7 @@
   }
 
   .take_care_button:hover, .take_care_button button:hover {
-    background-color: var(--third-bg-color);
+    background-color: var(--nav-color);
   }
 
   .take_care_button button {
