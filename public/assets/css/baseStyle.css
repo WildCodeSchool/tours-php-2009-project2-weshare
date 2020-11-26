@@ -240,9 +240,6 @@ h4 {
       height: 40px;
   }
 
-
-
-
 select, input, textarea {
     background-color: var(--list-color)
 }

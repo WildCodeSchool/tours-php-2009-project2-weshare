@@ -26,6 +26,26 @@
         margin : 0;
     }
 
+    ul{
+        list-style:none;
+    }
+
+    #github{
+        color: var(--text-color);
+        font-size: small;
+    }
+    #linkedin{
+        color: var(--text-color);
+        font-size: small;
+    }
+    p{
+        font-size: larger;
+    }
+    .contact-link{
+        color: var(--text-color);
+        text-align: center; 
+    }
+
 }
 
 @media screen and (min-width: 813px) {
@@ -38,6 +58,26 @@
     }
     .desktop-version img {
         width: 80%;
+    }
+    .contact-link{
+        color: var(--text-color);
+        text-align: center; 
+    }
+
+    ul{
+        list-style:none;
+    }
+
+    #github{
+        color: var(--text-color);
+        font-size: small;
+    }
+    #linkedin{
+        color: var(--text-color);
+        font-size: small;
+    }
+    p{
+        font-size: larger;
     }
 }
 
