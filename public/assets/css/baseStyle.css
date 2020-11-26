@@ -5,12 +5,7 @@
     --borders-color:rgb(0, 0, 0);
     --text-color: black;
     --loupe-color: #bbeb77;
-<<<<<<< HEAD
-    --list-color: rgb(250, 250, 250);
-    --nav-color: #0c8001;
-=======
     --list-color: rgb(240, 240, 240);
->>>>>>> cbbca538c4eb51d03565982e08f4b8c9f1a641e4
     --global-theme-toggle-bg: black;
     --global-theme-toggle-bg2: #ffc6fb;
 }  
