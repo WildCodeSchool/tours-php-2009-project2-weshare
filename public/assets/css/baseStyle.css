@@ -222,8 +222,8 @@ h4 {
     outline: none;
     background-color: whitesmoke;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 30%;
+    padding: 1px;
+    border-radius: 25%;
     transition: all 0.1s ease-in-out;
   }
 
@@ -233,7 +233,14 @@ h4 {
     background-color:var(--loupe-color);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-}
+  }  
+
+  #returnTop img{
+      width: 65px;
+      height: 65px;
+  }
+
+
 
 
 select, input, textarea {
