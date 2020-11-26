@@ -140,7 +140,7 @@ class User
     {
         $townId = trim($townId);
 
-        if (strlen($townId) <= self::MIN_CHAR) {
+        if ($townId === '-- --') {
             $this->errors['townId'] = 'Merci de choisir une ville dans la liste.';
         } else {
             $this->townId = $townId;
