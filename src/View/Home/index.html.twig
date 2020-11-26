@@ -33,7 +33,7 @@ Vous aviez prévu d'aller chercher du beurre, vous avez trop de pommes dans votr
     <h2 class="presentation-div-odd">Dernières demandes publiées</h2>
     <div class="caroussel">
         <p>{{ errorBDD[0] }}</p>
-        <div class="slides cards_container">
+        <div class="slides">
         {% set slideNumber = 1 %}
         {% for request in requests %}
             <div id={{ "slide-" ~ slideNumber }} class="cards">
