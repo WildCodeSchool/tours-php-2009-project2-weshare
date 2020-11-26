@@ -6,6 +6,7 @@
     --text-color: black;
     --loupe-color: #bbeb77;
     --list-color: rgb(250, 250, 250);
+    --nav-color: #0c8001;
     --global-theme-toggle-bg: black;
     --global-theme-toggle-bg2: #ffc6fb;
 }  
@@ -18,6 +19,7 @@ html[data-theme='unicorn'] {
     --borders-color: #c188d7;
     --loupe-color:rgb(175, 113, 247);
     --text-color: rgb(255, 21, 157);
+    --nav-color : #8e28ee;
     }
 
 .theme-toggle2 {
@@ -32,12 +34,13 @@ html[data-theme='unicorn'] {
 }
 
 html[data-theme='dark'] {
-    --main-bg-color: #004433;
-    --secondary-bg-color: #65B891;
-    --third-bg-color: #4E878C;
-    --borders-color: #4D4730;
-    --loupe-color: #93E5AB;
-    --text-color: #B5FFE1;
+    --main-bg-color: #dabf8a;
+    --secondary-bg-color: #E8DDCB;
+    --third-bg-color: #00a8a5;
+    --borders-color: #033649;
+    --loupe-color: #1cb896;
+    --text-color: #031634;
+    --nav-color : #028f8c;
     }
 
 .theme-toggle {
@@ -109,7 +112,7 @@ h2 {
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color:var(--secondary-bg-color);
+    background-color:var(--text-color);
     border-radius: 10px;
     margin: 6px 6px;
 }
@@ -127,7 +130,7 @@ h2 {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color:var(--third-bg-color);
+    background-color:var(--nav-color);
     overflow-x: hidden;
     transition: 0.5s;
 }
