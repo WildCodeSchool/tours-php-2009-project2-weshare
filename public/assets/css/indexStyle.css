@@ -39,7 +39,7 @@
 }
 
 .button:hover {
-    background-color: var(--third-bg-color);
+    background-color: var(--nav-color);
 }
 
 a:visited, a:link {
