@@ -5,8 +5,13 @@
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/partnersStyle.css">{% endblock %}
 
 {% block content %}
-<p><a href="https://tours-php-2009-project2-quizzy.phprover.wilders.dev/question/index">Quizzy</a></p>
-<p><a href="https://tours-php-2009-project2-mybooks.phprover.wilders.dev/">My Books</a></p>
-<p><a href="https://tours-php-2009-project2-defendthecastle.phprover.wilders.dev/">Defend the castle</a></p>
-<p><a href="https://www.wildcodeschool.com/fr-FR">Wild Code School</a></p>
+    <div class="list_title" id="startList">
+        <h2>Nos partenaires</h2>
+    </div>
+<div class="content">
+<div class="box"><a href="https://tours-php-2009-project2-quizzy.phprover.wilders.dev/question/index" target="_blank"><img src="/assets/images/quizz.png" alt=""><br>Quizzy</a></div>
+<div class="box"><a href="https://tours-php-2009-project2-mybooks.phprover.wilders.dev/" target="_blank"><img src="/assets/images/books.jpg" alt=""><br>My Books</a></div>
+<div class="box"><a href="https://tours-php-2009-project2-defendthecastle.phprover.wilders.dev/" target="_blank"><img src="/assets/images/castle.png" alt=""><br>Defend the castle</a></div>
+<div class="box"><a href="https://www.wildcodeschool.com/fr-FR" target="_blank"><img src="/assets/images/wcs.png" alt=""><br>Wild Code School</a></div>
+</div>
 {% endblock %}
