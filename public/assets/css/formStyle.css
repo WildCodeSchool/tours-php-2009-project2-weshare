@@ -38,7 +38,7 @@ h2 {
 }
 
 .button_container:hover, .button_container input:hover{
-    background-color: var(--nav-color);
+    background: linear-gradient(var(--loupe-color), var(--nav-color));
 }
 
 select {
