@@ -133,6 +133,7 @@ h2 {
     background-color:var(--nav-color);
     overflow-x: hidden;
     transition: 0.5s;
+    background: linear-gradient(var(--loupe-color), var(--nav-color));
 }
 
 .nav {
