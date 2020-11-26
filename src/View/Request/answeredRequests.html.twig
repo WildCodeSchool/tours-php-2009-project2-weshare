@@ -30,10 +30,6 @@
             </select>
         </div>  
     </form>
-    <div class="iAm">
-        <label for="userId">et j'ai pris en charge les demandes suivantes :</label>
-    </div>
-
     <p>{{ errors[0] }}</p>
     <div id="cards" class="cards_container">
     {% if requests is empty %}
@@ -70,14 +66,16 @@
                 <div class="popup_description">Description: <br>{{ request.requestDescription }}</div>
             </div>
             <div class="popup_request_publishdate">Publié le {{ request.requestPublicationDate }}</div>
-            <div>{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
-            <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
-                <div class="take_care_button">
-                    <button onClick="return confirm('En cliquant sur \'Ok\', cette demande sera supprimée définitivement. Êtes-vous sur ?');">
-                        C'est fait !
-                    </button>
-                </div>
-            </form>
+            <div class="button_container">
+                <div class="answerer">{{ request.answererFirstname }} {{ request.answererLastname }} s'en occupe !</div>
+                <form action="/request/deleteRequest/{{ request.requestId }}" method="POST">
+                    <div class="take_care_button">
+                        <button onClick="return confirm('En cliquant sur \'Ok\', cette demande sera supprimée définitivement. Êtes-vous sur ?');">
+                            C'est fait !
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
