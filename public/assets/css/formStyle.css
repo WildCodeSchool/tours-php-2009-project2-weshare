@@ -38,7 +38,7 @@ h2 {
 }
 
 .button_container:hover, .button_container input:hover{
-    background-color: var(--third-bg-color);
+    background-color: var(--nav-color);
 }
 
 select {
