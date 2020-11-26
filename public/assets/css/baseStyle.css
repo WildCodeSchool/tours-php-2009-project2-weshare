@@ -163,17 +163,13 @@ footer {
 
 .footer-container {
     column-count: 2;
-    padding-top: 2rem;
+    padding-top: 1px;
 }
 
 .column {
     text-align: center;
     width: 100%;
-    padding: 5px;
-}
-
-h3:hover {
-    color:var(--secondary-bg-color);
+    padding: 2px;
 }
 
 h4 {
@@ -184,17 +180,18 @@ h4 {
     justify-items: center;
     justify-content: space-between;
     justify-content: space-around;
-    padding-top: 2rem;
+    padding-top: 1px;
 }
 
 .copyright-container {
     display: flex;
     justify-content:center;
+    font-size: x-small;
 }
 
 .reseaux-container img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 /* Zoom */
@@ -225,8 +222,8 @@ h4 {
     outline: none;
     background-color: whitesmoke;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 30%;
+    padding: 1px;
+    border-radius: 25%;
     transition: all 0.1s ease-in-out;
   }
 
@@ -236,7 +233,14 @@ h4 {
     background-color:var(--loupe-color);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-}
+  }  
+
+  #returnTop img{
+      width: 65px;
+      height: 65px;
+  }
+
+
 
 
 select, input, textarea {

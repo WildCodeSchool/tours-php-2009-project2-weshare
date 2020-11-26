@@ -1,3 +1,80 @@
+.publish-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 0 3% 0 3%;
+    flex-flow: row;
+}
+
+.publish, .signIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    width: 100%;    
+    position: relative;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.publish p, .signIn p {
+    margin: 15% 5% 5%;
+}
+
+.button {
+    border: 2px solid var(--borders-color);
+    border-radius: 12px;
+    background-color: var(--secondary-bg-color);
+    padding: 8%;
+    margin: 10% 10%;
+    width: 50%;
+    height: 35px;
+    position: relative;
+    bottom: 0;
+    box-sizing: content-box;
+    min-width: min-content;
+}
+
+.button:hover {
+    background-color: var(--third-bg-color);
+}
+
+a:visited, a:link {
+    text-decoration: none;
+}
+
+.vertical-line{
+    border-left: 2px solid #000;
+    height: 15vh;
+    margin: 10% 2px 10%;
+  }
+
+p, h2 {
+    text-align: justify;
+    padding: 0 8px;
+
+}
+
+p a:link, p a:visited{
+    color: black;
+    text-decoration: underline;
+
+}
+
+.presentation-div-odd {
+    background-color: var(--secondary-bg-color);
+    padding: 1em;
+    text-align: center;
+}
+
+.presentation-div-even {
+    background-color: var(--third-bg-color);
+    padding: 1em;
+    text-align: center;
+}
+
 /* caroussel */
 .dot {
     cursor: pointer;
