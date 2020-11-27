@@ -4,7 +4,7 @@
     --third-bg-color: rgb(185, 185, 185); 
     --borders-color:rgb(0, 0, 0);
     --text-color: black;
-    --loupe-color: #bbeb77;
+    --loupe-color: #92c44b;
     --nav-color : #4c9745;
     --list-color: rgb(240, 240, 240);
     --global-theme-toggle-bg: black;
@@ -133,6 +133,7 @@ h2 {
     background-color:var(--nav-color);
     overflow-x: hidden;
     transition: 0.5s;
+    background: linear-gradient(var(--loupe-color), var(--nav-color));
 }
 
 .nav {
@@ -157,7 +158,7 @@ h2 {
 
 /*---------FOOTER-----------*/
 footer {
-    background-color:var(--nav-color);
+    background: linear-gradient(var(--nav-color),var(--loupe-color));
     width: 100%;
     height: 100%;
     margin-top: 10px;
@@ -218,7 +219,7 @@ h4 {
 
 #returnTop:hover {
     transform: scale(1.10);
-    color: rgb(13, 95, 2);
+    background: linear-gradient(var(--loupe-color), var(--nav-color));
     background-color:var(--loupe-color);
     cursor: pointer;
     transition: all 0.3s ease-in-out;

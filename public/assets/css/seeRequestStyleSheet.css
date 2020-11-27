@@ -47,7 +47,7 @@
 }
 
 .button:hover {
-    background-color: var(--nav-color);
+    background: linear-gradient(var(--loupe-color), var(--nav-color));
 }
 
 a:visited, a:link {
