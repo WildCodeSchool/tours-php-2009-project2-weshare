@@ -26,6 +26,32 @@
         margin : 0;
     }
 
+    ul{
+        list-style:none;
+    }
+
+    #github{
+        color: var(--text-color);
+        font-size: small;
+        text-decoration: underline;
+    }
+    #linkedin{
+        color: var(--text-color);
+        font-size: small;
+        text-decoration: underline;
+    }
+    p{
+        font-size: larger;
+    }
+    .contact-link{
+        color: var(--text-color);
+        text-align: center;
+    }
+    .contact-us{
+        background-color: var(--third-bg-color);
+        padding: 1em;
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 813px) {
@@ -37,7 +63,29 @@
         text-align: center;
     }
     .desktop-version img {
-        width: 80%;
+        width: 100%;
+    }
+    .contact-link{
+        color: var(--text-color);
+        text-align: center; 
+    }
+
+    ul{
+        list-style:none;
+    }
+
+    #github{
+        color: var(--text-color);
+        font-size: small;
+        text-decoration: underline;
+    }
+    #linkedin{
+        color: var(--text-color);
+        font-size: small;
+        text-decoration: underline;
+    }
+    p{
+        font-size: larger;
     }
 }
 

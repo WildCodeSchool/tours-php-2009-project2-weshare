@@ -45,7 +45,7 @@ class Request
     {
         $userId = trim($userId);
 
-        if (strlen($userId) <= self::MIN_CHAR) {
+        if ($userId === '-- --') {
             $this->errors['userId'] = "Veuillez choisir votre nom dans la liste ci-dessous";
         } else {
             $this->userId = $userId;

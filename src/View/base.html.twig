@@ -26,8 +26,8 @@
         <nav class='sideNav'>
             <a href="javascript:void(0)" class="closeButton">&times;</a>
             <ul class = "nav head">
-                <li class="navLink"><a href="/request/list">Toutes les demandes en attente</a></li>
-                <li class="navLink"><a href="/request/acceptedList">Toutes les demandes prises en charge</a></li>
+                <li class="navLink"><a href="/request/list">Demandes en attente</a></li>
+                <li class="navLink"><a href="/request/acceptedList">Demandes prises en charge</a></li>
                 <li class="navLink"><a href="/request/listExpress">Liste express</a></li>
                 <li class="navLink"><a href="/request/add">Nouvelle demande</a></li>
                 <li class="navLink"><a href="/user/add">Nouvel utilisateur</a></li>
@@ -37,50 +37,16 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <button id="returnTop">🔝</button>
+        <button id="returnTop"><img src="/assets/images/fleche.png" alt="return top"></button>
         <div class="footer-container">
-            
-            <div class ="column">
-                <h3>Nous contacter</h3>
-                <p>wesharewcs@gmail.com<br><br>49 Boulevard Preuilly, 37000 Tours</p>
-            </div>
-            <div class ="column">
-                <a href="/other/presentation"><h3>L'équipe</h3></a> 
-            </div>
-            <div class ="column">
-                <a href="other/mentionslegales"><h3>Mentions légales</h3></a>
-            </div>
-            <div class ="column">
-                <a href="other/partenaires"><h3>Nos partenaires</h3></a>
-            </div>
-            
+            <a class="footerTitle" href="/others/presentation"><h3>Contacter l'équipe</h3></a>
+            <a class="footerTitle" href="/others/legalmentions"><h3>Mentions légales</h3></a>
+            <a class="footerTitle" href="/others/partners"><h3>Nos partenaires</h3></a>
         </div>
-        
-        <div class="reseaux-container">
-            <div>
-                <a href="https://www.facebook.com" target="_blank">
-                <img class="fb"
-                src="/assets/images/045-facebook.png"
-                alt="facebook weshare"></a>
-            </div>
-            <div>
-                <a href="https://www.instagram.com" target="_blank">
-                <img class="insta"
-                src="/assets/images/034-instagram.png"
-                alt="instagram weshare"></a>
-            </div>
-            <div>
-                <a href="https://twitter.com" target="_blank">
-                <img class="twitter"
-                src="/assets/images/013-twitter-1.png"
-                alt="twitter weshare"></a>
-            </div>
-            <div>
-                <a href="https://github.com/WildCodeSchool/tours-php-2009-project2-weshare" target="_blank">
-                <img class="github"
-                src="/assets/images/039-github.png"
-                alt="github weshare"></a>
-            </div>
+        <div class="git_container">
+            <a class="github" href="https://github.com/WildCodeSchool/tours-php-2009-project2-weshare" target="_blank">
+                <img src="/assets/images/github.png" alt="logo github">
+            </a>
         </div>
         <div class="copyright-container">
             <h4>© 2020 Célia  Kevin.R  Quentin  Emre  Léo , Wild Code School</h4>
